@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,32 +11,32 @@
     <Button
         android:id="@+id/pedido"
         android:layout_width="140dp"
-        android:layout_height="64dp"
-        android:layout_gravity="bottom|center_horizontal"
+        android:layout_height="0dp"
         android:text="PEDIDO"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="top|center_horizontal"
-        android:layout_marginTop="170dp"
 
-        />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="170dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/sair"
-        android:layout_width="140dp"
+        android:layout_width="0dp"
         android:layout_height="64dp"
-        android:layout_gravity="bottom|center_horizontal"
         android:text="SAIR"
-        android:layout_marginBottom="175dp"
 
-        />
-
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-    </android.support.design.widget.AppBarLayout>
-
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/pedido"
+        android:layout_marginTop="94dp"
+        app:layout_constraintTop_toBottomOf="@+id/pedido"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/pedido" />
 
 
     <TextView
@@ -46,34 +45,68 @@
         android:layout_height="wrap_content"
         android:text="CodeMenu"
         android:textSize="40dp"
-        android:layout_marginLeft= "90dp"
-        android:layout_marginTop="20dp"
-        />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="8dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/include"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintHorizontal_bias="0.554"
+        app:layout_constraintVertical_bias="0.129"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp" />
 
 
     <Button
         android:id="@+id/cardapio"
-        android:layout_width="140dp"
-        android:layout_height="64dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="CARDÁPIO"
-        android:layout_marginTop="90dp"
-        android:layout_marginLeft="110dp"
-        />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/pedido"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintRight_toRightOf="@+id/pedido"
+        android:layout_marginTop="23dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintLeft_toLeftOf="@+id/textView"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="12dp" />
 
     <include
         android:id="@+id/include"
         layout="@layout/content_main"
-        android:layout_height="565dp" />
+        android:layout_height="0dp"
+        android:layout_width="0dp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/pagamento"
-        android:layout_width="140dp"
+        android:layout_width="0dp"
         android:layout_height="64dp"
-        android:layout_marginTop="250dp"
-        android:layout_marginLeft="110"
         android:text="PAGAMENTO "
 
 
-        />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/cardapio"
+        android:layout_marginTop="96dp"
+        app:layout_constraintTop_toBottomOf="@+id/cardapio"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/cardapio" />
 
-</android.support.design.widget.CoordinatorLayout>
+</android.support.constraint.ConstraintLayout>
