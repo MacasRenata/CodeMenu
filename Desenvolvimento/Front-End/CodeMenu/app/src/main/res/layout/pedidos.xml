@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.manuygabi.codemenu.Pedidos">
+    tools:context="com.example.manuygabi.codemenu.pedidos">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="368dp"
         android:layout_height="495dp"
-        tools:context="com.example.manuygabi.codemenu.CardapioBeb"
+        tools:context="com.example.manuygabi.codemenu.cardapio_beb"
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="8dp"
         android:id="@+id/constraintLayout">

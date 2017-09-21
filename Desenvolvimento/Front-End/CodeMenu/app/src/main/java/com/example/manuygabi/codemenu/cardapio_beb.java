@@ -6,14 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class CardapioBeb extends AppCompatActivity {
+public class cardapio_beb extends AppCompatActivity {
 
     Button btMenuPrincipal, btCardapioRef, btPedidoCozinha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.CardapioBeb);
+        setContentView(R.layout.cardapio_beb);
 
         btMenuPrincipal = (Button) findViewById(R.id.btMenuPrincipal);
 
@@ -25,7 +25,7 @@ public class CardapioBeb extends AppCompatActivity {
 
             void chamaMenuPrincipal() {
                 Intent intent = new Intent();
-                intent.setClass(CardapioBeb.this, MenuPrincipal.class);
+                intent.setClass(cardapio_beb.this, menu_principal.class);
                 startActivity(intent);
                 finish();
             }
@@ -41,7 +41,7 @@ public class CardapioBeb extends AppCompatActivity {
 
             void chamaCardapioRef() {
                 Intent intent = new Intent();
-                intent.setClass(CardapioBeb.this, CardapioRef.class);
+                intent.setClass(cardapio_beb.this, cardapio_ref.class);
                 startActivity(intent);
                 finish();
             }
@@ -57,7 +57,7 @@ public class CardapioBeb extends AppCompatActivity {
 
             void chamaPedidoCozinha() {
                 Intent intent = new Intent();
-                intent.setClass(CardapioBeb.this, Pedidos.class); // Aqui precisa alterar para a chamada @Cozinha do sistema
+                intent.setClass(cardapio_beb.this, pedidos.class); // Aqui precisa alterar para a chamada @Cozinha do sistema
                 startActivity(intent);
                 finish();
             }

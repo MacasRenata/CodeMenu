@@ -6,14 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class CardapioRef extends AppCompatActivity {
+public class cardapio_ref extends AppCompatActivity {
 
     Button btCardapioBeb, btMenuPrincipal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.CardapioRef);
+        setContentView(R.layout.cardapio_ref);
 
 
         btCardapioBeb = (Button) findViewById(R.id.btCardapioBeb);
@@ -26,7 +26,7 @@ public class CardapioRef extends AppCompatActivity {
 
             void chamaBebida() {
                 Intent intent = new Intent();
-                intent.setClass(CardapioRef.this, CardapioBeb.class);
+                intent.setClass(cardapio_ref.this, cardapio_beb.class);
                 startActivity(intent);
                 finish();
             }
@@ -42,7 +42,7 @@ public class CardapioRef extends AppCompatActivity {
 
             void chamaMenuPrincipal() {
                 Intent intent = new Intent();
-                intent.setClass(CardapioRef.this, MenuPrincipal.class);
+                intent.setClass(cardapio_ref.this, menu_principal.class);
                 startActivity(intent);
                 finish();
             }
