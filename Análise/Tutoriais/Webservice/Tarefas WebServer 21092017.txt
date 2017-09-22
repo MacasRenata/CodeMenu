@@ -1,0 +1,19 @@
+*** Webserver - Tarefas ***
+
+1) classes e atributos: get, set
+estabelecimento 
+cliente 
+mesa 
+comanda 
+pedidos  
+itens 
+
+2) DAO - para as classes
+Mapeamento com Spring
+
+3) Controle: Classes x DAO
+
+4) Classes interação Banco x Interface
+
+- meuspedidos
+- totalcomanda 
