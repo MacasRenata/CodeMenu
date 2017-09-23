@@ -6,14 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Pedidos extends AppCompatActivity {
+public class pedidos extends AppCompatActivity {
 
     Button btAddItens, btMenuPrincipal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.Pedidos);
+        setContentView(R.layout.pedidos);
 
         btMenuPrincipal = (Button) findViewById(R.id.btMenuPrincipal);
 
@@ -25,7 +25,7 @@ public class Pedidos extends AppCompatActivity {
 
             void chamaMenuPrincipal() {
                 Intent intent = new Intent();
-                intent.setClass(Pedidos.this, MenuPrincipal.class);
+                intent.setClass(pedidos.this, menu_principal.class);
                 startActivity(intent);
                 finish();
             }
@@ -41,7 +41,7 @@ public class Pedidos extends AppCompatActivity {
 
             void chamaCardapioRef() {
                 Intent intent = new Intent();
-                intent.setClass(Pedidos.this, CardapioRef.class);
+                intent.setClass(pedidos.this, cardapio_ref.class);
                 startActivity(intent);
                 finish();
             }
