@@ -12,13 +12,16 @@ package com.menu.code.webservice.model;
 public class Item {
     private long id;
     private String nome;
-    private int tipo;
-    private double preco;    
+    private int tipo;    
+    private double preco;   
+    private String urlImagem;
 
-    public Item(long id, String nome, int tipo) {
+    public Item(long id, String nome, int tipo, double preco, String urlImagem) {
         this.id = id;
         this.nome = nome;
         this.tipo = tipo;
+        this.preco = preco;
+        this.urlImagem = urlImagem;
     }
 
     public long getId() {
@@ -50,6 +53,14 @@ public class Item {
     }
 
     public void setPreco(double preco) {
-        this.preco = preco;        
+        this.preco = preco;
+    }
+
+    public String getUrlImagem() {
+        return urlImagem;
+    }
+
+    public void setUrlImagem(String urlImagem) {
+        this.urlImagem = urlImagem;
     }    
 }
