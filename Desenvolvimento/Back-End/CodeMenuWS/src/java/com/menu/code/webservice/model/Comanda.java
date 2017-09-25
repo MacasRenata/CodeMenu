@@ -12,7 +12,7 @@ import java.util.Date;
  * @author Marcio
  */
 public class Comanda {
-    private long id;
+    private Long id;
     private Date hora;
     private int status;
     private double valor;

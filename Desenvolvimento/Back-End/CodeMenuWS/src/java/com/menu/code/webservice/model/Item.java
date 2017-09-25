@@ -10,7 +10,7 @@ package com.menu.code.webservice.model;
  * @author Marcio
  */
 public class Item {
-    private long id;
+    private Long id;
     private String nome;
     private int tipo;    
     private double preco;   

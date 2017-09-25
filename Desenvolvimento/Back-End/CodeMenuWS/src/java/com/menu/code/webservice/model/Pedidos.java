@@ -12,7 +12,7 @@ import java.util.Date;
  * @author Marcio
  */
 public class Pedidos {
-    private long id;
+    private Long id;
     private Date data;
     private int status;
     private double valor;
