@@ -8,11 +8,14 @@ import android.widget.Button;
 
 public class cardapio_beb extends AppCompatActivity {
 
-    Button btMenuPrincipal, btCardapioRef, btPedidoCozinha;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        /*Button btMenuPrincipal, btCardapioRef, btPedidoCozinha;
         setContentView(R.layout.cardapio_beb);
 
         btMenuPrincipal = (Button) findViewById(R.id.btMenuPrincipal);
@@ -61,6 +64,6 @@ public class cardapio_beb extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        });
+        });*/
     }
 }

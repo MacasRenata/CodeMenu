@@ -4,151 +4,272 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.manuygabi.codemenu.cardapio_beb">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.manuygabi.codemenu.cardapio_beb"
+    tools:showIn="@layout/menu_principal">
+
+    <Button
+        android:id="@+id/bebida_pedir"
+        android:layout_width="119dp"
+        android:layout_height="67dp"
+        android:text="PEDIR"
+        tools:layout_editor_absoluteX="45dp"
+        tools:layout_editor_absoluteY="393dp"
+        android:onClick="chamarMenu"
+        />
+
+    <Button
+        android:id="@+id/bebida_voltar"
+        android:layout_width="123dp"
+        android:layout_height="67dp"
+        android:text="VOLTAR"
+        tools:layout_editor_absoluteX="189dp"
+        tools:layout_editor_absoluteY="393dp" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="125dp"
-        android:layout_height="42dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
+        android:id="@+id/textView"
+        android:layout_width="192dp"
+        android:layout_height="55dp"
         android:text="Bebidas"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.072"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="4dp"
+        android:textSize="40sp"
+        android:textColor="#000000" />
 
-    <SearchView
-        android:layout_width="364dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-
-        <EditText
-            android:id="@+id/editText3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
-    </SearchView>
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher_round"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.025"
-        app:layout_constraintVertical_bias="0.371" />
 
     <TextView
-        android:id="@+id/textView5"
-        android:layout_width="140dp"
-        android:layout_height="44dp"
-        android:text="TextView"
-        app:layout_constraintLeft_toRightOf="@+id/imageView2"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintVertical_bias="0.368" />
+        android:id="@+id/beb_1_descricao"
+        android:layout_width="92dp"
+        android:layout_height="25dp"
+        android:text="Coca-Cola"
+        tools:layout_editor_absoluteX="68dp"
+        tools:layout_editor_absoluteY="84dp"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        />
+
+    <TextView
+        android:id="@+id/beb_1_valor"
+        android:layout_width="64dp"
+        android:layout_height="27dp"
+        android:text="R$ 6,00 "
+        tools:layout_editor_absoluteX="164dp"
+        tools:layout_editor_absoluteY="84dp"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        />
 
     <EditText
-        android:id="@+id/editText5"
-        android:layout_width="45dp"
-        android:layout_height="40dp"
+        android:id="@+id/beb_1_quant"
+        android:layout_width="60dp"
+        android:layout_height="35dp"
         android:ems="10"
         android:inputType="number"
-        app:layout_constraintLeft_toRightOf="@+id/textView5"
-        android:layout_marginLeft="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.086"
-        app:layout_constraintVertical_bias="0.364" />
+        tools:layout_editor_absoluteY="76dp"
+        tools:layout_editor_absoluteX="239dp" />
+
+    <ImageView
+        android:id="@+id/beb_1_imag"
+        android:layout_width="45dp"
+        android:layout_height="43dp"
+        app:srcCompat="@android:color/holo_orange_light"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="178dp" />
 
     <CheckBox
-        android:id="@+id/checkBox2"
-        android:layout_width="91dp"
-        android:layout_height="46dp"
-        android:text="CheckBox"
-        android:layout_marginRight="16dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.369" />
-
-    <Button
-        android:id="@+id/btPedidoCozinha"
+        android:id="@+id/beb_1_box"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Confirmar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.93" />
+        tools:layout_editor_absoluteX="312dp"
+        tools:layout_editor_absoluteY="76dp" />
 
-    <Button
-        android:id="@+id/btCardapioRef"
+
+    <TextView
+        android:id="@+id/beb_2_descricao"
+        android:layout_width="92dp"
+        android:layout_height="25dp"
+        android:text="Pepsi"
+        tools:layout_editor_absoluteX="72dp"
+        tools:layout_editor_absoluteY="130dp"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        />
+
+    <TextView
+        android:id="@+id/beb_2_valor"
+        android:layout_width="64dp"
+        android:layout_height="27dp"
+        android:text="R$ 6,00 "
+        tools:layout_editor_absoluteX="164dp"
+        tools:layout_editor_absoluteY="130dp"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        />
+
+    <EditText
+        android:id="@+id/beb_2_quant"
+        android:layout_width="60dp"
+        android:layout_height="35dp"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteY="120dp"
+        tools:layout_editor_absoluteX="239dp" />
+
+    <ImageView
+        android:id="@+id/beb_2_imag"
+        android:layout_width="45dp"
+        android:layout_height="43dp"
+        app:srcCompat="@android:color/holo_green_light"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="120dp" />
+
+    <CheckBox
+        android:id="@+id/beb_2_box"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="148dp"
-        android:layout_marginTop="8dp"
-        android:text="Voltar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.93" />
+        tools:layout_editor_absoluteX="312dp"
+        tools:layout_editor_absoluteY="123dp" />
 
-    <Button
-        android:id="@+id/btMenuPrincipal"
+
+    <TextView
+        android:id="@+id/beb_3_descricao"
+        android:layout_width="92dp"
+        android:layout_height="25dp"
+        android:text="Guaraná"
+        tools:layout_editor_absoluteX="72dp"
+        tools:layout_editor_absoluteY="187dp"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        />
+
+    <TextView
+        android:id="@+id/beb_3_valor"
+        android:layout_width="64dp"
+        android:layout_height="27dp"
+        android:text="R$ 5,50 "
+        tools:layout_editor_absoluteX="164dp"
+        tools:layout_editor_absoluteY="187dp"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        />
+
+    <EditText
+        android:id="@+id/beb_3_quant"
+        android:layout_width="60dp"
+        android:layout_height="35dp"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteY="178dp"
+        tools:layout_editor_absoluteX="239dp" />
+
+    <ImageView
+        android:id="@+id/beb_3_imag"
+        android:layout_width="45dp"
+        android:layout_height="43dp"
+        app:srcCompat="@android:color/holo_blue_light"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="234dp" />
+
+    <CheckBox
+        android:id="@+id/beb_3_box"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="41dp"
-        android:layout_marginTop="8dp"
-        android:text="Sair"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.93" />
+        tools:layout_editor_absoluteX="312dp"
+        tools:layout_editor_absoluteY="178dp" />
+
+
+    <TextView
+        android:id="@+id/beb_4_descricao"
+        android:layout_width="88dp"
+        android:layout_height="53dp"
+        android:text="Fanta Laranja"
+        tools:layout_editor_absoluteX="74dp"
+        tools:layout_editor_absoluteY="234dp"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        />
+
+    <TextView
+        android:id="@+id/beb_4_valor"
+        android:layout_width="64dp"
+        android:layout_height="27dp"
+        android:text="R$ 4,50 "
+        tools:layout_editor_absoluteX="164dp"
+        tools:layout_editor_absoluteY="242dp"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        />
+
+    <EditText
+        android:id="@+id/beb_4_quant"
+        android:layout_width="60dp"
+        android:layout_height="35dp"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteY="238dp"
+        tools:layout_editor_absoluteX="239dp" />
+
+    <ImageView
+        android:id="@+id/beb_4_imag"
+        android:layout_width="45dp"
+        android:layout_height="43dp"
+        app:srcCompat="@android:color/holo_red_light"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="68dp" />
+
+    <CheckBox
+        android:id="@+id/beb_4_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="312dp"
+        tools:layout_editor_absoluteY="239dp" />
+
+
+    <TextView
+        android:id="@+id/beb_5_descricao"
+        android:layout_width="92dp"
+        android:layout_height="25dp"
+        android:text="Sprite"
+        tools:layout_editor_absoluteX="72dp"
+        tools:layout_editor_absoluteY="297dp"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        />
+
+    <TextView
+        android:id="@+id/beb_5_valor"
+        android:layout_width="64dp"
+        android:layout_height="27dp"
+        android:text="R$ 6,00 "
+        tools:layout_editor_absoluteX="164dp"
+        tools:layout_editor_absoluteY="297dp"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        />
+
+    <EditText
+        android:id="@+id/beb_5_quant"
+        android:layout_width="60dp"
+        android:layout_height="35dp"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteY="297dp"
+        tools:layout_editor_absoluteX="239dp" />
+
+    <ImageView
+        android:id="@+id/beb_5_imag"
+        android:layout_width="45dp"
+        android:layout_height="43dp"
+        app:srcCompat="@android:color/black"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="287dp" />
+
+    <CheckBox
+        android:id="@+id/beb_5_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="312dp"
+        tools:layout_editor_absoluteY="297dp" />
 
 </android.support.constraint.ConstraintLayout>
+
