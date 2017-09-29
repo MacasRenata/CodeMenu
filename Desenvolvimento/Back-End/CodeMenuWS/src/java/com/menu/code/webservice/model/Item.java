@@ -23,6 +23,10 @@ public class Item {
         this.preco = preco;
         this.urlImagem = urlImagem;
     }
+    
+    public Item() {
+        
+    }
 
     public long getId() {
         return id;

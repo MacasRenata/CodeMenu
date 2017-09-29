@@ -16,14 +16,21 @@ public class Comanda {
     private Date hora;
     private int status;
     private double valor;
+    private Pedido pedido;
 
-    public Comanda(long id, Date hora, int status, double valor) {
+    public Comanda(long id, Date hora, int status, double valor, Pedido pedido) {
         this.id = id;
         this.hora = hora;
         this.status = status;
         this.valor = valor;
+        this.pedido = pedido;
+    }
+    
+    public Comanda() {
+        
     }
 
+    
     public long getId() {
         return id;
     }
@@ -54,5 +61,21 @@ public class Comanda {
 
     public void setValor(double valor) {
         this.valor = valor;
-    }    
+    } 
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+    
+    public Long getPedidoId() {
+        return pedido.getId();
+    }
+    
+    public void setPedido(Long pedido_id) {
+            this.pedido.setId(pedido_id);
+    }
 }

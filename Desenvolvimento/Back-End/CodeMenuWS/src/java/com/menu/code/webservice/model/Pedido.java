@@ -11,27 +11,30 @@ import java.util.Date;
  *
  * @author Marcio
  */
-public class Pedidos {
+public class Pedido {
     private Long id;
     private Date data;
     private int status;
     private double valor;
     private int quantidade;
-    private Cliente cliente_id;
-    private Mesa mesa_id;    
-    private Item item_id;    
-    private Comanda comanda_id;    
+    private Cliente cliente;
+    private Mesa mesa;    
+    private Item item;    
+        
 
-    public Pedidos(long id, Date data, int status, double valor, int quantidade, Cliente cliente_id, Mesa mesa_id, Item item_id, Comanda comanda_id) {
+    public Pedido(Long id, Date data, int status, double valor, int quantidade, Cliente cliente, Mesa mesa, Item item) {
         this.id = id;
         this.data = data;
         this.status = status;
         this.valor = valor;
         this.quantidade = quantidade;
-        this.cliente_id = cliente_id;
-        this.mesa_id = mesa_id;
-        this.item_id = item_id;
-        this.comanda_id = comanda_id;
+        this.cliente = cliente;
+        this.mesa = mesa;
+        this.item = item;
+    }
+
+    public Pedido() {
+        
     }
 
     public long getId() {
@@ -74,35 +77,51 @@ public class Pedidos {
         this.quantidade = quantidade;
     }
 
-    public Cliente getCliente_id() {
-        return cliente_id;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setCliente_id(Cliente cliente_id) {
-        this.cliente_id = cliente_id;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public Mesa getMesa_id() {
-        return mesa_id;
+    public Mesa getMesa() {
+        return mesa;
     }
 
-    public void setMesa_id(Mesa mesa_id) {
-        this.mesa_id = mesa_id;
+    public void setMesa(Mesa mesa) {
+        this.mesa = mesa;
     }
 
-    public Item getItem_id() {
-        return item_id;
+    public Item getItem() { 
+        return item;
     }
 
-    public void setItem_id(Item item_id) {
-        this.item_id = item_id;
+    public void setItem(Item item) {
+        this.item = item;
     }
 
-    public Comanda getComanda_id() {
-        return comanda_id;
+    public Long getClienteId() {
+        return cliente.getId();
     }
-
-    public void setComanda_id(Comanda comanda_id) {
-        this.comanda_id = comanda_id;
-    }    
+    
+    public Long getMesaId() {
+        return mesa.getId();
+    }
+    
+    public Long getItemId() {
+        return item.getId();
+    }
+    
+    public void setCliente(Long cliente_id) {
+            this.cliente.setId(cliente_id);
+    }
+    
+    public void setMesa(Long mesa_id) {
+            this.mesa.setId(mesa_id);
+    } 
+    
+    public void setItem(Long item_id) {
+            this.item.setId(item_id);
+    } 
 }

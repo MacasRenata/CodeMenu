@@ -5,9 +5,7 @@
  */
 package com.menu.code.webservice.model;
 
-import javax.persistence.ManyToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
-
+import com.menu.code.webservice.model.Estabelecimento;
 /**
  *
  * @author anderson
@@ -17,8 +15,6 @@ public class Mesa {
     
     private Long id;
     private String qrcode;
-    @ManyToOne
-    @PrimaryKeyJoinColumn
     private Estabelecimento estabelecimento;
     
     public Mesa(long id, String qrcode, Estabelecimento estabelecimento) {
@@ -56,5 +52,11 @@ public class Mesa {
         this.estabelecimento = estabelecimento;
     }
     
+    public Long getEstabelecimentoId() {
+        return estabelecimento.getId();
+    }
     
+    public void setEstabelecimento(long id) {
+        this.estabelecimento.setId(id);
+    }
 }
