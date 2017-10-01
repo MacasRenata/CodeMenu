@@ -5,8 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.manuygabi.codemenu.cardapio_beb"
+    tools:context="com.example.macas.codemenu.cardapio_beb"
     tools:showIn="@layout/menu_principal">
+
+
 
     <?xml version="1.0" encoding="utf-8"?>
     <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android"
