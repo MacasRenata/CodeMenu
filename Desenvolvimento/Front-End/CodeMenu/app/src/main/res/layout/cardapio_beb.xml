@@ -8,6 +8,13 @@
     tools:context="com.example.manuygabi.codemenu.cardapio_beb"
     tools:showIn="@layout/menu_principal">
 
+    <?xml version="1.0" encoding="utf-8"?>
+    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android"
+        android:id="@+id/main_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"/>
+
     <Button
         android:id="@+id/bebida_pedir"
         android:layout_width="119dp"
