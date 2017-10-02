@@ -22,8 +22,8 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="PEDIDO"
-        app:layout_anchor="@+id/include"
+        android:text="@string/pedidos"
+
         app:layout_anchorGravity="top|center_horizontal"
         app:layout_constraintBottom_toBottomOf="@+id/btSair"
         app:layout_constraintHorizontal_bias="0.509"
@@ -54,7 +54,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="SAIR"
+        android:text="@string/sair"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -81,7 +81,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="CodeMenu"
+        android:text="@string/app_name"
         android:textSize="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -99,7 +99,7 @@
     <Button
         android:id="@+id/btCardapio"
 
-        android:text="CARDÁPIO"
+        android:text="@string/cardapio"
 
         android:layout_width="0dp"
         android:layout_height="72dp"
@@ -132,7 +132,7 @@
         android:layout_width="0dp"
         android:layout_height="72dp"
 
-        android:text="PAGAMENTO "
+        android:text="@string/pagamento"
 
 
         android:layout_marginBottom="8dp"

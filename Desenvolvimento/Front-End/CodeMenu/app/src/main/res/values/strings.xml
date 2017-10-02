@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">CodeMenu</string>
+
+    <string name="adicionar">Adiconar</string>
+    <string name="pedidos">Pedidos</string>
+    <string name="sair">Sair</string>
+    <string name="produto">Produto</string>
+    <string name="status">Staus do Pedido</string>
+    <string name="subtotal">Subtotal</string>
+
+    <string name="cardapio">Cardápio</string>
+    <string name="pagamento">Pagamento</string>
+
+
 </resources>
