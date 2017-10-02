@@ -16,6 +16,7 @@ public class cardapio_beb extends AppCompatActivity {
 
 
         /*Button btMenuPrincipal, btCardapioRef, btPedidoCozinha;
+
         setContentView(R.layout.cardapio_beb);
 
         btMenuPrincipal = (Button) findViewById(R.id.btMenuPrincipal);
