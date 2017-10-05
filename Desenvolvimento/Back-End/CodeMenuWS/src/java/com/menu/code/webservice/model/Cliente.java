@@ -13,7 +13,7 @@ package com.menu.code.webservice.model;
 
 public class Cliente {
 
-private Long id;
+public Long id;
 private String telefone;
 	
 

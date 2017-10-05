@@ -5,6 +5,16 @@
  */
 package com.menu.code.webservice.controller;
 
+import com.menu.code.webservice.model.Comanda;
+import com.menu.code.webservice.persistence.ComandaDAO;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -14,4 +24,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ComandaController {
     
+    @Autowired
+    private ComandaDAO comandaDAO;
+    
+    @POST
+    @Path("inserir")
+    @Produces(MediaType.APPLICATION_JSON)	
+    //@PostMapping(value = "Cliente")
+    public ResponseEntity adicionaComanda(@RequestBody Comanda comanda) throws Exception{       
+        //String reader = null;
+        //Cliente cliente = gson.fromJson(reader, Cliente.class);
+        comandaDAO.inserir(comanda);
+        return new ResponseEntity(comanda, HttpStatus.OK);
+    }    
 }

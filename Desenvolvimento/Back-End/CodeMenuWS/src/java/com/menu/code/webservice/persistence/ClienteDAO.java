@@ -23,6 +23,8 @@ import java.util.List;
 
 
 public class ClienteDAO {
+
+   
    public void inserir(Cliente c) throws Exception {
         Connection con = ConexaoMySQL.getConexaoMySQL();
         PreparedStatement pstmt = con.prepareStatement("insert into cliente (telefone) values (?)");
@@ -65,6 +67,5 @@ public class ClienteDAO {
         pstmt.execute();
         pstmt.close();
         con.close();
-    }
-   
+    }   
 }
