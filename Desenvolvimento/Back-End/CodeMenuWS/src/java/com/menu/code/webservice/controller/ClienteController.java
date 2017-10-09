@@ -56,10 +56,7 @@ public class ClienteController {
     @Produces(MediaType.APPLICATION_JSON)	
     //@GetMapping("/Cliente")
     public ResponseEntity atualizaCliente(@PathVariable Long id, @RequestBody Cliente cliente) throws Exception {
-        clienteDAO.atualizar(cliente);
-        if (null == clienteDAO) {
-            return new ResponseEntity("Não existem clientes registrados com este ID " + id, HttpStatus.NOT_FOUND);
-        }
+        clienteDAO.atualizar(cliente);       
         return new ResponseEntity(cliente, HttpStatus.OK);
     }      
     
