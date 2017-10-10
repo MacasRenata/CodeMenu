@@ -11,5 +11,7 @@
     <string name="cardapio">Cardápio</string>
     <string name="pagamento">Pagamento</string>
 
+    <string name="voltar">Voltar</string>
+
 
 </resources>
