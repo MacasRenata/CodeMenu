@@ -62,7 +62,8 @@ public class ComandaDAO {
         pstmt.close();
         con.close();
         return lista;
-    }
+    }    
+    
 
     public void deletar(Comanda c) throws Exception {
         Connection con = ConexaoMySQL.getConexaoMySQL();
