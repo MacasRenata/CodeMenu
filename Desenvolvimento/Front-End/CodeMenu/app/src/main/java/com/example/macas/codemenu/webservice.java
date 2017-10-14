@@ -21,8 +21,18 @@ public class webservice {
         Object resultado = envelope.getResponse ();
         return Integer.parseInt(resultado.toString());
 
-    }*/
+    }
 
+
+    public static CardapioRef retornarDados(String ip) throws JSONException {
+        String responseBody = request("http://freegeoip.net/json/" + ip);
+        JSONObject obj = new JSONObject(responseBody);
+        String pais = obj.get("country_name").toString();
+        String estado = obj.get("region_name").toString();
+        String cidade = obj.get("city").toString();
+        return new Localizacao(pais, estado, cidade);
+    }
+*/
 
 //conexão com mySql NetBeans - ajustar
 
@@ -33,7 +43,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-    public class ClienteGeoIP {
+    public class WebService {
 
         private static String readStream(InputStream in){
             BufferedReader r = new BufferedReader(new InputStreamReader(in));
