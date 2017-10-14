@@ -38,6 +38,7 @@ public class ClienteDAO {
         Connection con = ConexaoMySQL.getConexaoMySQL();
         PreparedStatement pstmt = con.prepareStatement("update cliente set telefone = ? where id = ?");
         pstmt.setString(1, c.getTelefone());
+        pstmt.setLong(2, c.getId());
         pstmt.execute();
         pstmt.close();
         con.close();

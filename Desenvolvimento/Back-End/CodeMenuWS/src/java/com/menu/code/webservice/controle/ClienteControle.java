@@ -6,7 +6,7 @@
 package com.menu.code.webservice.controle;
 
 import com.menu.code.webservice.model.Cliente;
-import com.menu.code.webservice.persistencia.ClienteDAO;
+import com.menu.code.webservice.persistence.ClienteDAO;
 import java.util.List;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -35,34 +35,34 @@ public class ClienteControle {
     @GET
     @Path("/clientes")
     @RequestMapping(value = "/clientes", method = RequestMethod.GET,headers="Accept=application/json")
-    public List<Cliente> getClientes() throws Exception{       
-        return clienteDAO.findAll();        
+    public List<Cliente> getClientes(Cliente cliente) throws Exception{       
+        return clienteDAO.buscar(cliente);
     }
     
     @POST
     @Path("/adicionaCliente")
     @RequestMapping(value = "/adicionaCliente", method = RequestMethod.POST,headers="Accept=application/json")
-    public ResponseEntity geAdicionaCliente(@RequestBody Cliente cliente) throws Exception{
-        clienteDAO.persist(cliente);
+    public ResponseEntity getAdicionaCliente(@RequestBody Cliente cliente) throws Exception{
+        clienteDAO.inserir(cliente);
         return new ResponseEntity(cliente, HttpStatus.OK);
     }  
     
     @DELETE
     @Path("/deletaCliente")
     @RequestMapping(value = "/deletaCliente", method = RequestMethod.DELETE,headers="Accept=application/json")
-    public ResponseEntity getDeletaCliente(@PathVariable Long id, @RequestBody Cliente cliente) throws Exception {
-        clienteDAO.remove(cliente);
+    public ResponseEntity getDeletaCliente(@RequestBody Cliente cliente) throws Exception {
+        clienteDAO.deletar(cliente);
         if (null == clienteDAO) {
-            return new ResponseEntity("Não existem clientes registrados com este ID " + id, HttpStatus.NOT_FOUND);
+            return new ResponseEntity("Não existem clientes registrados com este ID ", HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity(id, HttpStatus.OK);             
+        return new ResponseEntity(HttpStatus.OK);             
     }    
     
     @PUT
     @Path("/atualizaCliente")
     @RequestMapping(value = "/atualizaCliente", method = RequestMethod.PUT,headers="Accept=application/json")
-    public ResponseEntity getAtualizaCliente(@PathVariable Long id, @RequestBody Cliente cliente) throws Exception {
-        clienteDAO.merge(cliente);             
+    public ResponseEntity getAtualizaCliente(@RequestBody Cliente cliente) throws Exception {
+        clienteDAO.atualizar(cliente);
         return new ResponseEntity(cliente, HttpStatus.OK);
     }
 }

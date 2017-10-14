@@ -6,7 +6,7 @@
 package com.menu.code.webservice.controle;
 
 import com.menu.code.webservice.model.Comanda;
-import com.menu.code.webservice.persistencia.ComandaDAO;
+import com.menu.code.webservice.persistence.ComandaDAO;
 import java.util.List;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -33,34 +33,34 @@ public class ComandaControle {
     @GET
     @Path("/comandas")
     @RequestMapping(value = "/comandas", method = RequestMethod.GET,headers="Accept=application/json")
-    public List<Comanda> getComandas() throws Exception{       
-        return comandaDAO.findAll();
+    public List<Comanda> getComandas(Comanda comanda) throws Exception{       
+        return comandaDAO.buscar(comanda);
     }
     
     @POST
     @Path("/adicionaComanda")
     @RequestMapping(value = "/adicionaComanda", method = RequestMethod.POST,headers="Accept=application/json")
-    public ResponseEntity geAdicionaComanda(@RequestBody Comanda comanda) throws Exception{
-        comandaDAO.persist(comanda);
+    public ResponseEntity getAdicionaComanda(@RequestBody Comanda comanda) throws Exception{
+        comandaDAO.inserir(comanda);
         return new ResponseEntity(comanda, HttpStatus.OK);
     }  
     
     @DELETE
     @Path("/deletaComanda")
     @RequestMapping(value = "/deletaComanda", method = RequestMethod.DELETE,headers="Accept=application/json")
-    public ResponseEntity getDeletaComanda(@PathVariable Long id, @RequestBody Comanda comanda) throws Exception {
-        comandaDAO.remove(comanda);
+    public ResponseEntity getDeletaComanda(@RequestBody Comanda comanda) throws Exception {
+        comandaDAO.deletar(comanda);
         if (null == comandaDAO) {
-            return new ResponseEntity("Não existem comandas registradas com este ID " + id, HttpStatus.NOT_FOUND);
+            return new ResponseEntity("Não existem comandas registradas com este ID ",  HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity(id, HttpStatus.OK);             
+        return new ResponseEntity(HttpStatus.OK);             
     } 
     
     @PUT
     @Path("/atualizaComanda")
     @RequestMapping(value = "/atualizaComanda", method = RequestMethod.PUT,headers="Accept=application/json")
-    public ResponseEntity getAtualizaComanda(@PathVariable Long id, @RequestBody Comanda comanda) throws Exception {
-        comandaDAO.merge(comanda);             
+    public ResponseEntity getAtualizaComanda(@RequestBody Comanda comanda) throws Exception {
+        comandaDAO.atualizar(comanda);
         return new ResponseEntity(comanda, HttpStatus.OK);
     }
 }

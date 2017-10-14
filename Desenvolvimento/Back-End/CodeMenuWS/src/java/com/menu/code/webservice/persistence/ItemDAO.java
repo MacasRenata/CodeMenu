@@ -38,6 +38,7 @@ public class ItemDAO {
         pstmt.setInt(2, i.getTipo());
         pstmt.setDouble(3, i.getPreco());
         pstmt.setString(4, i.getUrlImagem());
+        pstmt.setLong(5, i.getId());
         pstmt.execute();
         pstmt.close();
         con.close();

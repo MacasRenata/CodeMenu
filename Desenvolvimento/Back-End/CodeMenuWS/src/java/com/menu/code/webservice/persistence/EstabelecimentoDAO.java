@@ -37,6 +37,7 @@ public class EstabelecimentoDAO {
         pstmt.setString(2, e.getTelefone());
         pstmt.setString(3, e.getEndereco());
         pstmt.setString(4, e.getEmail());
+        pstmt.setLong(5, e.getId());
         pstmt.execute();
         pstmt.close();
         con.close();

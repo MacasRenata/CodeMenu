@@ -38,6 +38,7 @@ public class ComandaDAO {
         pstmt.setInt(2, c.getStatus());
         pstmt.setDouble(3, c.getValor());
         pstmt.setLong(4, c.getPedidoId());
+        pstmt.setLong(5, c.getId());
         pstmt.execute();
         pstmt.close();
         con.close();

@@ -33,6 +33,7 @@ public class MesaDAO {
         PreparedStatement pstmt = con.prepareStatement("update mesa set qrcode = ?, estabelecimento = ? where id = ?");
         pstmt.setString(1, m.getQrcode());
         pstmt.setLong(2, m.getEstabelecimentoId());
+        pstmt.setLong(2, m.getId());
         pstmt.execute();
         pstmt.close();
         con.close();

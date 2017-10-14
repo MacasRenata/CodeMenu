@@ -44,6 +44,7 @@ public class PedidoDAO {
         pstmt.setLong(5, p.getClienteId());
         pstmt.setLong(6, p.getMesaId());
         pstmt.setLong(7, p.getItemId());
+        pstmt.setLong(8, p.getId());
         pstmt.execute();
         pstmt.close();
         con.close();

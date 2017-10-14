@@ -6,7 +6,7 @@
 package com.menu.code.webservice.controle;
 
 import com.menu.code.webservice.model.Mesa;
-import com.menu.code.webservice.persistencia.MesaDAO;
+import com.menu.code.webservice.persistence.MesaDAO;
 import java.util.List;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -33,34 +33,34 @@ public class MesaControle {
     @GET
     @Path("/mesas")
     @RequestMapping(value = "/mesas", method = RequestMethod.GET,headers="Accept=application/json")
-    public List<Mesa> getMesas() throws Exception{       
-        return mesaDAO.findAll();        
+    public List<Mesa> getMesas(Mesa mesa) throws Exception{       
+        return mesaDAO.buscar(mesa);        
     }
     
     @POST
     @Path("/adicionaMesa")
     @RequestMapping(value = "/adicionaMesa", method = RequestMethod.POST,headers="Accept=application/json")
-    public ResponseEntity geAdicionaMesa(@RequestBody Mesa mesa) throws Exception{
-        mesaDAO.persist(mesa);
+    public ResponseEntity getAdicionaMesa(@RequestBody Mesa mesa) throws Exception{
+        mesaDAO.inserir(mesa);
         return new ResponseEntity(mesa, HttpStatus.OK);
     }  
     
     @DELETE
     @Path("/deletaMesa")
     @RequestMapping(value = "/deletaMesa", method = RequestMethod.DELETE,headers="Accept=application/json")
-    public ResponseEntity getDeletaCliente(@PathVariable Long id, @RequestBody Mesa mesa) throws Exception {
-        mesaDAO.remove(mesa);
+    public ResponseEntity getDeletaMesa(@RequestBody Mesa mesa) throws Exception {
+        mesaDAO.deletar(mesa);
         if (null == mesaDAO) {
-            return new ResponseEntity("Não existem mesas registradas com este ID " + id, HttpStatus.NOT_FOUND);
+            return new ResponseEntity("Não existem mesas registradas com este ID ", HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity(id, HttpStatus.OK);             
+        return new ResponseEntity(HttpStatus.OK);             
     }    
     
     @PUT
     @Path("/atualizaMesa")
     @RequestMapping(value = "/atualizaMesa", method = RequestMethod.PUT,headers="Accept=application/json")
-    public ResponseEntity getAtualizaCliente(@PathVariable Long id, @RequestBody Mesa mesa) throws Exception {
-        mesaDAO.merge(mesa);             
+    public ResponseEntity getAtualizaMesa(@RequestBody Mesa mesa) throws Exception {
+        mesaDAO.atualizar(mesa);
         return new ResponseEntity(mesa, HttpStatus.OK);
     }
 }
