@@ -61,6 +61,25 @@ public class ClienteDAO {
         return lista;
     }
 
+    public List<Cliente> buscarTudo(Cliente c) throws Exception {
+        Connection con = ConexaoMySQL.getConexaoMySQL();
+        PreparedStatement pstmt = con.prepareStatement("select * from cliente");
+        pstmt.setLong(1, c.getId());
+        pstmt.setString(2, c.getTelefone());
+        ResultSet rs = pstmt.executeQuery();
+        List<Cliente> lista = new ArrayList<Cliente>();
+        while (rs.next() == true) {
+            Cliente cli = new Cliente();
+            cli.setId(rs.getLong("id"));
+            cli.setTelefone(rs.getString("telefone"));
+            lista.add(cli);
+        }
+        rs.close();
+        pstmt.close();
+        con.close();
+        return lista;
+    }
+    
     public void deletar(Cliente c) throws Exception {
         Connection con = ConexaoMySQL.getConexaoMySQL();
         PreparedStatement pstmt = con.prepareStatement("delete from cliente where id = ?");
