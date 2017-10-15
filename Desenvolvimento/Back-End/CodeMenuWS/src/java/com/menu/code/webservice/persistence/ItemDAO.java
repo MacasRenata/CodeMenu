@@ -84,6 +84,26 @@ public class ItemDAO {
         return lista;
     }
     
+    public List<Item> buscarTudo() throws Exception {
+        Connection con = ConexaoMySQL.getConexaoMySQL();
+        PreparedStatement pstmt = con.prepareStatement("select * from item");
+        ResultSet rs = pstmt.executeQuery();
+        List<Item> lista = new ArrayList<Item>();
+        while (rs.next() == true) {
+            Item it = new Item();
+            it.setId(rs.getLong("id"));
+            it.setNome(rs.getString("nome"));
+            it.setTipo(rs.getInt("tipo"));
+            it.setPreco(rs.getDouble("preco"));
+            it.setUrlImagem(rs.getString("urlImagem"));
+            lista.add(it);
+        }
+        rs.close();
+        pstmt.close();
+        con.close();
+        return lista;
+    }
+    
     public void deletar(Item i) throws Exception {
         Connection con = ConexaoMySQL.getConexaoMySQL();
         PreparedStatement pstmt = con.prepareStatement("delete from item where id = ?");

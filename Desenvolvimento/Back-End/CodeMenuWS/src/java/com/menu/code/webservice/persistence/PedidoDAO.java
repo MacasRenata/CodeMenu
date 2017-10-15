@@ -73,6 +73,29 @@ public class PedidoDAO {
         return lista;
     }
 
+    public List<Pedido> buscarTudo() throws Exception {
+        Connection con = ConexaoMySQL.getConexaoMySQL();
+        PreparedStatement pstmt = con.prepareStatement("select * from pedido");
+        ResultSet rs = pstmt.executeQuery();
+        List<Pedido> lista = new ArrayList<Pedido>();
+        while (rs.next() == true) {
+            Pedido ped = new Pedido();
+            ped.setId(rs.getLong("id"));
+            ped.setData(rs.getDate("data"));
+            ped.setStatus(rs.getInt("status"));
+            ped.setValor(rs.getDouble("valor"));
+            ped.setQuantidade(rs.getInt("quantidade"));
+            ped.setCliente(rs.getLong("cliente_id"));
+            ped.setMesa(rs.getLong("mesa_id"));
+            ped.setItem(rs.getLong("item_id"));
+            lista.add(ped);
+        }
+        rs.close();
+        pstmt.close();
+        con.close();
+        return lista;
+    }
+    
     public void deletar(Pedido p) throws Exception {
         Connection con = ConexaoMySQL.getConexaoMySQL();
         PreparedStatement pstmt = con.prepareStatement("delete from comanda where id = ?");

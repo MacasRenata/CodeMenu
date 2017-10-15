@@ -63,6 +63,26 @@ public class EstabelecimentoDAO {
         return lista;
     }
 
+    public List<Estabelecimento> buscarTudo() throws Exception {
+        Connection con = ConexaoMySQL.getConexaoMySQL();
+        PreparedStatement pstmt = con.prepareStatement("select * from estabelecimento");
+        ResultSet rs = pstmt.executeQuery();
+        List<Estabelecimento> lista = new ArrayList<Estabelecimento>();
+        while (rs.next() == true) {
+            Estabelecimento est = new Estabelecimento();
+            est.setId(rs.getLong("id"));
+            est.setNome(rs.getString("nome"));
+            est.setTelefone(rs.getString("telefone"));
+            est.setEndereco(rs.getString("endereco"));
+            est.setEmail(rs.getString("email"));
+            lista.add(est);
+        }
+        rs.close();
+        pstmt.close();
+        con.close();
+        return lista;
+    }
+    
     public void deletar(Estabelecimento e) throws Exception {
         Connection con = ConexaoMySQL.getConexaoMySQL();
         PreparedStatement pstmt = con.prepareStatement("delete from estabelecimento where id = ?");

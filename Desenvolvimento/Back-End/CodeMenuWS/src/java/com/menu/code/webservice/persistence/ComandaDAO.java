@@ -55,7 +55,7 @@ public class ComandaDAO {
             com.setHora(rs.getDate("hora"));
             com.setStatus(rs.getInt("status"));
             com.setValor(rs.getDouble("valor"));
-            com.setPedido(rs.getLong("cliente_id"));
+            com.setPedido(rs.getLong("pedido_id"));
             lista.add(com);
         }
         rs.close();
@@ -64,6 +64,25 @@ public class ComandaDAO {
         return lista;
     }    
     
+    public List<Comanda> buscarTudo() throws Exception {
+        Connection con = ConexaoMySQL.getConexaoMySQL();
+        PreparedStatement pstmt = con.prepareStatement("select * from comanda");
+        ResultSet rs = pstmt.executeQuery();
+        List<Comanda> lista = new ArrayList<Comanda>();
+        while (rs.next() == true) {
+            Comanda com = new Comanda();
+            com.setId(rs.getLong("id"));
+            com.setHora(rs.getDate("hora"));
+            com.setStatus(rs.getInt("status"));
+            com.setValor(rs.getDouble("valor"));
+            com.setPedido(rs.getLong("pedido_id"));
+            lista.add(com);
+        }
+        rs.close();
+        pstmt.close();
+        con.close();
+        return lista;
+    }
 
     public void deletar(Comanda c) throws Exception {
         Connection con = ConexaoMySQL.getConexaoMySQL();

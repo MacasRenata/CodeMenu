@@ -64,8 +64,6 @@ public class ClienteDAO {
     public List<Cliente> buscarTudo() throws Exception {
         Connection con = ConexaoMySQL.getConexaoMySQL();
         PreparedStatement pstmt = con.prepareStatement("select * from cliente");
-        //pstmt.setLong(1, c.getId());
-       // pstmt.setString(2, c.getTelefone());
         ResultSet rs = pstmt.executeQuery();
         List<Cliente> lista = new ArrayList<Cliente>();
         while (rs.next() == true) {
