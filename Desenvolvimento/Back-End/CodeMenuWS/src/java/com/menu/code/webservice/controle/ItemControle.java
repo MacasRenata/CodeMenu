@@ -32,8 +32,22 @@ public class ItemControle {
     @GET
     @Path("/itens")
     @RequestMapping(value = "/itens", method = RequestMethod.GET,headers="Accept=application/json")
-    public List<Item> getItens(Item item) throws Exception{       
+    public List<Item> getItemId(Item item) throws Exception{       
         return itemDAO.buscar(item);        
+    }
+    
+    @GET
+    @Path("/itens")
+    @RequestMapping(value = "/itens", method = RequestMethod.GET,headers="Accept=application/json")
+    public List<Item> getItemTipo(Item item) throws Exception{       
+        return itemDAO.buscarPorTipo(item);
+    }
+    
+    @GET
+    @Path("/itens")
+    @RequestMapping(value = "/itens", method = RequestMethod.GET,headers="Accept=application/json")
+    public List<Item> getListaItens() throws Exception{       
+        return itemDAO.buscarTudo();
     }
     
     @POST
@@ -42,7 +56,8 @@ public class ItemControle {
     public ResponseEntity getAdicionaItem(@RequestBody Item item) throws Exception{
         itemDAO.inserir(item);
         return new ResponseEntity(item, HttpStatus.OK);
-    }  
+    }      
+    
     
     @DELETE
     @Path("/deletaItem")

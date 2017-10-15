@@ -35,8 +35,15 @@ public class ClienteControle {
     @GET
     @Path("/clientes")
     @RequestMapping(value = "/clientes", method = RequestMethod.GET,headers="Accept=application/json")
-    public List<Cliente> getClientes(Cliente cliente) throws Exception{       
+    public List<Cliente> getClientesId(Cliente cliente) throws Exception{       
         return clienteDAO.buscar(cliente);
+    }
+    
+    @GET
+    @Path("/clientes")
+    @RequestMapping(value = "/clientes", method = RequestMethod.GET,headers="Accept=application/json")
+    public List<Cliente> getListaClientes() throws Exception{       
+        return clienteDAO.buscarTudo();
     }
     
     @POST

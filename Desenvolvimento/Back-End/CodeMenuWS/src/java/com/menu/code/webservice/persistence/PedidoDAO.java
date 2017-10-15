@@ -21,7 +21,7 @@ import java.util.List;
 public class PedidoDAO {
   public void inserir(Pedido p) throws Exception {
         Connection con = ConexaoMySQL.getConexaoMySQL();
-        PreparedStatement pstmt = con.prepareStatement("insert into pedido (data, status, valor, quantidade, cliente_id, mesa_id, item_id) values (?, ?, ?, ?, ?, ?, ?)");
+        PreparedStatement pstmt = con.prepareStatement("insert into pedidos (data, status, valor, quantidade, cliente_id, mesa_id, item_id) values (?, ?, ?, ?, ?, ?, ?)");
         pstmt.setDate(1, (Date) p.getData());
         pstmt.setInt(2, p.getStatus());
         pstmt.setDouble(3, p.getValor());
@@ -36,7 +36,7 @@ public class PedidoDAO {
     
     public void atualizar(Pedido p) throws Exception {
         Connection con = ConexaoMySQL.getConexaoMySQL();
-        PreparedStatement pstmt = con.prepareStatement("update pedido set data = ?, status = ?, valor = ?, quantidade = ?, cliente_id = ?, mesa_id = ?, item_id = ? where id = ?");
+        PreparedStatement pstmt = con.prepareStatement("update pedidos set data = ?, status = ?, valor = ?, quantidade = ?, cliente_id = ?, mesa_id = ?, item_id = ? where id = ?");
         pstmt.setDate(1, (Date) p.getData());
         pstmt.setInt(2, p.getStatus());
         pstmt.setDouble(3, p.getValor());
@@ -52,7 +52,7 @@ public class PedidoDAO {
 
     public List<Pedido> buscar(Pedido p) throws Exception {
         Connection con = ConexaoMySQL.getConexaoMySQL();
-        PreparedStatement pstmt = con.prepareStatement("select * from pedido where id like ?");
+        PreparedStatement pstmt = con.prepareStatement("select * from pedidos where id like ?");
         pstmt.setLong(1, p.getId());
         ResultSet rs = pstmt.executeQuery();
         List<Pedido> lista = new ArrayList<Pedido>();
@@ -75,7 +75,7 @@ public class PedidoDAO {
 
     public List<Pedido> buscarTudo() throws Exception {
         Connection con = ConexaoMySQL.getConexaoMySQL();
-        PreparedStatement pstmt = con.prepareStatement("select * from pedido");
+        PreparedStatement pstmt = con.prepareStatement("select * from pedidos");
         ResultSet rs = pstmt.executeQuery();
         List<Pedido> lista = new ArrayList<Pedido>();
         while (rs.next() == true) {
@@ -98,7 +98,7 @@ public class PedidoDAO {
     
     public void deletar(Pedido p) throws Exception {
         Connection con = ConexaoMySQL.getConexaoMySQL();
-        PreparedStatement pstmt = con.prepareStatement("delete from comanda where id = ?");
+        PreparedStatement pstmt = con.prepareStatement("delete from pedidos where id = ?");
         pstmt.setLong(1, p.getId());
         pstmt.execute();
         pstmt.close();

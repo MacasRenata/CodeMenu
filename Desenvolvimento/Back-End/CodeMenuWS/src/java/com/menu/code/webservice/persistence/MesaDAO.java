@@ -61,11 +61,11 @@ public class MesaDAO {
         Connection con = ConexaoMySQL.getConexaoMySQL();
         PreparedStatement pstmt = con.prepareStatement("select * from mesa");
         ResultSet rs = pstmt.executeQuery();
-        List<Mesa> lista = new ArrayList<Mesa>();
+        List<Mesa> lista = new ArrayList<Mesa>();       
         while (rs.next() == true) {
             Mesa me = new Mesa();
             me.setId(rs.getLong("id"));
-            me.setQrcode(rs.getString("qrcode"));
+            me.setQrcode(rs.getString("qrcode"));           
             me.setEstabelecimento(rs.getLong("estabelecimento"));
             lista.add(me);
         }

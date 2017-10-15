@@ -33,8 +33,15 @@ public class ComandaControle {
     @GET
     @Path("/comandas")
     @RequestMapping(value = "/comandas", method = RequestMethod.GET,headers="Accept=application/json")
-    public List<Comanda> getComandas(Comanda comanda) throws Exception{       
+    public List<Comanda> getComandaId(Comanda comanda) throws Exception{       
         return comandaDAO.buscar(comanda);
+    }
+    
+    @GET
+    @Path("/comandas")
+    @RequestMapping(value = "/comandas", method = RequestMethod.GET,headers="Accept=application/json")
+    public List<Comanda> getListaComandas() throws Exception{       
+        return comandaDAO.buscarTudo();
     }
     
     @POST
