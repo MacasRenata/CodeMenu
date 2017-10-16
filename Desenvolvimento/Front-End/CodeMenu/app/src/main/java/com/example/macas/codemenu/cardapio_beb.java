@@ -8,6 +8,17 @@ import android.widget.Button;
 
 public class cardapio_beb extends AppCompatActivity {
 
+    private String idBeb;
+    private String content;
+
+    public String getId() {
+        return this.idBeb;
+    }
+
+    public String getContent() {
+        return this.content;
+    }
+
 
 
     @Override
@@ -15,7 +26,7 @@ public class cardapio_beb extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
-        /*Button btMenuPrincipal, btCardapioRef, btPedidoCozinha;
+        Button btMenuPrincipal, btCardapioRef, btPedidoCozinha;
 
         setContentView(R.layout.cardapio_beb);
 
@@ -65,6 +76,6 @@ public class cardapio_beb extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        });*/
+        });
     }
 }

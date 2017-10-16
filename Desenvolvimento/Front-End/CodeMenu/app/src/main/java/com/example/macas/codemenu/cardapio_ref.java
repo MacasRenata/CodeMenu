@@ -8,6 +8,18 @@ import android.widget.Button;
 
 public class cardapio_ref extends AppCompatActivity {
 
+    private String idRef;
+    private String content;
+
+    public String getId() {
+        return this.idRef;
+    }
+
+    public String getContent() {
+        return this.content;
+    }
+
+
     Button btCardapioBeb, btMenuPrincipal;
 
     @Override

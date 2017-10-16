@@ -1,14 +1,13 @@
 package com.example.macas.codemenu;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
-public class mainactivity extends AppCompatActivity {
+public class main_activity extends AppCompatActivity {
 
-    @Override
+
+}
+
+
+   /* @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -26,12 +25,12 @@ public class mainactivity extends AppCompatActivity {
 
             void chamaMenuPrincipal() {
                 Intent intent = new Intent();
-                intent.setClass(mainactivity.this, menu_principal.class);
+                intent.setClass(main_activity.this, menu_principal.class);
                 startActivity(intent);
                 finish();
             }
         });
 
 
-    }
+    }*/
 }
