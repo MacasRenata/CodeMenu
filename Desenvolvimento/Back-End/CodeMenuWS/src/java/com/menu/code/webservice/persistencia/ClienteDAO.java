@@ -6,12 +6,14 @@
 package com.menu.code.webservice.persistencia;
 
 
+
 import com.menu.code.webservice.model.Cliente;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.EntityTransaction;
+import org.hibernate.HibernateException;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+import org.hibernate.Session;
 
 
 @Repository("clienteDao")
@@ -19,38 +21,45 @@ public class ClienteDAO{
 
 protected EntityManager entityManager;
 
-public ClienteDAO() {
-
+    public void salvar(Cliente c) {
+    EntityTransaction utx = entityManager.getTransaction();
+        try{
+            utx.begin();
+            Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+            sessao.saveOrUpdate(c);
+            utx.commit();
+        } catch(HibernateException ex) {
+        utx.rollback();
+        throw ex;
+    }
+    }
+    
+    public Cliente carregar(Long id) {
+        Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+        return (Cliente) sessao.get(Cliente.class, id);
+    }
+    
+    public void remover(Cliente c) {
+        EntityTransaction utx = entityManager.getTransaction();
+        try{
+            utx.begin();
+            Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+            sessao.delete(c);
+            utx.commit();
+        } catch(HibernateException ex) {
+        utx.rollback();
+        throw ex;
+    }
+    }
+    
+    public List<Cliente> listar() {
+        Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+        return sessao.createCriteria(Cliente.class).list();
+    }
+    
 }
 
-@PersistenceContext
 
-public void setEntityManager(EntityManager entityManager) {
-this.entityManager = entityManager;
-}
 
-public Cliente find(Long id) {
-return entityManager.find(Cliente.class, id);
-}
 
-@Transactional
-public void persist(Cliente cliente) {
-entityManager.persist(cliente);
-}
 
-@Transactional
-public void merge(Cliente cliente) {
-entityManager.merge(cliente);
-}
-
-@Transactional
-public void remove(Cliente cliente) {
-entityManager.remove(cliente);
-}
-
-@SuppressWarnings("unchecked")
-public List<Cliente> findAll() {
-return entityManager.createQuery("SELECT c FROM Cliente c").getResultList();
-}
-
-}

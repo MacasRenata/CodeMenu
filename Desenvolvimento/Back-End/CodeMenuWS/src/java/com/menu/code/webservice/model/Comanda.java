@@ -5,13 +5,23 @@
  */
 package com.menu.code.webservice.model;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Marcio
  */
-public class Comanda {
+
+@Entity
+@Table(name="comanda")
+public class Comanda implements Serializable {
+    @Id
+    @GeneratedValue
     private Long id;
     private Date hora;
     private int status;

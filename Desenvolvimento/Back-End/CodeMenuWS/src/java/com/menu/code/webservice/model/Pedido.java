@@ -5,13 +5,23 @@
  */
 package com.menu.code.webservice.model;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Marcio
  */
-public class Pedido {
+
+@Entity
+@Table(name="pedido")
+public class Pedido implements Serializable {
+    @Id
+    @GeneratedValue
     private Long id;
     private Date data;
     private int status;

@@ -9,9 +9,11 @@ package com.menu.code.webservice.persistencia;
 import com.menu.code.webservice.model.Comanda;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.EntityTransaction;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+
 
 
 @Repository("comandaDao")
@@ -19,38 +21,40 @@ public class ComandaDAO{
 
 protected EntityManager entityManager;
 
-public ComandaDAO() {
-
-}
-
-@PersistenceContext
-
-public void setEntityManager(EntityManager entityManager) {
-this.entityManager = entityManager;
-}
-
-public Comanda find(Long id) {
-return entityManager.find(Comanda.class, id);
-}
-
-@Transactional
-public void persist(Comanda comanda) {
-entityManager.persist(comanda);
-}
-
-@Transactional
-public void merge(Comanda comanda) {
-entityManager.merge(comanda);
-}
-
-@Transactional
-public void remove(Comanda comanda) {
-entityManager.remove(comanda);
-}
-
-@SuppressWarnings("unchecked")
-public List<Comanda> findAll() {
-return entityManager.createQuery("SELECT c FROM Comanda c").getResultList();
-}
-
+public void salvar(Comanda c) {
+        EntityTransaction utx = entityManager.getTransaction();
+        try{
+            utx.begin();
+            Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+            sessao.saveOrUpdate(c);
+            utx.commit();
+        } catch(HibernateException ex) {
+        utx.rollback();
+        throw ex;
+    }
+        
+    }
+    
+    public Comanda carregar(Long id) {
+        Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+        return (Comanda) sessao.get(Comanda.class, id);
+    }
+    
+    public void remover(Comanda c) {
+        EntityTransaction utx = entityManager.getTransaction();
+        try{
+            utx.begin();
+            Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+            sessao.delete(c);
+            utx.commit();
+        } catch(HibernateException ex) {
+        utx.rollback();
+        throw ex;
+    }
+    }
+    
+    public List<Comanda> listar() {
+        Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+        return sessao.createCriteria(Comanda.class).list();
+    }
 }

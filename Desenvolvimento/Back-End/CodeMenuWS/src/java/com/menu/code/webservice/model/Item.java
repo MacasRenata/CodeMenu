@@ -5,11 +5,21 @@
  */
 package com.menu.code.webservice.model;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author Marcio
  */
-public class Item {
+@Entity
+@Table(name="item")
+public class Item implements Serializable {
+    @Id
+    @GeneratedValue
     private Long id;
     private String nome;
     private int tipo;    

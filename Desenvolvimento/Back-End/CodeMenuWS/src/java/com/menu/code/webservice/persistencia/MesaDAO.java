@@ -9,9 +9,11 @@ package com.menu.code.webservice.persistencia;
 import com.menu.code.webservice.model.Mesa;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.EntityTransaction;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+
 
 
 @Repository("mesaDao")
@@ -19,38 +21,40 @@ public class MesaDAO{
 
 protected EntityManager entityManager;
 
-public MesaDAO() {
-
-}
-
-@PersistenceContext
-
-public void setEntityManager(EntityManager entityManager) {
-this.entityManager = entityManager;
-}
-
-public Mesa find(Long id) {
-return entityManager.find(Mesa.class, id);
-}
-
-@Transactional
-public void persist(Mesa cliente) {
-entityManager.persist(cliente);
-}
-
-@Transactional
-public void merge(Mesa cliente) {
-entityManager.merge(cliente);
-}
-
-@Transactional
-public void remove(Mesa cliente) {
-entityManager.remove(cliente);
-}
-
-@SuppressWarnings("unchecked")
-public List<Mesa> findAll() {
-return entityManager.createQuery("SELECT m FROM Mesa m").getResultList();
-}
-
+    public void salvar(Mesa m) {
+    EntityTransaction utx = entityManager.getTransaction();
+        try{
+            utx.begin();
+            Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+            sessao.saveOrUpdate(m);
+            utx.commit();
+        } catch(HibernateException ex) {
+        utx.rollback();
+        throw ex;
+    }
+    }
+    
+    public Mesa carregar(Long id) {
+        Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+        return (Mesa) sessao.get(Mesa.class, id);
+    }
+    
+    public void remover(Mesa m) {
+        EntityTransaction utx = entityManager.getTransaction();
+        try{
+            utx.begin();
+            Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+            sessao.delete(m);
+            utx.commit();
+        } catch(HibernateException ex) {
+        utx.rollback();
+        throw ex;
+    }
+    }
+    
+    public List<Mesa> listar() {
+        Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+        return sessao.createCriteria(Mesa.class).list();
+    }
+    
 }

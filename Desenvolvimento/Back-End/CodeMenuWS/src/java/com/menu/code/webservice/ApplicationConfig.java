@@ -30,7 +30,10 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(com.menu.code.webservice.CodemenuResource.class);
-        resources.add(com.menu.code.webservice.controle.ClienteControle.class);
+        resources.add(com.menu.code.webservice.controle.ComandaControle.class);
+        resources.add(com.menu.code.webservice.controle.EstabelecimentoControle.class);
+        resources.add(com.menu.code.webservice.controle.ItemControle.class);
+        resources.add(com.menu.code.webservice.controle.MesaControle.class);
     }
     
 }

@@ -5,12 +5,22 @@
  */
 package com.menu.code.webservice.model;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author anderson
  */
-public class Estabelecimento {
-    
+
+@Entity
+@Table(name="estabelecimento")
+public class Estabelecimento implements Serializable {
+    @Id
+    @GeneratedValue
     private Long id;
     private String nome;
     private String telefone;
