@@ -28,8 +28,7 @@ public class Comanda implements Serializable {
     private double valor;
     private Pedido pedido;
 
-    public Comanda(long id, Date hora, int status, double valor, Pedido pedido) {
-        this.id = id;
+    public Comanda(Date hora, int status, double valor, Pedido pedido) {       
         this.hora = hora;
         this.status = status;
         this.valor = valor;

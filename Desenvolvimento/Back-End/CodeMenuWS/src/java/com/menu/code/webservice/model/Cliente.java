@@ -25,11 +25,9 @@ private Long id;
 private String telefone;
 	
 
-    public Cliente(long id, String telefone) {
-	this.id = id;
-	this.telefone = telefone;
-		
-	}
+    public Cliente(String telefone) {	
+	this.telefone = telefone;		
+    }
 
     public Cliente() {
 	}

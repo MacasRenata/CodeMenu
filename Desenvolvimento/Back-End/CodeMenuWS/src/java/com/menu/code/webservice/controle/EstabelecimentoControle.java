@@ -32,8 +32,15 @@ public class EstabelecimentoControle {
     @GET
     @Path("/estabelecimentos")
     @RequestMapping(value = "/estabelecimentos", method = RequestMethod.GET,headers="Accept=application/json")
-    public List<Estabelecimento> getEstabelecimentos(Estabelecimento estabelecimento) throws Exception{       
+    public List<Estabelecimento> getEstabelecimentoId(Estabelecimento estabelecimento) throws Exception{       
         return estabelecimentoDAO.buscar(estabelecimento);        
+    }
+    
+    @GET
+    @Path("/estabelecimentos")
+    @RequestMapping(value = "/estbalecimentos", method = RequestMethod.GET,headers="Accept=application/json")
+    public List<Estabelecimento> getListaEstabelecimentos() throws Exception{       
+        return estabelecimentoDAO.buscarTudo();
     }
     
     @POST

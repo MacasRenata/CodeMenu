@@ -8,6 +8,18 @@ import android.widget.Button;
 
 public class cardapio_ref extends AppCompatActivity {
 
+    private String idRef;
+    private String content;
+
+    public String getId() {
+        return this.idRef;
+    }
+
+    public String getContent() {
+        return this.content;
+    }
+
+
     Button btCardapioBeb, btMenuPrincipal;
 
     @Override
@@ -49,18 +61,5 @@ public class cardapio_ref extends AppCompatActivity {
         });
     }
 
-    //incluir metodo no botao com conexão MySql
 
-/*
-    public void carregarLocalizacao(View view){
-        try {
-            Localizacao localizacao = ClienteGeoIP.retornarLocalizacaoPorIp(txtIP.getText().toString());
-            lblRegion.setText("Estado: " + localizacao.getRegion());
-            lblCity.setText("Cidade: " + localizacao.getCity());
-            lblCountry.setText("País: " + localizacao.getCountry());
-        }
-        catch(Exception ex){
-            Toast.makeText(getBaseContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
-        }
-    } */
 }

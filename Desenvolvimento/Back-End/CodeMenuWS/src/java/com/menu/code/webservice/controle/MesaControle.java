@@ -33,8 +33,15 @@ public class MesaControle {
     @GET
     @Path("/mesas")
     @RequestMapping(value = "/mesas", method = RequestMethod.GET,headers="Accept=application/json")
-    public List<Mesa> getMesas(Mesa mesa) throws Exception{       
+    public List<Mesa> getMesaId(Mesa mesa) throws Exception{       
         return mesaDAO.buscar(mesa);        
+    }
+    
+    @GET
+    @Path("/mesas")
+    @RequestMapping(value = "/mesas", method = RequestMethod.GET,headers="Accept=application/json")
+    public List<Mesa> getListaMesas() throws Exception{       
+        return mesaDAO.buscarTudo();
     }
     
     @POST

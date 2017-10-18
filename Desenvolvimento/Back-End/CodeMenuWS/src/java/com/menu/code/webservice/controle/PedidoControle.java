@@ -38,6 +38,13 @@ public class PedidoControle {
         return pedidoDAO.buscar(pedido);
     }
     
+    @GET
+    @Path("/pedidos")
+    @RequestMapping(value = "/pedidos", method = RequestMethod.GET,headers="Accept=application/json")
+    public List<Pedido> getListaPedidos() throws Exception{       
+        return pedidoDAO.buscarTudo();
+    }
+    
     @POST
     @Path("/adicionaPedido")
     @RequestMapping(value = "/adicionaPedido", method = RequestMethod.POST,headers="Accept=application/json")
