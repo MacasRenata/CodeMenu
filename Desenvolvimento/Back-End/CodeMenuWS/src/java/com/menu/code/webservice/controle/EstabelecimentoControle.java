@@ -6,7 +6,7 @@
 package com.menu.code.webservice.controle;
 
 import com.menu.code.webservice.model.Estabelecimento;
-import com.menu.code.webservice.persistence.EstabelecimentoDAO;
+import com.menu.code.webservice.persistencia.EstabelecimentoDAO;
 import java.util.List;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -32,22 +32,22 @@ public class EstabelecimentoControle {
     @GET
     @Path("/estabelecimentos")
     @RequestMapping(value = "/estabelecimentos", method = RequestMethod.GET,headers="Accept=application/json")
-    public List<Estabelecimento> getEstabelecimentoId(Estabelecimento estabelecimento) throws Exception{       
-        return estabelecimentoDAO.buscar(estabelecimento);        
+    public Estabelecimento getEstabelecimentoId(Estabelecimento estabelecimento) throws Exception{       
+        return estabelecimentoDAO.carregar(estabelecimento.getId());
     }
     
     @GET
     @Path("/estabelecimentos")
     @RequestMapping(value = "/estbalecimentos", method = RequestMethod.GET,headers="Accept=application/json")
     public List<Estabelecimento> getListaEstabelecimentos() throws Exception{       
-        return estabelecimentoDAO.buscarTudo();
+        return estabelecimentoDAO.listar();
     }
     
     @POST
     @Path("/adicionaEstabelecimentos")
     @RequestMapping(value = "/adicionaEstabelecimentos", method = RequestMethod.POST,headers="Accept=application/json")
     public ResponseEntity getAdicionaEstabelecimento(@RequestBody Estabelecimento estabelecimento) throws Exception{
-        estabelecimentoDAO.inserir(estabelecimento);
+        estabelecimentoDAO.salvar(estabelecimento);
         return new ResponseEntity(estabelecimento, HttpStatus.OK);
     }  
     
@@ -55,18 +55,18 @@ public class EstabelecimentoControle {
     @Path("/deletaEstabelecimento")
     @RequestMapping(value = "/deletaEstabelecimento", method = RequestMethod.DELETE,headers="Accept=application/json")
     public ResponseEntity getDeletaEstabelecimento(@RequestBody Estabelecimento estabelecimento) throws Exception {
-        estabelecimentoDAO.deletar(estabelecimento);
+        estabelecimentoDAO.remover(estabelecimento);
         if (null == estabelecimentoDAO) {
             return new ResponseEntity("Não existem estabelecimentos registrados com este ID ", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity(HttpStatus.OK);             
     }    
     
-    @PUT
+    /*@PUT
     @Path("/atualizaEstabelecimento")
     @RequestMapping(value = "/atualizaEstabelecimento", method = RequestMethod.PUT,headers="Accept=application/json")
     public ResponseEntity getAtualizaEstabelecimento(@RequestBody Estabelecimento estabelecimento) throws Exception {
         estabelecimentoDAO.atualizar(estabelecimento);
         return new ResponseEntity(estabelecimento, HttpStatus.OK);
-    }
+    }*/
 }

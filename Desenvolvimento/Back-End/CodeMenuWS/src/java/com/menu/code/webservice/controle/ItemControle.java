@@ -6,7 +6,7 @@
 package com.menu.code.webservice.controle;
 
 import com.menu.code.webservice.model.Item;
-import com.menu.code.webservice.persistence.ItemDAO;
+import com.menu.code.webservice.persistencia.ItemDAO;
 import java.util.List;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -32,29 +32,29 @@ public class ItemControle {
     @GET
     @Path("/itens")
     @RequestMapping(value = "/itens", method = RequestMethod.GET,headers="Accept=application/json")
-    public List<Item> getItemId(Item item) throws Exception{       
-        return itemDAO.buscar(item);        
+    public Item getItemId(Item item) throws Exception{       
+        return itemDAO.carregar(item.getId());
     }
     
-    @GET
+    /*@GET
     @Path("/itens")
     @RequestMapping(value = "/itens", method = RequestMethod.GET,headers="Accept=application/json")
     public List<Item> getItemTipo(Item item) throws Exception{       
         return itemDAO.buscarPorTipo(item);
-    }
+    }*/
     
     @GET
     @Path("/itens")
     @RequestMapping(value = "/itens", method = RequestMethod.GET,headers="Accept=application/json")
     public List<Item> getListaItens() throws Exception{       
-        return itemDAO.buscarTudo();
+        return itemDAO.listar();
     }
     
     @POST
     @Path("/adicionaItem")
     @RequestMapping(value = "/adicionaItem", method = RequestMethod.POST,headers="Accept=application/json")
     public ResponseEntity getAdicionaItem(@RequestBody Item item) throws Exception{
-        itemDAO.inserir(item);
+        itemDAO.salvar(item);
         return new ResponseEntity(item, HttpStatus.OK);
     }      
     
@@ -63,18 +63,18 @@ public class ItemControle {
     @Path("/deletaItem")
     @RequestMapping(value = "/deletaItem", method = RequestMethod.DELETE,headers="Accept=application/json")
     public ResponseEntity getDeletaItem(@RequestBody Item item) throws Exception {
-        itemDAO.deletar(item);
+        itemDAO.remover(item);
         if (null == itemDAO) {
             return new ResponseEntity("Não existem itens registrados com este ID ", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity(HttpStatus.OK);             
     }    
     
-    @PUT
+    /*@PUT
     @Path("/atualizaItem")
     @RequestMapping(value = "/atualizaItem", method = RequestMethod.PUT,headers="Accept=application/json")
     public ResponseEntity getAtualizaItem(@RequestBody Item item) throws Exception {
         itemDAO.atualizar(item);             
         return new ResponseEntity(item, HttpStatus.OK);
-    }
+    }*/
 }
