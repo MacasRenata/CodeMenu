@@ -9,9 +9,6 @@ package com.menu.code.webservice.persistencia;
 
 import com.menu.code.webservice.model.Cliente;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import org.hibernate.HibernateException;
 import org.springframework.stereotype.Repository;
 import org.hibernate.Session;
 
@@ -19,9 +16,9 @@ import org.hibernate.Session;
 @Repository("clienteDao")
 public class ClienteDAO{
 
-protected EntityManager entityManager;
+//protected EntityManager entityManager;
 
-    public void salvar(Cliente c) {
+   /*public void salvar(Cliente c) {
     EntityTransaction utx = entityManager.getTransaction();
         try{
             utx.begin();
@@ -32,6 +29,11 @@ protected EntityManager entityManager;
         utx.rollback();
         throw ex;
     }
+    }*/
+    
+    public void salvar(Cliente cliente) {
+        Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+        sessao.saveOrUpdate(cliente);
     }
     
     public Cliente carregar(Long id) {
@@ -39,7 +41,7 @@ protected EntityManager entityManager;
         return (Cliente) sessao.get(Cliente.class, id);
     }
     
-    public void remover(Cliente c) {
+    /*public void remover(Cliente c) {
         EntityTransaction utx = entityManager.getTransaction();
         try{
             utx.begin();
@@ -50,7 +52,12 @@ protected EntityManager entityManager;
         utx.rollback();
         throw ex;
     }
-    }
+    }*/
+    
+    public void remover(Cliente cliente) {
+        Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+        sessao.delete(cliente);
+    }      
     
     public List<Cliente> listar() {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();

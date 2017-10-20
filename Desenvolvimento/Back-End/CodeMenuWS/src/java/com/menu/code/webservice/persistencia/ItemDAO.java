@@ -8,9 +8,6 @@ package com.menu.code.webservice.persistencia;
 
 import com.menu.code.webservice.model.Item;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
@@ -18,39 +15,21 @@ import org.springframework.stereotype.Repository;
 
 @Repository("itemDao")
 public class ItemDAO{
-
-protected EntityManager entityManager;
-
-    public void salvar(Item i) {
-    EntityTransaction utx = entityManager.getTransaction();
-        try{
-            utx.begin();
-            Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
-            sessao.saveOrUpdate(i);
-            utx.commit();
-        } catch(HibernateException ex) {
-        utx.rollback();
-        throw ex;
-    }
+  
+    public void salvar(Item item) {
+        Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+        sessao.saveOrUpdate(item);
     }
     
     public Item carregar(Long id) {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
         return (Item) sessao.get(Item.class, id);
-    }
+    }    
     
-    public void remover(Item i) {
-        EntityTransaction utx = entityManager.getTransaction();
-        try{
-            utx.begin();
-            Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
-            sessao.delete(i);
-            utx.commit();
-        } catch(HibernateException ex) {
-        utx.rollback();
-        throw ex;
-    }
-    }
+    public void remover(Item item) {
+        Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+        sessao.delete(item);
+    }   
     
     public List<Item> listar() {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();

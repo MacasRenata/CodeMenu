@@ -1,3 +1,5 @@
+<%@page import="com.menu.code.webservice.model.Cliente"%>
+<%@page import="com.menu.code.webservice.persistencia.ClienteDAO"%>
 <%@page import="com.menu.code.conexaoMysql.ConexaoMySQL"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -14,9 +16,11 @@
 
     <body>
         <p>Cadastrar novo cliente</p>
-         
+        <%ClienteDAO dao = new ClienteDAO();%> 
+        <%Cliente cliente = new Cliente(3,"0000000");%>
         
-        
+        <%Cliente cli = dao.carregar(cliente.getId());%>
+        <%= cli.getTelefone()%>
         
         
         

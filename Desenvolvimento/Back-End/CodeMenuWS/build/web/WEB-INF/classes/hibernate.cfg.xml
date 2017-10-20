@@ -43,13 +43,12 @@ Contributor(s):
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:derby://localhost:1527/sample</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/codemenu?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">app</property>
-    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.connection.password">123456</property>
     <property name="hibernate.current_session_context_class">thread</property>
-    <property name="hibernate.connection.autocommit">true</property>
-    <mapping class="com.menu.code.webservice.model.Cliente" file="" jar="" package="" resource=""/>
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <mapping class="com.menu.code.webservice.model.Cliente"/>
     <mapping class="com.menu.code.webservice.model.Comanda"/>
     <mapping class="com.menu.code.webservice.model.Estabelecimento"/>
     <mapping class="com.menu.code.webservice.model.Item"/>

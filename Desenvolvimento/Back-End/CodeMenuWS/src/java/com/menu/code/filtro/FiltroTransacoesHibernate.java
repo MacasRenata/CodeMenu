@@ -11,7 +11,7 @@ import javax.servlet.annotation.WebFilter;
 import org.hibernate.Session;
 import com.menu.code.webservice.persistencia.HibernateUtil;
 
-@WebFilter(filterName = "FiltroTransacoesHibernate", urlPatterns = {"*.xhtml"})
+@WebFilter(filterName = "FiltroTransacoesHibernate", urlPatterns = {"/*"})
 public class FiltroTransacoesHibernate implements Filter {
 
     @Override
@@ -22,7 +22,7 @@ public class FiltroTransacoesHibernate implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
         sessao.beginTransaction();
-        System.out.println("filtros.FiltroTransacoesHibernate.doFilter()");
+        System.out.println("com.menu.code.filtro.FiltroTransacoesHibernate.doFilter()");
         try {
             chain.doFilter(request, response);
             sessao.getTransaction().commit();

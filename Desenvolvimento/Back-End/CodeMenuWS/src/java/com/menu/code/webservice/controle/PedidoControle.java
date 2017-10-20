@@ -51,7 +51,7 @@ public class PedidoControle {
         return new ResponseEntity(pedido, HttpStatus.OK);
     }  
     
-    @DELETE
+    /*@DELETE
     @Path("/deletaPedido")
     @RequestMapping(value = "/deletaPedido", method = RequestMethod.DELETE,headers="Accept=application/json")
     public ResponseEntity getDeletaPedido(@RequestBody Pedido pedido) throws Exception {
@@ -60,7 +60,7 @@ public class PedidoControle {
             return new ResponseEntity("Não existem pedidos registrados com este ID ", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity(HttpStatus.OK);             
-    }    
+    }  */  
     
     /*@PUT
     @Path("/atualizaPedido")

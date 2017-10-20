@@ -8,9 +8,6 @@ package com.menu.code.webservice.persistencia;
 
 import com.menu.code.webservice.model.Comanda;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
@@ -19,39 +16,20 @@ import org.springframework.stereotype.Repository;
 @Repository("comandaDao")
 public class ComandaDAO{
 
-protected EntityManager entityManager;
-
-public void salvar(Comanda c) {
-        EntityTransaction utx = entityManager.getTransaction();
-        try{
-            utx.begin();
-            Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
-            sessao.saveOrUpdate(c);
-            utx.commit();
-        } catch(HibernateException ex) {
-        utx.rollback();
-        throw ex;
-    }
-        
+    public void salvar(Comanda comanda) {
+        Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+        sessao.saveOrUpdate(comanda);
     }
     
     public Comanda carregar(Long id) {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
         return (Comanda) sessao.get(Comanda.class, id);
-    }
+    }      
     
-    public void remover(Comanda c) {
-        EntityTransaction utx = entityManager.getTransaction();
-        try{
-            utx.begin();
-            Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
-            sessao.delete(c);
-            utx.commit();
-        } catch(HibernateException ex) {
-        utx.rollback();
-        throw ex;
-    }
-    }
+    public void remover(Comanda comanda) {
+        Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+        sessao.delete(comanda);
+    }   
     
     public List<Comanda> listar() {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
