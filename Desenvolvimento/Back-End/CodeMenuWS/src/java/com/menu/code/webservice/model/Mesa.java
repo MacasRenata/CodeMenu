@@ -10,6 +10,8 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 /**
  *
@@ -23,6 +25,8 @@ public class Mesa implements Serializable {
     @GeneratedValue
     private Long id;
     private String qrcode;
+    @ManyToOne
+    @JoinColumn(name ="id_estabelecimento")
     private Estabelecimento estabelecimento;
     
     public Mesa(long id, String qrcode, Estabelecimento estabelecimento) {

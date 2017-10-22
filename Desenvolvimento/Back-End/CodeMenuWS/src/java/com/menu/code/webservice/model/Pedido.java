@@ -10,6 +10,9 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -27,8 +30,14 @@ public class Pedido implements Serializable {
     private int status;
     private double valor;
     private int quantidade;
+    @OneToOne
+    @JoinColumn(name ="id_cliente")
     private Cliente cliente;
+    @OneToOne
+    @JoinColumn(name ="id_mesa")
     private Mesa mesa;    
+    @ManyToOne
+    @JoinColumn(name ="id_item")
     private Item item;    
         
 

@@ -10,6 +10,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -26,6 +28,8 @@ public class Comanda implements Serializable {
     private Date hora;
     private int status;
     private double valor;
+    @ManyToOne
+    @JoinColumn(name ="id_pedido")
     private Pedido pedido;
 
     public Comanda(Date hora, int status, double valor, Pedido pedido) {       
