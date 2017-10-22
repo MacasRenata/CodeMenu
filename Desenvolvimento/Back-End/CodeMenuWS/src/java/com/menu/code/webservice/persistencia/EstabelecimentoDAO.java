@@ -18,13 +18,18 @@ public class EstabelecimentoDAO{
     
     public void salvar(Estabelecimento estabelecimento) {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
-        sessao.saveOrUpdate(estabelecimento);
+        sessao.save(estabelecimento);
     }
     
     public Estabelecimento carregar(Long id) {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
         return (Estabelecimento) sessao.get(Estabelecimento.class, id);
     }   
+    
+    public void atualizar(Estabelecimento estabelecimento) {
+        Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+        sessao.merge(estabelecimento);
+    }
     
      public void remover(Estabelecimento estabelecimento) {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();

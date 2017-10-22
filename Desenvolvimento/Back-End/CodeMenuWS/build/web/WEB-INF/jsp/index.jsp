@@ -1,3 +1,4 @@
+<%@page import="com.menu.code.webservice.controle.ClienteControle"%>
 <%@page import="com.menu.code.webservice.model.Cliente"%>
 <%@page import="com.menu.code.webservice.persistencia.ClienteDAO"%>
 <%@page import="com.menu.code.conexaoMysql.ConexaoMySQL"%>
@@ -16,11 +17,12 @@
 
     <body>
         <p>Cadastrar novo cliente</p>
-        <%ClienteDAO dao = new ClienteDAO();%> 
-        <%Cliente cliente = new Cliente(3,"0000000");%>
+        <%ClienteControle control = new ClienteControle();%> 
+        <%Cliente cliente = new Cliente(5,"1000001");%>
         
-        <%Cliente cli = dao.carregar(cliente.getId());%>
-        <%= cli.getTelefone()%>
+        <%control.deletaCliente(cliente);%>       
+       
+        
         
         
         

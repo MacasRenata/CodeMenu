@@ -30,43 +30,32 @@ public class PedidoControle {
     PedidoDAO pedidoDAO = new PedidoDAO();
     
     @GET
-    @Path("/pedidos")
+    @Path("/buscaPedidoId")
     @RequestMapping(value = "/pedidos", method = RequestMethod.GET,headers="Accept=application/json")
-    public Pedido getPedidos(Pedido pedido) throws Exception{       
+    public Pedido buscaPedidoId(Pedido pedido) throws Exception{       
         return pedidoDAO.carregar(pedido.getId());
     }
     
     @GET
-    @Path("/pedidos")
-    @RequestMapping(value = "/pedidos", method = RequestMethod.GET,headers="Accept=application/json")
-    public List<Pedido> getListaPedidos() throws Exception{       
+    @Path("/listaPedidos")
+    @RequestMapping(value = "/listaPedidos", method = RequestMethod.GET,headers="Accept=application/json")
+    public List<Pedido> listaPedidos() throws Exception{       
         return pedidoDAO.listar();
     }
     
     @POST
     @Path("/adicionaPedido")
     @RequestMapping(value = "/adicionaPedido", method = RequestMethod.POST,headers="Accept=application/json")
-    public ResponseEntity getAdicionaPedido(@RequestBody Pedido pedido) throws Exception{
+    public ResponseEntity adicionaPedido(@RequestBody Pedido pedido) throws Exception{
         pedidoDAO.salvar(pedido);
         return new ResponseEntity(pedido, HttpStatus.OK);
-    }  
+    }        
     
-    /*@DELETE
-    @Path("/deletaPedido")
-    @RequestMapping(value = "/deletaPedido", method = RequestMethod.DELETE,headers="Accept=application/json")
-    public ResponseEntity getDeletaPedido(@RequestBody Pedido pedido) throws Exception {
-        pedidoDAO.remover(pedido);
-        if (null == pedidoDAO) {
-            return new ResponseEntity("Não existem pedidos registrados com este ID ", HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity(HttpStatus.OK);             
-    }  */  
-    
-    /*@PUT
+    @PUT
     @Path("/atualizaPedido")
     @RequestMapping(value = "/atualizaPedido", method = RequestMethod.PUT,headers="Accept=application/json")
-    public ResponseEntity getAtualizaPedido(@RequestBody Pedido pedido) throws Exception {
+    public ResponseEntity atualizaPedido(@RequestBody Pedido pedido) throws Exception {
         pedidoDAO.atualizar(pedido);             
         return new ResponseEntity(pedido, HttpStatus.OK);
-    }*/
+    }
 }

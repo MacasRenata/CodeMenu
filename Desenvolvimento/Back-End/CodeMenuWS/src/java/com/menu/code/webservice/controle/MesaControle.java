@@ -30,23 +30,23 @@ public class MesaControle {
     MesaDAO mesaDAO = new MesaDAO();
     
     @GET
-    @Path("/mesas")
-    @RequestMapping(value = "/mesas", method = RequestMethod.GET,headers="Accept=application/json")
-    public Mesa getMesaId(Mesa mesa) throws Exception{       
+    @Path("/buscaMesaId")
+    @RequestMapping(value = "/buscaMesaId", method = RequestMethod.GET,headers="Accept=application/json")
+    public Mesa buscaMesaId(Mesa mesa) throws Exception{       
         return mesaDAO.carregar(mesa.getId());
     }
     
     @GET
-    @Path("/mesas")
-    @RequestMapping(value = "/mesas", method = RequestMethod.GET,headers="Accept=application/json")
-    public List<Mesa> getListaMesas() throws Exception{       
+    @Path("/listaMesas")
+    @RequestMapping(value = "/listaMesas", method = RequestMethod.GET,headers="Accept=application/json")
+    public List<Mesa> listaMesas() throws Exception{       
         return mesaDAO.listar();
     }
     
     @POST
     @Path("/adicionaMesa")
     @RequestMapping(value = "/adicionaMesa", method = RequestMethod.POST,headers="Accept=application/json")
-    public ResponseEntity getAdicionaMesa(@RequestBody Mesa mesa) throws Exception{
+    public ResponseEntity adicionaMesa(@RequestBody Mesa mesa) throws Exception{
         mesaDAO.salvar(mesa);
         return new ResponseEntity(mesa, HttpStatus.OK);
     }  
@@ -54,7 +54,7 @@ public class MesaControle {
     @DELETE
     @Path("/deletaMesa")
     @RequestMapping(value = "/deletaMesa", method = RequestMethod.DELETE,headers="Accept=application/json")
-    public ResponseEntity getDeletaMesa(@RequestBody Mesa mesa) throws Exception {
+    public ResponseEntity deletaMesa(@RequestBody Mesa mesa) throws Exception {
         mesaDAO.remover(mesa);
         if (null == mesaDAO) {
             return new ResponseEntity("Não existem mesas registradas com este ID ", HttpStatus.NOT_FOUND);
@@ -62,11 +62,11 @@ public class MesaControle {
         return new ResponseEntity(HttpStatus.OK);             
     }    
     
-    /*@PUT
+    @PUT
     @Path("/atualizaMesa")
     @RequestMapping(value = "/atualizaMesa", method = RequestMethod.PUT,headers="Accept=application/json")
-    public ResponseEntity getAtualizaMesa(@RequestBody Mesa mesa) throws Exception {
+    public ResponseEntity atualizaMesa(@RequestBody Mesa mesa) throws Exception {
         mesaDAO.atualizar(mesa);
         return new ResponseEntity(mesa, HttpStatus.OK);
-    }*/
+    }
 }

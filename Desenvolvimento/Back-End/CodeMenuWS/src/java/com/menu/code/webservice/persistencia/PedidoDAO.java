@@ -17,14 +17,18 @@ public class PedidoDAO{
 
     public void salvar(Pedido pedido) {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
-        sessao.saveOrUpdate(pedido);
+        sessao.save(pedido);
     }
     
     public Pedido carregar(Long id) {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
         return (Pedido) sessao.get(Pedido.class, id);
-    }    
+    }   
     
+    public void atualizar(Pedido pedido) {
+        Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+        sessao.merge(pedido);
+    }    
     
     public List<Pedido> listar() {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();

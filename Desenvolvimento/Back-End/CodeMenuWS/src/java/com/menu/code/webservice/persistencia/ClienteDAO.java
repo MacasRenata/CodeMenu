@@ -33,12 +33,17 @@ public class ClienteDAO{
     
     public void salvar(Cliente cliente) {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
-        sessao.saveOrUpdate(cliente);
+        sessao.save(cliente);
     }
     
     public Cliente carregar(Long id) {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
         return (Cliente) sessao.get(Cliente.class, id);
+    }
+    
+    public void atualizar(Cliente cliente) {
+        Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+        sessao.merge(cliente);
     }
     
     /*public void remover(Cliente c) {
@@ -52,7 +57,7 @@ public class ClienteDAO{
         utx.rollback();
         throw ex;
     }
-    }*/
+    }*/    
     
     public void remover(Cliente cliente) {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();

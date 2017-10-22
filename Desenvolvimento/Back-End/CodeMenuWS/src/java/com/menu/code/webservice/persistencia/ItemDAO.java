@@ -18,13 +18,18 @@ public class ItemDAO{
   
     public void salvar(Item item) {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
-        sessao.saveOrUpdate(item);
+        sessao.save(item);
     }
     
     public Item carregar(Long id) {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
         return (Item) sessao.get(Item.class, id);
-    }    
+    }   
+    
+    public void atualizar(Item item) {
+        Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+        sessao.merge(item);
+    }
     
     public void remover(Item item) {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();

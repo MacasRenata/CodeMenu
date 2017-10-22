@@ -18,13 +18,18 @@ public class ComandaDAO{
 
     public void salvar(Comanda comanda) {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
-        sessao.saveOrUpdate(comanda);
+        sessao.save(comanda);
     }
     
     public Comanda carregar(Long id) {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
         return (Comanda) sessao.get(Comanda.class, id);
-    }      
+    }   
+    
+    public void atualizar(Comanda comanda) {
+        Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+        sessao.merge(comanda);
+    }
     
     public void remover(Comanda comanda) {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();

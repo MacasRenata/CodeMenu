@@ -30,9 +30,9 @@ public class ItemControle {
     ItemDAO itemDAO = new ItemDAO();
     
     @GET
-    @Path("/itens")
-    @RequestMapping(value = "/itens", method = RequestMethod.GET,headers="Accept=application/json")
-    public Item getItemId(Item item) throws Exception{       
+    @Path("/buscaItemId")
+    @RequestMapping(value = "/buscaItemId", method = RequestMethod.GET,headers="Accept=application/json")
+    public Item buscaItemId(Item item) throws Exception{       
         return itemDAO.carregar(item.getId());
     }
     
@@ -44,16 +44,16 @@ public class ItemControle {
     }*/
     
     @GET
-    @Path("/itens")
-    @RequestMapping(value = "/itens", method = RequestMethod.GET,headers="Accept=application/json")
-    public List<Item> getListaItens() throws Exception{       
+    @Path("/listaItens")
+    @RequestMapping(value = "/listaItens", method = RequestMethod.GET,headers="Accept=application/json")
+    public List<Item> listaItens() throws Exception{       
         return itemDAO.listar();
     }
     
     @POST
     @Path("/adicionaItem")
     @RequestMapping(value = "/adicionaItem", method = RequestMethod.POST,headers="Accept=application/json")
-    public ResponseEntity getAdicionaItem(@RequestBody Item item) throws Exception{
+    public ResponseEntity adicionaItem(@RequestBody Item item) throws Exception{
         itemDAO.salvar(item);
         return new ResponseEntity(item, HttpStatus.OK);
     }      
@@ -62,7 +62,7 @@ public class ItemControle {
     @DELETE
     @Path("/deletaItem")
     @RequestMapping(value = "/deletaItem", method = RequestMethod.DELETE,headers="Accept=application/json")
-    public ResponseEntity getDeletaItem(@RequestBody Item item) throws Exception {
+    public ResponseEntity deletaItem(@RequestBody Item item) throws Exception {
         itemDAO.remover(item);
         if (null == itemDAO) {
             return new ResponseEntity("Não existem itens registrados com este ID ", HttpStatus.NOT_FOUND);
@@ -70,11 +70,11 @@ public class ItemControle {
         return new ResponseEntity(HttpStatus.OK);             
     }    
     
-    /*@PUT
+    @PUT
     @Path("/atualizaItem")
     @RequestMapping(value = "/atualizaItem", method = RequestMethod.PUT,headers="Accept=application/json")
-    public ResponseEntity getAtualizaItem(@RequestBody Item item) throws Exception {
+    public ResponseEntity atualizaItem(@RequestBody Item item) throws Exception {
         itemDAO.atualizar(item);             
         return new ResponseEntity(item, HttpStatus.OK);
-    }*/
+    }
 }

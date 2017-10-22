@@ -30,23 +30,23 @@ public class ComandaControle {
     ComandaDAO comandaDAO = new ComandaDAO();
     
     @GET
-    @Path("/comandas")
-    @RequestMapping(value = "/comandas", method = RequestMethod.GET,headers="Accept=application/json")
-    public Comanda getComandaId(Comanda comanda) throws Exception{       
+    @Path("/buscaComandaId")
+    @RequestMapping(value = "/buscaComandaId", method = RequestMethod.GET,headers="Accept=application/json")
+    public Comanda buscaComandaId(Comanda comanda) throws Exception{       
         return comandaDAO.carregar(comanda.getId());
     }
     
     @GET
-    @Path("/comandas")
-    @RequestMapping(value = "/comandas", method = RequestMethod.GET,headers="Accept=application/json")
-    public List<Comanda> getListaComandas() throws Exception{       
+    @Path("/listaComandas")
+    @RequestMapping(value = "/listaComandas", method = RequestMethod.GET,headers="Accept=application/json")
+    public List<Comanda> listaComandas() throws Exception{       
         return comandaDAO.listar();
     }
     
     @POST
     @Path("/adicionaComanda")
     @RequestMapping(value = "/adicionaComanda", method = RequestMethod.POST,headers="Accept=application/json")
-    public ResponseEntity getAdicionaComanda(@RequestBody Comanda comanda) throws Exception{
+    public ResponseEntity adicionaComanda(@RequestBody Comanda comanda) throws Exception{
         comandaDAO.salvar(comanda);
         return new ResponseEntity(comanda, HttpStatus.OK);
     }  
@@ -54,7 +54,7 @@ public class ComandaControle {
     @DELETE
     @Path("/deletaComanda")
     @RequestMapping(value = "/deletaComanda", method = RequestMethod.DELETE,headers="Accept=application/json")
-    public ResponseEntity getDeletaComanda(@RequestBody Comanda comanda) throws Exception {
+    public ResponseEntity deletaComanda(@RequestBody Comanda comanda) throws Exception {
         comandaDAO.remover(comanda);
         if (null == comandaDAO) {
             return new ResponseEntity("Não existem comandas registradas com este ID ",  HttpStatus.NOT_FOUND);
@@ -62,11 +62,11 @@ public class ComandaControle {
         return new ResponseEntity(HttpStatus.OK);             
     } 
     
-    /*@PUT
+    @PUT
     @Path("/atualizaComanda")
     @RequestMapping(value = "/atualizaComanda", method = RequestMethod.PUT,headers="Accept=application/json")
-    public ResponseEntity getAtualizaComanda(@RequestBody Comanda comanda) throws Exception {
+    public ResponseEntity atualizaComanda(@RequestBody Comanda comanda) throws Exception {
         comandaDAO.atualizar(comanda);
         return new ResponseEntity(comanda, HttpStatus.OK);
-    }*/
+    }
 }

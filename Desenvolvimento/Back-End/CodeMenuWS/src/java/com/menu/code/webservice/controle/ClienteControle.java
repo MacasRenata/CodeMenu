@@ -25,30 +25,32 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Marcio
  */
+
 @RestController
-public class ClienteControle {
+public class ClienteControle {   
+    
     
     @Autowired
     ClienteDAO clienteDAO = new ClienteDAO();
     
     @GET
-    @Path("/clientes")
+    @Path("/buscaClienteId")
     @RequestMapping(value = "/clientes", method = RequestMethod.GET,headers="Accept=application/json")
-    public Cliente getClientesId(Cliente cliente) throws Exception{       
+    public Cliente buscaClienteId(Cliente cliente) throws Exception{       
         return clienteDAO.carregar(cliente.getId());
     }
     
     @GET
     @Path("/clientes")
     @RequestMapping(value = "/clientes", method = RequestMethod.GET,headers="Accept=application/json")
-    public List<Cliente> getListaClientes() throws Exception{       
+    public List<Cliente> listaClientes() throws Exception{       
         return clienteDAO.listar();
     }
     
     @POST
     @Path("/adicionaCliente")
     @RequestMapping(value = "/adicionaCliente", method = RequestMethod.POST,headers="Accept=application/json")
-    public ResponseEntity getAdicionaCliente(@RequestBody Cliente cliente) throws Exception{
+    public ResponseEntity adicionaCliente(@RequestBody Cliente cliente) throws Exception{
         clienteDAO.salvar(cliente);
         return new ResponseEntity(cliente, HttpStatus.OK);
     }  
@@ -56,7 +58,7 @@ public class ClienteControle {
     @DELETE
     @Path("/deletaCliente")
     @RequestMapping(value = "/deletaCliente", method = RequestMethod.DELETE,headers="Accept=application/json")
-    public ResponseEntity getDeletaCliente(@RequestBody Cliente cliente) throws Exception {
+    public ResponseEntity deletaCliente(@RequestBody Cliente cliente) throws Exception {
         clienteDAO.remover(cliente);
         if (null == clienteDAO) {
             return new ResponseEntity("Não existem clientes registrados com este ID ", HttpStatus.NOT_FOUND);
@@ -64,11 +66,11 @@ public class ClienteControle {
         return new ResponseEntity(HttpStatus.OK);             
     }    
     
-    /*@PUT
+    @PUT
     @Path("/atualizaCliente")
     @RequestMapping(value = "/atualizaCliente", method = RequestMethod.PUT,headers="Accept=application/json")
-    public ResponseEntity getAtualizaCliente(@RequestBody Cliente cliente) throws Exception {
+    public ResponseEntity atualizaCliente(@RequestBody Cliente cliente) throws Exception {
         clienteDAO.atualizar(cliente);
         return new ResponseEntity(cliente, HttpStatus.OK);
-    }*/
+    }
 }

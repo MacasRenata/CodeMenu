@@ -3,6 +3,8 @@ package org.apache.jsp.WEB_002dINF.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import com.menu.code.webservice.model.Cliente;
+import com.menu.code.webservice.persistencia.ClienteDAO;
 import com.menu.code.conexaoMysql.ConexaoMySQL;
 
 public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
@@ -44,6 +46,8 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
 
       out.write("\r\n");
       out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
       out.write("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"\r\n");
       out.write("    \"http://www.w3.org/TR/html4/loose.dtd\">\r\n");
       out.write("\r\n");
@@ -58,9 +62,19 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("    <body>\r\n");
       out.write("        <p>Cadastrar novo cliente</p>\r\n");
-      out.write("         \r\n");
+      out.write("        ");
+ClienteDAO dao = new ClienteDAO();
+      out.write(" \r\n");
+      out.write("        ");
+Cliente cliente = new Cliente(6,"0000000");
+      out.write("\r\n");
       out.write("        \r\n");
-      out.write("        \r\n");
+      out.write("        ");
+Cliente cli = dao.carregar(cliente.getId());
+      out.write("\r\n");
+      out.write("        ");
+      out.print( cli.getTelefone());
+      out.write("\r\n");
       out.write("        \r\n");
       out.write("        \r\n");
       out.write("        \r\n");

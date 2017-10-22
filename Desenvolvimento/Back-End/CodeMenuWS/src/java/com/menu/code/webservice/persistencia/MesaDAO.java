@@ -19,13 +19,18 @@ public class MesaDAO{
 
     public void salvar(Mesa mesa) {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
-        sessao.saveOrUpdate(mesa);
+        sessao.save(mesa);
     }
     
     public Mesa carregar(Long id) {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
         return (Mesa) sessao.get(Mesa.class, id);
     }    
+    
+    public void atualizar(Mesa mesa) {
+        Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+        sessao.merge(mesa);
+    }
     
     public void remover(Mesa mesa) {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
