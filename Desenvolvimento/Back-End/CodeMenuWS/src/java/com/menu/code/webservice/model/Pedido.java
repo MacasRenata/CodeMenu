@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -26,6 +27,7 @@ public class Pedido implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date data;
     private int status;
     private double valor;
@@ -38,10 +40,12 @@ public class Pedido implements Serializable {
     private Mesa mesa;    
     @ManyToOne
     @JoinColumn(name ="id_item")
-    private Item item;    
-        
+    private Item[] itens;    
+    @OneToOne
+    @JoinColumn(name ="id_comanda")
+    private Comanda comanda;  
 
-    public Pedido(Long id, Date data, int status, double valor, int quantidade, Cliente cliente, Mesa mesa, Item item) {
+    public Pedido(Long id, Date data, int status, double valor, int quantidade, Cliente cliente, Mesa mesa, Item[] itens, Comanda comanda) {
         this.id = id;
         this.data = data;
         this.status = status;
@@ -49,18 +53,17 @@ public class Pedido implements Serializable {
         this.quantidade = quantidade;
         this.cliente = cliente;
         this.mesa = mesa;
-        this.item = item;
+        this.itens = itens;
+        this.comanda = comanda;
     }
+    
+    
 
-    public Pedido() {
-        
-    }
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -112,35 +115,20 @@ public class Pedido implements Serializable {
         this.mesa = mesa;
     }
 
-    public Item getItem() { 
-        return item;
+    public Item[] getItens() {
+        return itens;
     }
 
-    public void setItem(Item item) {
-        this.item = item;
+    public void setItens(Item[] itens) {
+        this.itens = itens;
     }
 
-    public Long getClienteId() {
-        return cliente.getId();
+    public Comanda getComanda() {
+        return comanda;
     }
-    
-    public Long getMesaId() {
-        return mesa.getId();
+
+    public void setComanda(Comanda comanda) {
+        this.comanda = comanda;
     }
-    
-    public Long getItemId() {
-        return item.getId();
-    }
-    
-    public void setCliente(Long cliente_id) {
-            this.cliente.setId(cliente_id);
-    }
-    
-    public void setMesa(Long mesa_id) {
-            this.mesa.setId(mesa_id);
-    } 
-    
-    public void setItem(Long item_id) {
-            this.item.setId(item_id);
-    } 
+      
 }

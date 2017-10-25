@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
@@ -25,8 +26,9 @@ public class Item implements Serializable {
     private int tipo;    
     private double preco;   
     private String urlImagem;
+   
 
-    public Item(long id, String nome, int tipo, double preco, String urlImagem) {
+    public Item(Long id, String nome, int tipo, double preco, String urlImagem) {
         this.id = id;
         this.nome = nome;
         this.tipo = tipo;
@@ -34,9 +36,6 @@ public class Item implements Serializable {
         this.urlImagem = urlImagem;
     }
     
-    public Item() {
-        
-    }
 
     public long getId() {
         return id;
@@ -77,4 +76,8 @@ public class Item implements Serializable {
     public void setUrlImagem(String urlImagem) {
         this.urlImagem = urlImagem;
     }    
+
+  
+    
+    
 }

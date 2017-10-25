@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -25,24 +26,20 @@ public class Comanda implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date hora;
     private int status;
     private double valor;
-    @ManyToOne
-    @JoinColumn(name ="id_pedido")
-    private Pedido pedido;
+   
 
-    public Comanda(Date hora, int status, double valor, Pedido pedido) {       
+    
+    public Comanda(Date hora, int status, double valor) {       
         this.hora = hora;
         this.status = status;
         this.valor = valor;
-        this.pedido = pedido;
     }
     
-    public Comanda() {
-        
-    }
-
+  
     
     public long getId() {
         return id;
@@ -76,19 +73,5 @@ public class Comanda implements Serializable {
         this.valor = valor;
     } 
 
-    public Pedido getPedido() {
-        return pedido;
-    }
-
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
-    }
-    
-    public Long getPedidoId() {
-        return pedido.getId();
-    }
-    
-    public void setPedido(Long pedido_id) {
-            this.pedido.setId(pedido_id);
-    }
+   
 }

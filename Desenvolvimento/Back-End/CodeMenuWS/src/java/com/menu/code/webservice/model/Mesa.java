@@ -28,15 +28,14 @@ public class Mesa implements Serializable {
     @ManyToOne
     @JoinColumn(name ="id_estabelecimento")
     private Estabelecimento estabelecimento;
-    
-    public Mesa(long id, String qrcode, Estabelecimento estabelecimento) {
-	this.id = id;
-	this.qrcode = qrcode;
-	this.estabelecimento = estabelecimento;	
-	}
 
-    public Mesa() {
+    public Mesa(Long id, String qrcode, Estabelecimento estabelecimento) {
+        this.id = id;
+        this.qrcode = qrcode;
+        this.estabelecimento = estabelecimento;
     }
+    
+    
     
     
 
@@ -64,11 +63,5 @@ public class Mesa implements Serializable {
         this.estabelecimento = estabelecimento;
     }
     
-    public Long getEstabelecimentoId() {
-        return estabelecimento.getId();
-    }
-    
-    public void setEstabelecimento(long id) {
-        this.estabelecimento.setId(id);
-    }
+   
 }

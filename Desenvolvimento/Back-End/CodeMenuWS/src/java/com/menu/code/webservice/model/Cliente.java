@@ -22,7 +22,8 @@ public class Cliente implements Serializable {
 @Id
 @GeneratedValue
 private Long id;
-private String telefone;    
+private String telefone;
+
 
     public Cliente(long id, String telefone) {
         this.id = id;

@@ -34,9 +34,8 @@ public class Estabelecimento implements Serializable {
         this.endereco = endereco;
         this.email = email;
     }
-
-    public Estabelecimento() {
-    }
+  
+    
 
     public Long getId() {
         return id;
