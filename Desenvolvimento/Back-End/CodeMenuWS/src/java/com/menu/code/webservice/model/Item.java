@@ -9,7 +9,9 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -26,14 +28,19 @@ public class Item implements Serializable {
     private int tipo;    
     private double preco;   
     private String urlImagem;
+    @ManyToOne
+    @JoinColumn(name ="id_estabelecimento")
+    private Estabelecimento estabelecimento;
+    
    
 
-    public Item(Long id, String nome, int tipo, double preco, String urlImagem) {
+    public Item(Long id, String nome, int tipo, double preco, String urlImagem, Estabelecimento estabelecimento) {
         this.id = id;
         this.nome = nome;
         this.tipo = tipo;
         this.preco = preco;
         this.urlImagem = urlImagem;
+        this.estabelecimento = estabelecimento;
     }
     
 
@@ -77,7 +84,15 @@ public class Item implements Serializable {
         this.urlImagem = urlImagem;
     }    
 
-  
+    public Estabelecimento getEstabelecimento() {
+        return estabelecimento;
+    }
+
+    public void setEstabelecimento(Estabelecimento estabelecimento) {
+        this.estabelecimento = estabelecimento;
+    }
+
+    
     
     
 }
