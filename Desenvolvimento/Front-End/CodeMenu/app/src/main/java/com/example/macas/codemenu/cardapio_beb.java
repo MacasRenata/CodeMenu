@@ -46,7 +46,7 @@ public class cardapio_beb extends AppCompatActivity {
             }
         });
 
-        btCardapioRef = (Button) findViewById(R.id.btCardapioRef);
+        btCardapioRef = (Button) findViewById(R.id.btCardapioBeb);
 
         btCardapioRef.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +62,7 @@ public class cardapio_beb extends AppCompatActivity {
             }
         });
 
-        btPedidoCozinha = (Button) findViewById(R.id.btPedidoCozinha);
+        btPedidoCozinha = (Button) findViewById(R.id.btConfirmaPedido);
 
         btPedidoCozinha.setOnClickListener(new View.OnClickListener() {
             @Override

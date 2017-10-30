@@ -30,7 +30,7 @@ import org.springframework.web.client.RestTemplate;
 
 public class webservice {
 
-    public class MainActivity extends menu_principal {
+  /*  public class MainActivity extends menu_principal {
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +74,8 @@ public class webservice {
         /**
          * A placeholder fragment containing a simple view.
          */
+
+  /*
         public static class PlaceholderFragment extends Fragment {
 
             public PlaceholderFragment() {
@@ -114,7 +116,7 @@ public class webservice {
 
         }
 
-    }
+    } */
 
   /* segunda opção com buffer - testar"
 
