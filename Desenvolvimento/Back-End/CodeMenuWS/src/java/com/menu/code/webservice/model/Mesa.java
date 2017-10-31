@@ -25,6 +25,8 @@ public class Mesa implements Serializable {
     @GeneratedValue
     private Long id;
     private String qrcode;
+    private int status;
+    
     @ManyToOne
     @JoinColumn(name ="id_estabelecimento")
     private Estabelecimento estabelecimento;
@@ -55,6 +57,14 @@ public class Mesa implements Serializable {
         this.qrcode = qrcode;
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+    
     public Estabelecimento getEstabelecimento() {
         return estabelecimento;
     }

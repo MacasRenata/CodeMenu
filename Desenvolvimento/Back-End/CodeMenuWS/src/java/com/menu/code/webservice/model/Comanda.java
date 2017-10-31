@@ -5,13 +5,16 @@
  */
 package com.menu.code.webservice.model;
 
+import com.menu.code.webservice.persistencia.PedidoDAO;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -29,11 +32,14 @@ public class Comanda implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date hora;
     private int status;
-    private double valor;
-   
-
+    private double valor = 0;
     
-    public Comanda(Date hora, int status, double valor) {       
+    @OneToMany
+    private List<Pedido>pedidos;
+    PedidoDAO pedidosDAO = new PedidoDAO();
+    
+    public Comanda(Date hora, int status, double valor) { 
+        pedidos = pedidosDAO.listar();
         this.hora = hora;
         this.status = status;
         this.valor = valor;
@@ -72,6 +78,13 @@ public class Comanda implements Serializable {
     public void setValor(double valor) {
         this.valor = valor;
     } 
-
-   
+    
+    
+    
+    public void SomaPedidos () {
+     for (Pedido pedido : pedidos) {
+       if(pedido.getStatus() != 1) // o valor 1 se refere a um pedido que ja foi pago
+          valor = valor + pedido.getValor(); // soma tds os pedidos em aberto para gerar valor total da comanda
+     }
+    }
 }
