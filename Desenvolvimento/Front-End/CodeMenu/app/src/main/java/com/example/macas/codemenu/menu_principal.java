@@ -18,7 +18,7 @@ public class menu_principal extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       setContentView(R.layout.menu_principal);
+        setContentView(R.layout.menu_principal);
 
         btCardapio = (Button) findViewById(R.id.btCardapio);
 
@@ -34,7 +34,7 @@ public class menu_principal extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-
+/*
             public List<cardapio_ref> queryGetAll() {
                 List<cardapio_ref> list = new ArrayList<cardapio_ref>();
 
@@ -62,26 +62,27 @@ public class menu_principal extends AppCompatActivity {
                 }
             }
         });
+*/
+
+        });
+
+        btPedido = (Button) findViewById(R.id.btPedido);
+
+        btPedido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chamaPedido();
+            }
+
+            void chamaPedido() {
+                Intent intent = new Intent();
+                intent.setClass(menu_principal.this, pedidos.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
-            btPedido = (Button) findViewById(R.id.btPedido);
-
-            btPedido.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    chamaPedido();
-                }
-
-                void chamaPedido() {
-                    Intent intent = new Intent();
-                    intent.setClass(menu_principal.this, pedidos.class);
-                    startActivity(intent);
-                    finish();
-                }
-            });
-
-
-
-}
+    }
 
 }

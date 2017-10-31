@@ -19,11 +19,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
+/*
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
-
+*/
 /**
  * Created by macas on 02/10/17.
  */
@@ -35,8 +35,15 @@ public class webservice {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
+            setContentView(R.layout.menu_principal);
 
+        }
+
+    }
+
+
+}
+/*
             if (savedInstanceState == null) {
                 getSupportFragmentManager().beginTransaction()
                         .add(R.id.container, new PlaceholderFragment())
@@ -74,6 +81,8 @@ public class webservice {
         /**
          * A placeholder fragment containing a simple view.
          */
+
+  /*
         public static class PlaceholderFragment extends Fragment {
 
             public PlaceholderFragment() {
@@ -114,7 +123,7 @@ public class webservice {
 
         }
 
-    }
+    } */
 
   /* segunda opção com buffer - testar"
 
@@ -181,4 +190,4 @@ public class webservice {
 
 
 
-}
+

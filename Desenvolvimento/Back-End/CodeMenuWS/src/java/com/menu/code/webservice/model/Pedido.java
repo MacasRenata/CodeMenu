@@ -32,16 +32,16 @@ public class Pedido implements Serializable {
     private int status;
     private double valor;
     private int quantidade;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name ="id_cliente")
     private Cliente cliente;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name ="id_mesa")
     private Mesa mesa;    
     @ManyToOne
     @JoinColumn(name ="id_item")
     private Item[] itens;    
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name ="id_comanda")
     private Comanda comanda;  
 
