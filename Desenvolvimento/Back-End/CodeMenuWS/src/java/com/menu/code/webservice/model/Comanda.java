@@ -32,7 +32,7 @@ public class Comanda implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date hora;
     private int status;
-    private double valor = 0;
+    private double valor;
     
     @OneToMany
     private List<Pedido>pedidos;
@@ -82,7 +82,8 @@ public class Comanda implements Serializable {
     
     
     public void SomaPedidos () {
-     for (Pedido pedido : pedidos) {
+       valor = 0;
+       for (Pedido pedido : pedidos) {
        if(pedido.getStatus() != 1) // o valor 1 se refere a um pedido que ja foi pago
           valor = valor + pedido.getValor(); // soma tds os pedidos em aberto para gerar valor total da comanda
      }

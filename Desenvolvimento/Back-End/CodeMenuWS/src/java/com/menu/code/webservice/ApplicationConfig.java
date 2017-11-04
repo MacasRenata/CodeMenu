@@ -31,15 +31,10 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(com.menu.code.webservice.CodemenuResource.class);
         resources.add(com.menu.code.webservice.controle.ClienteControle.class);
-<<<<<<< HEAD
-        resources.add(com.menu.code.webservice.controle.EstabelecimentoControle.class);
-        resources.add(com.menu.code.webservice.controle.ItemControle.class);
-        resources.add(com.menu.code.webservice.controle.MesaControle.class);
-=======
         resources.add(com.menu.code.webservice.controle.ComandaControle.class);
         resources.add(com.menu.code.webservice.controle.EstabelecimentoControle.class);
         resources.add(com.menu.code.webservice.controle.ItemControle.class);
->>>>>>> a0e9104303ca977f4f8b09445e08f06e1cdafea9
+        resources.add(com.menu.code.webservice.controle.MesaControle.class);
         resources.add(com.menu.code.webservice.controle.PedidoControle.class);
     }
     
