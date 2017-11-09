@@ -45,10 +45,10 @@ public class Pedido implements Serializable {
     @JoinColumn(name ="id_comanda")
     private Comanda comanda;  
 
-    public Pedido(Long id, Date data, int status, double valor, int quantidade, Cliente cliente, Mesa mesa, Item[] itens, Comanda comanda) {
+    public Pedido(Long id, Date data, double valor, int quantidade, Cliente cliente, Mesa mesa, Item[] itens, Comanda comanda) {
         this.id = id;
         this.data = data;
-        this.status = status;
+        status = 1;
         this.valor = valor;
         this.quantidade = quantidade;
         this.cliente = cliente;
@@ -79,8 +79,9 @@ public class Pedido implements Serializable {
         return status;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setStatus(int sta) {
+        if(sta < 2)
+        status = sta;        
     }
 
     public double getValor() {

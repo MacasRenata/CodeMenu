@@ -51,6 +51,7 @@ public class ComandaControle {
         return new ResponseEntity(comanda, HttpStatus.OK);
     }  
     
+    /*
     @DELETE
     @Path("/deletaComanda")
     @RequestMapping(value = "/deletaComanda", method = RequestMethod.DELETE,headers="Accept=application/json")
@@ -61,6 +62,8 @@ public class ComandaControle {
         }
         return new ResponseEntity(HttpStatus.OK);             
     } 
+    */ 
+    //nenhuma comanda deve ser deletada
     
     @PUT
     @Path("/atualizaComanda")

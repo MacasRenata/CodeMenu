@@ -82,10 +82,9 @@ public class Comanda implements Serializable {
     
     
     public void SomaPedidos () {
-       valor = 0;
        for (Pedido pedido : pedidos) {
-       if(pedido.getStatus() != 1) // o valor 1 se refere a um pedido que ja foi pago
-          valor = valor + pedido.getValor(); // soma tds os pedidos em aberto para gerar valor total da comanda
+       if(pedido.getStatus() != 5) // o valor 5 se refere a um pedido que foi cancelado
+          valor = valor + pedido.getValor(); // soma tds os pedidos validos para gerar o valor total da comanda
      }
     }
 }
