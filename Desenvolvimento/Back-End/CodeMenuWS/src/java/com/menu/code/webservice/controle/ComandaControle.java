@@ -6,7 +6,9 @@
 package com.menu.code.webservice.controle;
 
 import com.menu.code.webservice.model.Comanda;
+import com.menu.code.webservice.model.Pedido;
 import com.menu.code.webservice.persistencia.ComandaDAO;
+import com.menu.code.webservice.persistencia.PedidoDAO;
 import java.util.List;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -71,5 +73,16 @@ public class ComandaControle {
     public ResponseEntity atualizaComanda(@RequestBody Comanda comanda) throws Exception {
         comandaDAO.atualizar(comanda);
         return new ResponseEntity(comanda, HttpStatus.OK);
+    }
+    
+    public Comanda SomaPedidos (Comanda comanda) {
+       List<Pedido> pedidos = comanda.getPedidos();
+       double valor = 0;
+       for (Pedido pedido : pedidos) {
+       if(pedido.getStatus() != 5) // o valor 5 se refere a um pedido que foi cancelado
+          valor = valor + pedido.getValor(); // soma tds os pedidos validos para gerar o valor total da comanda
+     }
+       comanda.setValor(valor);
+       return comanda;
     }
 }

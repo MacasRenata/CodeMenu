@@ -37,13 +37,16 @@ public class Comanda implements Serializable {
     @OneToMany
     private List<Pedido>pedidos;
     PedidoDAO pedidosDAO = new PedidoDAO();
-    
-    public Comanda(Date hora, int status, double valor) { 
-        pedidos = pedidosDAO.listar();
+
+    public Comanda(Long id, Date hora, int status, double valor, List<Pedido> pedidos) {
+        this.id = id;
         this.hora = hora;
         this.status = status;
         this.valor = valor;
+        this.pedidos = pedidosDAO.listar();
     }
+    
+  
     
   
     
@@ -78,13 +81,18 @@ public class Comanda implements Serializable {
     public void setValor(double valor) {
         this.valor = valor;
     } 
-    
-    
-    
-    public void SomaPedidos () {
-       for (Pedido pedido : pedidos) {
-       if(pedido.getStatus() != 5) // o valor 5 se refere a um pedido que foi cancelado
-          valor = valor + pedido.getValor(); // soma tds os pedidos validos para gerar o valor total da comanda
-     }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
     }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
+  
+    
+    
+    
+    
 }
