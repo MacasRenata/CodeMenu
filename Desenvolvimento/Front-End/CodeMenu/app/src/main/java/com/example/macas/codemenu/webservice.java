@@ -1,8 +1,11 @@
 package com.example.macas.codemenu;
 
+import com.example.macas.codemenu.download_dados;
+
 import org.xmlpull.v1.XmlPullParserException;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -37,108 +40,48 @@ public class webservice {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.menu_principal);
 
+            URL url = new URL("http://pokeapi.co/api/v2/pokemon/1/");
+
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("GET");
+            urlConnection.connect();
+
+            InputStream inputStream = urlConnection.getInputStream();
+            if (inputStream == null) {
+                return null;
+            }
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            String linha;
+            StringBuffer buffer = new StringBuffer();
+            while ((linha = reader.readLine()) != null) {
+                buffer.append(linha + "\n");
+            }
+
+            if (buffer.length() == 0) {
+                return null;
+            }
+
+            if (urlConnection != null) {
+                urlConnection.disconnect();
+            }
+
+            if (reader != null) {
+
+                try {
+                    reader.close();
+                } catch (final IOException e) {
+                    Log.e("Erro", "Erro fechando o stream", e);
+                }
+
+            }
+
         }
 
     }
 
 
 }
-/*
-            if (savedInstanceState == null) {
-                getSupportFragmentManager().beginTransaction()
-                        .add(R.id.container, new PlaceholderFragment())
-                        .commit();
-            }
-        }
-
-        @Override
-        protected void onStart() {
-            super.onStart();
-            new HttpRequestTask().execute();
-        }
-
-        @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-
-            // Inflate the menu; this adds items to the action bar if it is present.
-            getMenuInflater().inflate(R.menu.main, menu);
-            return true;
-        }
-
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
-            // Handle action bar item clicks here. The action bar will
-            // automatically handle clicks on the Home/Up button, so long
-            // as you specify a parent activity in AndroidManifest.xml.
-            int id = item.getItemId();
-            if (id == R.id.action_refresh) {
-                new HttpRequestTask().execute();
-                return true;
-            }
-            return super.onOptionsItemSelected(item);
-        }
-
-        /**
-         * A placeholder fragment containing a simple view.
-         */
-
-  /*
-        public static class PlaceholderFragment extends Fragment {
-
-            public PlaceholderFragment() {
-            }
-
-            @Override
-            public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                     Bundle savedInstanceState) {
-                View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-                return rootView;
-            }
-        }
-
-
-        private class HttpRequestTask extends AsyncTask<Void, Void, Greeting> {
-            @Override
-            protected Greeting doInBackground(Void... params) {
-                try {
-                    final String url = "http://8080/cardapioRef";
-                    RestTemplate restTemplate = new RestTemplate();
-                    restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-                    Greeting greeting = restTemplate.getForObject(url, Greeting.class);
-                    return greeting;
-                } catch (Exception e) {
-                    Log.e("MainActivity", e.getMessage(), e);
-                }
-
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Greeting greeting) {
-                TextView greetingIdText = (TextView) findViewById(R.id.id_value);
-                TextView greetingContentText = (TextView) findViewById(R.id.content_value);
-                greetingIdText.setText(greeting.getId());
-                greetingContentText.setText(greeting.getContent());
-            }
-
-        }
-
-    } */
-
-  /* segunda opção com buffer - testar"
-
-    public int add (int i, int j) throws IOExeption, XmlPullParserException
-    {
-        HttpTransportSE HttpTrans = new HttpTransportSE(“http://http://8080/selecioonarRef/”);
-        HttpTrans.call(“add”, envelope);
-        Object resultado = envelope.getResponse ();
-        return Integer.parseInt(resultado.toString());
-
-    }
-
-*/
-
-
 
 
 
