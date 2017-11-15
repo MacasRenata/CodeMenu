@@ -51,31 +51,18 @@ public class ComandaControle {
     public ResponseEntity adicionaComanda(@RequestBody Comanda comanda) throws Exception{
         comandaDAO.salvar(comanda);
         return new ResponseEntity(comanda, HttpStatus.OK);
-    }  
-    
-    /*
-    @DELETE
-    @Path("/deletaComanda")
-    @RequestMapping(value = "/deletaComanda", method = RequestMethod.DELETE,headers="Accept=application/json")
-    public ResponseEntity deletaComanda(@RequestBody Comanda comanda) throws Exception {
-        comandaDAO.remover(comanda);
-        if (null == comandaDAO) {
-            return new ResponseEntity("Não existem comandas registradas com este ID ",  HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity(HttpStatus.OK);             
-    } 
-    */ 
-    //nenhuma comanda deve ser deletada
+    }          
     
     @PUT
     @Path("/atualizaComanda")
     @RequestMapping(value = "/atualizaComanda", method = RequestMethod.PUT,headers="Accept=application/json")
     public ResponseEntity atualizaComanda(@RequestBody Comanda comanda) throws Exception {
+        comanda.setValor(somaPedidos(comanda));
         comandaDAO.atualizar(comanda);
         return new ResponseEntity(comanda, HttpStatus.OK);
     }
     
-    public Comanda SomaPedidos (Comanda comanda) {
+    /*public Comanda SomaPedidos (Comanda comanda) {
        List<Pedido> pedidos = comanda.getPedidos();
        double valor = 0;
        for (Pedido pedido : pedidos) {
@@ -84,5 +71,16 @@ public class ComandaControle {
      }
        comanda.setValor(valor);
        return comanda;
-    }
+    }*/    
+    
+    public double somaPedidos (Comanda comanda) {
+        List<Pedido> pedidos = comanda.getPedidos();
+        double valor = 0;
+        for (Pedido pedido : pedidos) {
+            if(pedido.getStatus() != 5){
+                valor = valor + pedido.getValor(); 
+            }
+        }
+        return valor;
+    }    
 }

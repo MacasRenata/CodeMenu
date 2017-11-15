@@ -1,3 +1,5 @@
+<%@page import="com.menu.code.webservice.model.Comanda"%>
+<%@page import="com.menu.code.webservice.controle.ComandaControle"%>
 <%@page import="com.menu.code.webservice.controle.ClienteControle"%>
 <%@page import="com.menu.code.webservice.model.Cliente"%>
 <%@page import="com.menu.code.webservice.persistencia.ClienteDAO"%>
@@ -16,12 +18,7 @@
     </head>
 
     <body>
-        <p>Cadastrar novo cliente</p>
-        <%ClienteControle control = new ClienteControle();%> 
-        <%Cliente cliente = new Cliente(5,"1000001");%>
-        
-        <%control.deletaCliente(cliente);%>       
-       
+        <p>Cadastrar novo cliente</p>     
         
         
         
