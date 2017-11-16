@@ -19,13 +19,8 @@ public class menu_principal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_principal);
 
-    public void signUpActivity(View view){
-        Intent intent = new Intent(this, SignUpActivity.class);
-        startActivity( intent );
-    }
 
-
-        AsyncTask<Void, Void, Void> url = new download_dados().execute();  //download dos dados do webservice
+      //  AsyncTask<Void, Void, Void> url = new download_dados.execute();  //download dos dados do webservice
 
 
 

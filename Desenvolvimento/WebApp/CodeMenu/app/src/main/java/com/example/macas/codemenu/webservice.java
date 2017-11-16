@@ -15,6 +15,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -23,17 +24,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.io.IOException;
-import java.util.ArrayList;
 
 
 /**
  * Created by macas on 02/10/17.
  */
 
-public class webservice {
+public class webservice<M extends AppCompatActivity> {
 
-    public class MainActivity extends menu_principal {
+    public class MainActivity<M extends AppCompatActivity> extends menu_principal {
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +61,6 @@ public class webservice {
 
         }
 
-        public void get() {
-        }
     }
 
 }
