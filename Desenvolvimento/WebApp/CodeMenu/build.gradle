@@ -1,0 +1,41 @@
+buildscript {
+
+    repositories {
+        /*
+         * Repositórios onde o Gradle buscará as dependências
+         * deste arquivo de nível de projeto.
+         * */
+        /*google()*/
+        jcenter()
+    }
+
+
+
+
+    dependencies {
+        /*
+         * Plugin Android para que o Gradle consiga compilar os
+         * arquivos para aparelhos Android
+         * */
+        classpath 'com.android.tools.build:gradle:2.3.3'
+
+
+    }
+}
+
+allprojects {
+    repositories {
+        /*
+         * Repositórios onde o Gradle buscará as dependências
+         * de API de todos os módulos do projeto.
+         * */
+        /*google()*/
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+

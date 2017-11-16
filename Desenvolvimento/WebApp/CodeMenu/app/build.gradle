@@ -1,0 +1,89 @@
+
+/*
+ * Para que seja possível a construção e uso de alguns blocos de código dentro
+ * deste módulo, o plugin Android deve ser solicitado.
+ * */
+apply plugin: 'com.android.application'
+
+
+
+/*
+ * No bloco a seguir devemos configurar todas as definições de construção
+ * específicas para o Android.
+ * */
+android {
+    /*
+     * Definição do level de API que o Gradle deve utilizar para compilar
+     * o aplicativo. Busque sempre utilizar a versão mais atual.
+     * */
+    compileSdkVersion 26
+
+    /*
+     * Definição da versão de SDK Build Tools que o Gradle deve utilizar
+     * para a construção do app. Busque sempre utilizar a versão mais atual.
+     * */
+    buildToolsVersion "26.0.0"
+
+    /*
+     * O bloco a seguir contém algumas definições para todas as variações
+     * de APK que podemos ter, podendo até mesmo sobrescrever algumas
+     * configurações definidas no AndroidManifest.xml.
+     * */
+    defaultConfig {
+        /*
+         * Mesmo nome de pacote definido no AndroidManifest.xml. Este deve
+         * ser único para cada app.
+         * */
+        applicationId "com.example.macas.codemenu"
+
+        /* Android API mínima atendida pelo app. */
+        minSdkVersion 15
+
+        /* Android API level utilizada para testar o app. */
+        targetSdkVersion 26
+
+        /* Versão do app. */
+        versionCode 1
+
+        /* Versão do app em formato amigável ao usuário. */
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    /*
+     * O bloco a seguir permite a definição de mais de um tipo de app a ser
+     * construído. Dois são definidos por padrão: release e debug. Este
+     * último não é apresentado, mas é o utilizado em testes no ambiente de
+     * desenvolvimento.
+     * */
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+/*
+ * O bloco a seguir contém a definição de dependências internas e externas
+ * para a construção deste módulo.
+ * */
+dependencies {
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+
+    compile 'com.android.support:recyclerview-v7:26.+'
+
+/*
+    compile 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.3.2'
+    */
+}
+
