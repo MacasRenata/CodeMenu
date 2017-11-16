@@ -22,11 +22,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-/*
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
 
-*/
+import java.io.IOException;
+import java.util.ArrayList;
+
+
 /**
  * Created by macas on 02/10/17.
  */
@@ -40,48 +40,32 @@ public class webservice {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.menu_principal);
 
-            URL url = new URL("http://pokeapi.co/api/v2/pokemon/1/");
+            class JsonRequest {
+                public String request(String uri) throws Exception {
 
-            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setRequestMethod("GET");
-            urlConnection.connect();
+                    URL url = new URL(uri);
+                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                    InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                    BufferedReader r = new BufferedReader(new InputStreamReader(in));
 
-            InputStream inputStream = urlConnection.getInputStream();
-            if (inputStream == null) {
-                return null;
-            }
+                    StringBuilder jsonString = new StringBuilder();
+                    String line;
+                    while ((line = r.readLine()) != null) {
+                        jsonString.append(line);
+                    }
 
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-            String linha;
-            StringBuffer buffer = new StringBuffer();
-            while ((linha = reader.readLine()) != null) {
-                buffer.append(linha + "\n");
-            }
+                    urlConnection.disconnect();
 
-            if (buffer.length() == 0) {
-                return null;
-            }
-
-            if (urlConnection != null) {
-                urlConnection.disconnect();
-            }
-
-            if (reader != null) {
-
-                try {
-                    reader.close();
-                } catch (final IOException e) {
-                    Log.e("Erro", "Erro fechando o stream", e);
+                    return jsonString.toString();
                 }
-
             }
 
         }
 
+        public void get() {
+        }
     }
 
-
 }
-
 
 

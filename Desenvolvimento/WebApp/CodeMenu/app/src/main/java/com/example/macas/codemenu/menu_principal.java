@@ -4,18 +4,10 @@ package com.example.macas.codemenu;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
-import com.example.macas.codemenu.download_dados;
-import com.example.macas.codemenu.webservice;
-
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.widget.Button;
 import android.view.View;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.net.ssl.HttpsURLConnection;
 
 
 public class menu_principal extends AppCompatActivity {
@@ -27,7 +19,15 @@ public class menu_principal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_principal);
 
+    public void signUpActivity(View view){
+        Intent intent = new Intent(this, SignUpActivity.class);
+        startActivity( intent );
+    }
+
+
         AsyncTask<Void, Void, Void> url = new download_dados().execute();  //download dos dados do webservice
+
+
 
         btCardapio = (Button) findViewById(R.id.btCardapio);
 
@@ -45,6 +45,7 @@ public class menu_principal extends AppCompatActivity {
                 finish();
             }
         });
+
 
         btPedido = (Button) findViewById(R.id.btPedido);
 

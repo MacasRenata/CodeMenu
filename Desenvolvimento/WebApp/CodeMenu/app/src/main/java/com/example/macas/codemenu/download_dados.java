@@ -1,55 +1,72 @@
 package com.example.macas.codemenu;
 
-import com.example.macas.codemenu.webservice;
-
 import android.os.AsyncTask;
+import com.example.macas.codemenu.menu_principal;
+import com.example.macas.codemenu.pedidos;
+import com.example.macas.codemenu.webservice;
+import com.example.macas.codemenu.cardapio_ref;
+
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.app.AlertDialog;
-import android.app.ListActivity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 /**
  * Created by macas on 13/11/17.
  */
 
-public class download_dados extends AsyncTask<Void, Void, Void> {
+public class download_dados extends AsyncTask<Object, Object, String> {
+
+    private webservice.MainActivity<menu_principal> activity;
+
+    public download_dados(menu_principal activity ){
+        this.activity = new webservice<menu_principal>( activity );
+    }
 
     @Override
-    protected Void doInBackground(Void... params) {
+    protected void onPreExecute() {
+        super.onPreExecute();
+        activity.get().lockFields( true );
+    }
+
+
+    @Override
+    protected String doInBackground(void item ) {
         // Esta etapa é usada para executar a tarefa em background ou fazer a chamada           para o webservice
+
+        try{
+            String jsonString = JsonRequest.request( activity.get().getUriRequest() );
+            Gson gson = new Gson();
+
+            return gson.fromJson(jsonString, Address.class);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    /*
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         try {
-            URL url = new URL("http://pokeapi.co/api/v2/pokemon/1/");
+            URL url = new URL("http://");
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
@@ -66,6 +83,7 @@ public class download_dados extends AsyncTask<Void, Void, Void> {
             }
 
             return buffer.toString();
+
         } catch (Exception e) {
             e.printStackTrace();
             if (urlConnection != null) {
@@ -84,119 +102,26 @@ public class download_dados extends AsyncTask<Void, Void, Void> {
         return null;
     }
 
+    */
+
     @Override
-    protected void onPostExecute(String dados) {
+    protected void onPostExecute(String id) {
         // Faça alguma coisa com os dados
 
-        protected void onListItemClick(ListView l, View v, int position, long id) {
-            super.onListItemClick(l, v, position, id);
+        super.onPostExecute(menu_principal);
 
-            Trend trend = (Trend)l.getAdapter().getItem(position);
+        if( activity.get() != null ){
+            activity.get().lockFields( false );
 
-            Intent it = new Intent(Intent.ACTION_VIEW, Uri.parse(trend.url));
-            startActivity(it);
-        }
-
-        protected List<Trend> doInBackground(String... params) {
-            String urlString = params[0];
-
-            HttpClient httpclient = new DefaultHttpClient();
-            HttpGet httpget = new HttpGet(urlString);
-
-            try {
-                HttpResponse response = httpclient.execute(httpget);
-
-                HttpEntity entity = response.getEntity();
-
-                if (entity != null) {
-                    InputStream instream = entity.getContent();
-
-                    String json = toString(instream);
-                    instream.close();
-
-                    List<Trend> trends = getTrends(json);
-
-                    return trends;
-                }
-            } catch (Exception e) {
-                Log.e("DEVMEDIA", "Falha ao acessar Web service", e);
+            if( menu_principal != null ){
+                activity.get().setMenu_pricipalFields(address);
             }
-            return null;
-        }
-
-        private List<Trend> getTrends(String jsonString) {
-
-            List<Trend> trends = new ArrayList<Trend>();
-
-            try {
-                JSONArray trendLists = new JSONArray(jsonString);
-                JSONObject trendList = trendLists.getJSONObject(0);
-                JSONArray trendsArray = trendList.getJSONArray("trends");
-
-                JSONObject trend;
-
-                for (int i = 0; i < trendsArray.length(); i++) {
-                    trend = new JSONObject(trendsArray.getString(i));
-
-                    Log.i("DEVMEDIA", "nome=" + trend.getString("name"));
-
-                    Trend objetoTrend = new Trend();
-                    objetoTrend.name = trend.getString("name");
-                    objetoTrend.url = trend.getString("url");
-
-                    trends.add(objetoTrend);
-                }
-            } catch (JSONException e) {
-                Log.e("DEVMEDIA", "Erro no parsing do JSON", e);
-            }
-
-            return trends;
-        }
-
-
-    protected void onPostExecute(List<Trend> result) {
-        super.onPostExecute(result);
-        dialog.dismiss();
-        if (result.size() > 0) {
-            ArrayAdapter<Trend> adapter = new ArrayAdapter<Trend>(
-                    ConsumirJsonTwitterActivity.this,
-                    android.R.layout.simple_list_item_1, result);
-            setListAdapter(adapter);
-
-        } else {
-            AlertDialog.Builder builder = new AlertDialog.Builder(
-                    ConsumirJsonTwitterActivity.this).setTitle("Atenção")
-                    .setMessage("Não foi possivel acessar essas informções...")
-                    .setPositiveButton("OK", null);
-            builder.create().show();
         }
     }
 
-    private String toString(InputStream is) throws IOException {
 
-        byte[] bytes = new byte[1024];
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        int lidos;
-        while ((lidos = is.read(bytes)) > 0) {
-            baos.write(bytes, 0, lidos);
-        }
-        return new String(baos.toByteArray());
-    }
-}
 
 }
-
-class Trend {
-    String name;
-    String url;
-
-    @Override
-    public String toString() {
-        return name;
-    }
-}
-
-    }
 
     @Override
     protected void onPreExecute () {
