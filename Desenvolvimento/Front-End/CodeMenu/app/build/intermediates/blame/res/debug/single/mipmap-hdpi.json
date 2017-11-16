@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/macas/Git/CodeMenu/Desenvolvimento/Front-End/CodeMenu/app/build/intermediates/res/merged/debug/mipmap-hdpi/ic_launcher.png",
+        "source": "/home/macas/Git/CodeMenu/Desenvolvimento/Front-End/CodeMenu/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/macas/Git/CodeMenu/Desenvolvimento/Front-End/CodeMenu/app/build/intermediates/res/merged/debug/mipmap-hdpi/ic_launcher_round.png",
+        "source": "/home/macas/Git/CodeMenu/Desenvolvimento/Front-End/CodeMenu/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
+    }
+]
