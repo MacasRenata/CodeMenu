@@ -34,17 +34,17 @@ public class Comanda implements Serializable {
     private int status;
     private double valor;
     
-    @OneToMany
-    private List<Pedido>pedidos;
-    PedidoDAO pedidosDAO = new PedidoDAO();
+    //@OneToMany
+   
+   // PedidoDAO pedidosDAO = new PedidoDAO();
 
-    public Comanda(Long id, Date hora, int status, double valor, List<Pedido> pedidos) {
+   /*public Comanda(Long id, Date hora, int status, double valor, List<Pedido> pedidos) {
         this.id = id;
         this.hora = hora;
         this.status = status;
         this.valor = valor;
         this.pedidos = pedidosDAO.listar();
-    }
+    }*/
     
   
     
@@ -80,19 +80,6 @@ public class Comanda implements Serializable {
 
     public void setValor(double valor) {
         this.valor = valor;
-    } 
-
-    public List<Pedido> getPedidos() {
-        return pedidos;
-    }
-
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
-    }
-
-  
-    
-    
-    
+    }                 
     
 }

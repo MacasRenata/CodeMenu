@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ComandaControle {
     
     @Autowired
-    ComandaDAO comandaDAO = new ComandaDAO();
+    ComandaDAO comandaDAO = new ComandaDAO();       
     
     @GET
     @Path("/buscaComandaId")
@@ -73,8 +73,9 @@ public class ComandaControle {
        return comanda;
     }*/    
     
-    public double somaPedidos (Comanda comanda) {
-        List<Pedido> pedidos = comanda.getPedidos();
+    private double somaPedidos (Comanda comanda) {  
+        PedidoDAO pedidosDao = new PedidoDAO();
+        List<Pedido> pedidos = pedidosDao.listar();
         double valor = 0;
         for (Pedido pedido : pedidos) {
             if(pedido.getStatus() != 5){
