@@ -1,5 +1,7 @@
 package com.example.macas.codemenu;
 
+import com.example.macas.codemenu.webservice2;
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +16,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        /*
+        String url = "http://8080/";
+        getWebservice2(url);
+        */
+
 
 
         btCardapio = (Button) findViewById(R.id.btCardapio);
