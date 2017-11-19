@@ -1,0 +1,3 @@
+com\grupo3\codemenu\modelo\Cliente.class
+com\grupo3\codemenu\persistencia\HibernateUtil.class
+com\grupo3\codemenu\filtro\FiltroTransacoesHibernate.class
