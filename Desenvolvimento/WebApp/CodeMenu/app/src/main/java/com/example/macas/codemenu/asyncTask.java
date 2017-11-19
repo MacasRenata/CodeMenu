@@ -2,28 +2,18 @@ package com.example.macas.codemenu;
 
 import android.os.AsyncTask;
 
-
-import android.os.Bundle;
-
-import android.support.v7.app.AppCompatActivity;
-import android.content.Intent;
-import android.widget.Button;
-import android.view.View;
-
 /**
- * Created by macas on 13/11/17.
+ * Created by macas on 19/11/17.
  */
 
-public class download_dados extends AsyncTask<Object, Object, String> {
+public class asyncTask extends AsyncTask<Object, Object, String> {
 
 
-
-/*
     @Override
     protected String doInBackground(Object... params) {
         // Esta etapa é usada para executar a tarefa em background ou fazer a chamada           para o webservice
 
-
+/*
 
         try{
             String jsonString = JsonRequest.request( activity.get().getUriRequest() );
@@ -33,11 +23,11 @@ public class download_dados extends AsyncTask<Object, Object, String> {
         }
         catch (Exception e){
             e.printStackTrace();
-        }
+        } */
 
         return null;
-        }
-     */
+    }
+
 /*
 
         HttpURLConnection urlConnection = null;
@@ -96,10 +86,6 @@ public class download_dados extends AsyncTask<Object, Object, String> {
         } */
     }
 
-    @Override
-    protected String doInBackground(Object... params) {
-        return null;
-    }
 
     @Override
     protected void onPreExecute() {

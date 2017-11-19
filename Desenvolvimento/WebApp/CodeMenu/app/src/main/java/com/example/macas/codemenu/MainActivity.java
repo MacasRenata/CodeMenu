@@ -1,33 +1,24 @@
 package com.example.macas.codemenu;
 
-
-import android.os.AsyncTask;
-import android.os.Bundle;
-
-import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
-import android.widget.Button;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
+public class MainActivity extends AppCompatActivity {
 
-public class menu_principal extends AppCompatActivity {
-
-    Button btCardapio, btPedido;
+    Button btCardapio, btPedido, btPagamento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu_principal);
-
-
-      //  AsyncTask<Void, Void, Void> url = new download_dados.execute();  //download dos dados do webservice
-
+        setContentView(R.layout.activity_main);
 
 
         btCardapio = (Button) findViewById(R.id.btCardapio);
 
         btCardapio.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 chamaCardapio();
@@ -35,9 +26,10 @@ public class menu_principal extends AppCompatActivity {
 
             void chamaCardapio() {
                 Intent intent = new Intent();
-                intent.setClass(menu_principal.this, cardapio_beb.class);
+                intent.setClass(MainActivity.this, PageCardapio.class);
                 startActivity(intent);
                 finish();
+
             }
         });
 
@@ -52,13 +44,28 @@ public class menu_principal extends AppCompatActivity {
 
             void chamaPedido() {
                 Intent intent = new Intent();
-                intent.setClass(menu_principal.this, pedidos.class);
+                intent.setClass(MainActivity.this, PagePedido.class);
                 startActivity(intent);
                 finish();
+
             }
         });
 
+        btPagamento = (Button) findViewById(R.id.btPagamento);
 
+        btPagamento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chamaPagamento();
+            }
+
+            void chamaPagamento() {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, PagePagamento.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
     }
-
 }

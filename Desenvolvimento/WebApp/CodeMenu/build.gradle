@@ -29,7 +29,7 @@ allprojects {
          * Repositórios onde o Gradle buscará as dependências
          * de API de todos os módulos do projeto.
          * */
-        /*google()*/
+         /*google()*/
         jcenter()
     }
 }
