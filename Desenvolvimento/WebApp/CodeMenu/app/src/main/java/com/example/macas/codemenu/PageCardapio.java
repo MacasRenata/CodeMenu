@@ -20,23 +20,24 @@ public class PageCardapio extends AppCompatActivity {
     ListView lv;
     String id;
 
+    Button btConfirma, btSair;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.page_cardapio);
-
+/*
         Bundle extras = getIntent().getExtras();
         id = extras.getString("id");
-        lv = (ListView)findViewById(R.id.item);
+        lv = (ListView)findViewById(R.id.listItem);
         cardapio rede = new cardapio();
-        rede.context = this;
+       // rede.context = this;
         rede.execute();
     }
 
     public boolean onCreateOptionsMenu(Menu item) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.id.btConfirma, onOptionsItemSelected(item));
+      //  getMenuInflater().inflate(R.id.listItem, onOptionsItemSelected(item));  pq nao adiciona item selecionado na lista??
         return true;
     }
 
@@ -55,6 +56,42 @@ public class PageCardapio extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    } */
+
+        btConfirma = (Button) findViewById(R.id.btConfirma);
+
+        btConfirma.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chamaCardapio();
+            }
+
+            void chamaCardapio() {
+                Intent intent = new Intent();
+                intent.setClass(PageCardapio.this, PagePedido.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
+        btSair = (Button) findViewById(R.id.btSair);
+
+        btSair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chamaCardapio();
+            }
+
+            void chamaCardapio() {
+                Intent intent = new Intent();
+                intent.setClass(PageCardapio.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
     }
 
 }
