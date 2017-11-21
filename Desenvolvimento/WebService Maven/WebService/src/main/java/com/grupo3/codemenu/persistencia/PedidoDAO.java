@@ -8,6 +8,7 @@ package com.grupo3.codemenu.persistencia;
 
 import com.grupo3.codemenu.modelo.Pedido;
 import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
@@ -33,5 +34,14 @@ public class PedidoDAO{
     public List<Pedido> listar() {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
         return sessao.createCriteria(Pedido.class).list();
-    }    
+    }  
+    
+    public List<Pedido> listarPorComanda(int idAtual) {
+        Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+        Query consulta= sessao.createQuery("FROM Pedido WHERE id_comanda = :consultaId");  
+        consulta.setInteger("consultaId", idAtual);
+        //consulta.setMaxResults(10);        
+        List<Pedido> res = consulta.list();    
+        return res;
+    }       
 }

@@ -52,6 +52,7 @@ public class ComandaControle {
     @Path("/addComanda")
     @Consumes("application/json")
     public ResponseEntity adicionaComanda(@RequestBody Comanda comanda) throws Exception{
+        comanda.setValor(0.00);
         comandaDAO.salvar(comanda);
         return new ResponseEntity(comanda, HttpStatus.OK);
     }          
@@ -68,10 +69,10 @@ public class ComandaControle {
     
     private double somaPedidos (Comanda comanda) {  
         PedidoDAO pedidosDao = new PedidoDAO();
-        List<Pedido> pedidos = pedidosDao.listar();
+        List<Pedido> pedidos = pedidosDao.listarPorComanda(comanda.getId());
         double valor = 0;
         for (Pedido pedido : pedidos) {
-            if(pedido.getStatus() != 5){
+            if(pedido.getStatus() !=5){
                 valor = valor + pedido.getValor(); 
             }
         }

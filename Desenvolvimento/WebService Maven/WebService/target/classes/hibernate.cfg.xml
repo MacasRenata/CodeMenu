@@ -47,6 +47,7 @@ Contributor(s):
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.connection.password">123456</property>
     <mapping class="com.grupo3.codemenu.modelo.Cliente"/>
     <mapping class="com.grupo3.codemenu.modelo.Estabelecimento"/>
     <mapping class="com.grupo3.codemenu.modelo.Mesa"/>

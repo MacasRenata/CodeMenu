@@ -12,7 +12,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -40,7 +39,7 @@ public class Pedido implements Serializable {
     private Mesa mesa;    
     @ManyToOne
     @JoinColumn(name ="id_item")
-    private Item[] itens;    
+    private Item itens;    
     @ManyToOne
     @JoinColumn(name ="id_comanda")
     private Comanda comanda;      
@@ -104,11 +103,11 @@ public class Pedido implements Serializable {
         this.mesa = mesa;
     }
 
-    public Item[] getItens() {
+    public Item getItens() {
         return itens;
     }
 
-    public void setItens(Item[] itens) {
+    public void setItens(Item itens) {
         this.itens = itens;
     }
 

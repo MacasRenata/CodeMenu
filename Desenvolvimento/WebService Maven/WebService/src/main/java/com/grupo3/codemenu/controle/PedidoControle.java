@@ -5,7 +5,9 @@
  */
 package com.grupo3.codemenu.controle;
 
+import com.grupo3.codemenu.modelo.Item;
 import com.grupo3.codemenu.modelo.Pedido;
+import com.grupo3.codemenu.persistencia.ItemDAO;
 import com.grupo3.codemenu.persistencia.PedidoDAO;
 import java.util.List;
 import javax.ws.rs.Consumes;
@@ -49,7 +51,8 @@ public class PedidoControle {
     @POST
     @Path("/addPedido")
     @Consumes("application/json")
-    public ResponseEntity adicionaPedido(@RequestBody Pedido pedido) throws Exception{
+    public ResponseEntity adicionaPedido(@RequestBody Pedido pedido) throws Exception{  
+        pedido.setValor(somaItens(pedido));
         pedidoDAO.salvar(pedido);
         return new ResponseEntity(pedido, HttpStatus.OK);
     }        
@@ -57,8 +60,15 @@ public class PedidoControle {
     @PUT
     @Path("/updatePedido")
     @Consumes("application/json")
-    public ResponseEntity atualizaPedido(@RequestBody Pedido pedido) throws Exception {
+    public ResponseEntity atualizaPedido(@RequestBody Pedido pedido) throws Exception { 
+        pedido.setValor(somaItens(pedido));
         pedidoDAO.atualizar(pedido);             
         return new ResponseEntity(pedido, HttpStatus.OK);
+    }    
+    
+    public double somaItens(Pedido pedido){        
+        ItemDAO itemDao = new ItemDAO();
+        Item valor = itemDao.carregar(pedido.getItens().getId());              
+        return valor.getPreco() * pedido.getQuantidade();        
     }
 }

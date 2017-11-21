@@ -77,5 +77,6 @@ public class ItemControle {
     public ResponseEntity atualizaItem(@RequestBody Item item) throws Exception {
         itemDAO.atualizar(item);             
         return new ResponseEntity(item, HttpStatus.OK);
-    }
+    }    
+  
 }
