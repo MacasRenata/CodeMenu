@@ -13,6 +13,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@Path("/cliente")
+@Path("cliente")
 public class ClienteControle {   
     
     
@@ -34,17 +35,17 @@ public class ClienteControle {
     ClienteDAO clienteDAO = new ClienteDAO();     
     
     @GET
-    @Path("/listaClientes")
+    @Path("listaClientes")
     @Produces("application/json")
     public List<Cliente> listaClientes() throws Exception{        
         return clienteDAO.listar();        
     }            
   
     @GET
-    @Path("/clienteId")
+    @Path("clienteId/{param}")
     @Produces("application/json")
-    public Cliente buscaClienteId(Cliente cliente) throws Exception{       
-        return clienteDAO.carregar(cliente.getId());
+    public Cliente buscaClienteId(@PathParam("param") int id) throws Exception{       
+        return clienteDAO.carregar(id);
     }       
     
     @POST

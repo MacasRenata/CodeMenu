@@ -15,6 +15,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,18 +36,19 @@ public class PedidoControle {
     PedidoDAO pedidoDAO = new PedidoDAO();
     
     @GET
-    @Path("/pedidoId")
-    @Produces("application/json")
-    public Pedido buscaPedidoId(Pedido pedido) throws Exception{       
-        return pedidoDAO.carregar(pedido.getId());
-    }
-    
-    @GET
-    @Path("/listaPedidos")
+    @Path("listaPedidos")
     @Produces("application/json")
     public List<Pedido> listaPedidos() throws Exception{       
         return pedidoDAO.listar();
     }
+    
+    @GET
+    @Path("pedidoId/{param}")
+    @Produces("application/json")
+    public Pedido buscaPedidoId(@PathParam("param") int id) throws Exception{       
+        return pedidoDAO.carregar(id);
+    }    
+    
     
     @POST
     @Path("/addPedido")

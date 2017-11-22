@@ -15,6 +15,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,26 +28,26 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Marcio
  */
 @RestController
-@Path("/comanda")
+@Path("comanda")
 public class ComandaControle {
     
     @Autowired
     ComandaDAO comandaDAO = new ComandaDAO();       
     
-    @GET
-    @Path("/listaComandas")
-    @Produces("application/json")
-    public Comanda buscaComandaId(Comanda comanda) throws Exception{             
-      //return comandaDAO.carregar(comanda.getId());
-      return comandaDAO.carregar(comanda.getId());
-    }
     
     @GET
-    @Path("/comandaId")
+    @Path("listacomandas")
     @Produces("application/json")
     public List<Comanda> listaComandas() throws Exception{       
         return comandaDAO.listar();
     }
+    
+    @GET
+    @Path("comandaId/{param}")
+    @Produces("application/json")
+    public Comanda buscaComandaId(@PathParam("param") int id) throws Exception{            
+      return comandaDAO.carregar(id);
+    }       
     
     @POST
     @Path("/addComanda")

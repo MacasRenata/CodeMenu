@@ -14,6 +14,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,32 +29,26 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Marcio
  */
 @RestController
-@Path("/Item")
+@Path("item")
 public class ItemControle {
     
     @Autowired
     ItemDAO itemDAO = new ItemDAO();
     
     @GET
-    @Path("/itemId")
-    @Produces("application/json")
-    public Item buscaItemId(Item item) throws Exception{              
-         return itemDAO.carregar(item.getId());
-    }
-    
-    /*@GET
-    @Path("/itens")
-    @RequestMapping(value = "/itens", method = RequestMethod.GET,headers="Accept=application/json")
-    public List<Item> getItemTipo(Item item) throws Exception{       
-        return itemDAO.buscarPorTipo(item);
-    }*/
-    
-    @GET
-    @Path("/listaItens")
+    @Path("listaItens")
     @Produces("application/json")
     public List<Item> listaItens() throws Exception{       
         return itemDAO.listar();
     }
+    
+    @GET
+    @Path("itemId/{param}")
+    @Produces("application/json")
+    public Item buscaItemId(@PathParam("param") int id) throws Exception{              
+         return itemDAO.carregar(id);
+    }         
+    
     
     @POST
     @Path("/addItem")

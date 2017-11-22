@@ -14,6 +14,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,25 +27,25 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Marcio
  */
 @RestController
-@Path("/estab")
+@Path("estab")
 public class EstabelecimentoControle {
     
     @Autowired
     EstabelecimentoDAO estabelecimentoDAO = new EstabelecimentoDAO();
     
     @GET
-    @Path("/estabId")
-    @Produces("application/json")
-    public Estabelecimento buscaEstabelecimentoId(Estabelecimento estabelecimento) throws Exception{       
-        return estabelecimentoDAO.carregar(estabelecimento.getId());
-    }
-    
-    @GET
-    @Path("/listaEstabs")
+    @Path("listaEstabs")
     @Produces("application/json")
     public List<Estabelecimento> listaEstabelecimentos() throws Exception{       
         return estabelecimentoDAO.listar();
     }
+    
+    @GET
+    @Path("estabId/{param}")
+    @Produces("application/json")
+    public Estabelecimento buscaEstabelecimentoId(@PathParam("param") int id) throws Exception{       
+        return estabelecimentoDAO.carregar(id);
+    }        
     
     @POST
     @Path("/addEstab")
