@@ -35,7 +35,7 @@ public class ClienteControle {
     ClienteDAO clienteDAO = new ClienteDAO();     
     
     @GET
-    @Path("listaClientes")
+    @Path("listaCliente")
     @Produces("application/json")
     public List<Cliente> listaClientes() throws Exception{        
         return clienteDAO.listar();        
