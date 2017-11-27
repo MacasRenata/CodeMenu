@@ -9,11 +9,10 @@ package com.grupo3.codemenu.persistencia;
 import com.grupo3.codemenu.modelo.Mesa;
 import java.util.List;
 import org.hibernate.Session;
-import org.springframework.stereotype.Repository;
 
 
 
-@Repository("mesaDao")
+//@Repository("mesaDao")
 public class MesaDAO{
 
 

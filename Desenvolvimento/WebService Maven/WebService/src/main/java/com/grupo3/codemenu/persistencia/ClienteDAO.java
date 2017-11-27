@@ -10,8 +10,8 @@ package com.grupo3.codemenu.persistencia;
 import com.grupo3.codemenu.modelo.Cliente;
 import java.util.List;
 import org.hibernate.Query;
-import org.springframework.stereotype.Repository;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 
 @Repository("clienteDao")

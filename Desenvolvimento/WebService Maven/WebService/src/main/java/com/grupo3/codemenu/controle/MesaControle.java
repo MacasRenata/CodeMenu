@@ -5,6 +5,7 @@
  */
 package com.grupo3.codemenu.controle;
 
+import com.google.gson.Gson;
 import com.grupo3.codemenu.modelo.Mesa;
 import com.grupo3.codemenu.persistencia.MesaDAO;
 import java.util.List;
@@ -16,6 +17,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,26 +52,34 @@ public class MesaControle {
     }            
     
     @POST
-    @Path("/addMesa")
+    @Path("addMesa")
     @Consumes("application/json")
-    public ResponseEntity adicionaMesa(@RequestBody Mesa mesa) throws Exception{
+    public Response adicionaMesa(String json) throws Exception{
+        Gson gson = new Gson();
+        Mesa mesa = new Mesa();
+        mesa = gson.fromJson(json, Mesa.class);
         mesaDAO.salvar(mesa);
-        return new ResponseEntity(mesa, HttpStatus.OK);
+        return Response.status(Response.Status.OK).build();   
     }      
    
     @DELETE
-    @Path("/deletaMesa")
+    @Path("deletaMesa/{param}")
     @Consumes("application/json")
-    public ResponseEntity deletaMesa(@RequestBody Mesa mesa) throws Exception {
+    public Response deletaMesa(@PathParam("param") int id) throws Exception {
+        Mesa mesa = new Mesa();
+        mesa.setId(id);
         mesaDAO.remover(mesa);                        
-        return new ResponseEntity(mesa,HttpStatus.OK);             
+        return Response.status(Response.Status.OK).build();                      
     }        
    
     @PUT
-    @Path("/updateMesa")
+    @Path("updateMesa")
     @Consumes("application/json")
-    public ResponseEntity atualizaMesa(@RequestBody Mesa mesa) throws Exception {
+    public Response atualizaMesa(String json) throws Exception {
+        Gson gson = new Gson();
+        Mesa mesa = new Mesa();
+        mesa = gson.fromJson(json, Mesa.class);
         mesaDAO.atualizar(mesa);
-        return new ResponseEntity(mesa, HttpStatus.OK);
+        return Response.status(Response.Status.OK).build();   
     }
 }

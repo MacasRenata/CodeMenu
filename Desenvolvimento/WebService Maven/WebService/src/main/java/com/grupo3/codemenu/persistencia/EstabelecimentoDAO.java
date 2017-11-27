@@ -9,11 +9,10 @@ package com.grupo3.codemenu.persistencia;
 import com.grupo3.codemenu.modelo.Estabelecimento;
 import java.util.List;
 import org.hibernate.Session;
-import org.springframework.stereotype.Repository;
 
 
 
-@Repository("estabelecimentoDao")
+//@Repository("estabelecimentoDao")
 public class EstabelecimentoDAO{
     
     public void salvar(Estabelecimento estabelecimento) {

@@ -9,11 +9,10 @@ package com.grupo3.codemenu.persistencia;
 import com.grupo3.codemenu.modelo.Comanda;
 import java.util.List;
 import org.hibernate.Session;
-import org.springframework.stereotype.Repository;
 
 
 
-@Repository("comandaDao")
+//@Repository("comandaDao")
 public class ComandaDAO{
 
     public void salvar(Comanda comanda) {

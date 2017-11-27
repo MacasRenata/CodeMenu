@@ -1,3 +1,16 @@
+com\grupo3\codemenu\persistencia\EstabelecimentoDAO.class
 com\grupo3\codemenu\modelo\Cliente.class
+com\grupo3\codemenu\modelo\Estabelecimento.class
+com\grupo3\codemenu\persistencia\ItemDAO.class
+com\grupo3\codemenu\persistencia\MesaDAO.class
+com\grupo3\codemenu\controle\ApplicationConfig.class
+com\grupo3\codemenu\persistencia\ComandaDAO.class
+com\grupo3\codemenu\modelo\Pedido.class
+com\grupo3\codemenu\modelo\Item.class
+com\grupo3\codemenu\modelo\Mesa.class
 com\grupo3\codemenu\persistencia\HibernateUtil.class
 com\grupo3\codemenu\filtro\FiltroTransacoesHibernate.class
+com\grupo3\codemenu\persistencia\PedidoDAO.class
+com\grupo3\codemenu\controle\GenericResource.class
+com\grupo3\codemenu\modelo\Comanda.class
+com\grupo3\codemenu\persistencia\ClienteDAO.class

@@ -1,4 +1,5 @@
 C:\Users\Marcio\Documents\GitHub\CodeMenu\Desenvolvimento\WebService Maven\WebService\src\main\java\com\grupo3\codemenu\controle\EstabelecimentoControle.java
+C:\Users\Marcio\Documents\GitHub\CodeMenu\Desenvolvimento\WebService Maven\WebService\src\main\java\com\grupo3\codemenu\controle\GenericResource.java
 C:\Users\Marcio\Documents\GitHub\CodeMenu\Desenvolvimento\WebService Maven\WebService\src\main\java\com\grupo3\codemenu\filtro\FiltroTransacoesHibernate.java
 C:\Users\Marcio\Documents\GitHub\CodeMenu\Desenvolvimento\WebService Maven\WebService\src\main\java\com\grupo3\codemenu\persistencia\EstabelecimentoDAO.java
 C:\Users\Marcio\Documents\GitHub\CodeMenu\Desenvolvimento\WebService Maven\WebService\src\main\java\com\grupo3\codemenu\modelo\Item.java
@@ -13,6 +14,7 @@ C:\Users\Marcio\Documents\GitHub\CodeMenu\Desenvolvimento\WebService Maven\WebSe
 C:\Users\Marcio\Documents\GitHub\CodeMenu\Desenvolvimento\WebService Maven\WebService\src\main\java\com\grupo3\codemenu\persistencia\HibernateUtil.java
 C:\Users\Marcio\Documents\GitHub\CodeMenu\Desenvolvimento\WebService Maven\WebService\src\main\java\com\grupo3\codemenu\persistencia\MesaDAO.java
 C:\Users\Marcio\Documents\GitHub\CodeMenu\Desenvolvimento\WebService Maven\WebService\src\main\java\com\grupo3\codemenu\modelo\Mesa.java
+C:\Users\Marcio\Documents\GitHub\CodeMenu\Desenvolvimento\WebService Maven\WebService\src\main\java\com\grupo3\codemenu\controle\ApplicationConfig.java
 C:\Users\Marcio\Documents\GitHub\CodeMenu\Desenvolvimento\WebService Maven\WebService\src\main\java\com\grupo3\codemenu\controle\ItemControle.java
 C:\Users\Marcio\Documents\GitHub\CodeMenu\Desenvolvimento\WebService Maven\WebService\src\main\java\com\grupo3\codemenu\modelo\Estabelecimento.java
 C:\Users\Marcio\Documents\GitHub\CodeMenu\Desenvolvimento\WebService Maven\WebService\src\main\java\com\grupo3\codemenu\controle\PedidoControle.java

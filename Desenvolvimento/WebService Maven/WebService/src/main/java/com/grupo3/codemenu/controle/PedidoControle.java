@@ -5,6 +5,7 @@
  */
 package com.grupo3.codemenu.controle;
 
+import com.google.gson.Gson;
 import com.grupo3.codemenu.modelo.Item;
 import com.grupo3.codemenu.modelo.Pedido;
 import com.grupo3.codemenu.persistencia.ItemDAO;
@@ -17,6 +18,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,21 +53,27 @@ public class PedidoControle {
     
     
     @POST
-    @Path("/addPedido")
+    @Path("addPedido")
     @Consumes("application/json")
-    public ResponseEntity adicionaPedido(@RequestBody Pedido pedido) throws Exception{  
+    public Response adicionaPedido(String json) throws Exception{  
+        Gson gson = new Gson();
+        Pedido pedido = new Pedido();
+        pedido = gson.fromJson(json, Pedido.class);
         pedido.setValor(somaItens(pedido));
         pedidoDAO.salvar(pedido);
-        return new ResponseEntity(pedido, HttpStatus.OK);
+        return Response.status(Response.Status.OK).build(); 
     }        
     
     @PUT
-    @Path("/updatePedido")
+    @Path("updatePedido")
     @Consumes("application/json")
-    public ResponseEntity atualizaPedido(@RequestBody Pedido pedido) throws Exception { 
+    public Response atualizaPedido(String json) throws Exception { 
+        Gson gson = new Gson();
+        Pedido pedido = new Pedido();
+        pedido = gson.fromJson(json, Pedido.class);
         pedido.setValor(somaItens(pedido));
         pedidoDAO.atualizar(pedido);             
-        return new ResponseEntity(pedido, HttpStatus.OK);
+        return Response.status(Response.Status.OK).build();
     }    
     
     public double somaItens(Pedido pedido){        

@@ -9,11 +9,10 @@ package com.grupo3.codemenu.persistencia;
 import com.grupo3.codemenu.modelo.Item;
 import java.util.List;
 import org.hibernate.Session;
-import org.springframework.stereotype.Repository;
 
 
 
-@Repository("itemDao")
+//@Repository("itemDao")
 public class ItemDAO{
   
     public void salvar(Item item) {

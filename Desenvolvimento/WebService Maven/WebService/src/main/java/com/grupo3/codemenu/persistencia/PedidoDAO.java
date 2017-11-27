@@ -10,10 +10,9 @@ import com.grupo3.codemenu.modelo.Pedido;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.springframework.stereotype.Repository;
 
 
-@Repository("pedidoDao")
+//@Repository("pedidoDao")
 public class PedidoDAO{
 
     public void salvar(Pedido pedido) {
