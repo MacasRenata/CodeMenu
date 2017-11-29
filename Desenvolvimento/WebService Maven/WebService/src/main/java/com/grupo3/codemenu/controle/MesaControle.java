@@ -73,7 +73,7 @@ public class MesaControle {
    
     @DELETE
     @Path("deletaMesa/{param}")
-    @Consumes("application/json")
+    @Produces("application/json")
     public Response deletaMesa(@PathParam("param") int id) throws Exception {
         Mesa mesa = new Mesa();
         mesa.setId(id);

@@ -51,7 +51,7 @@ public class PedidoControle {
     
     @POST
     @Path("addPedido")
-    @Consumes("application/json")
+    @Produces("application/json")
     public Response adicionaPedido(String json) throws Exception{  
         Gson gson = new Gson();
         Pedido pedido = new Pedido();
