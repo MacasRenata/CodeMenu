@@ -42,12 +42,12 @@ public class MesaDAO{
         return sessao.createCriteria(Mesa.class).list();
     }
     
-    public Mesa consultaPorIdentificacao(String identifica){
+   /* public Mesa consultaPorIdentificacao(String identifica){
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
         Query consulta= sessao.createQuery("FROM Mesa WHERE identificacao = :consulta"); 
         consulta.setString("consulta", identifica);        
         return (Mesa) consulta.uniqueResult();
-    }       
+    }  */     
     
     public Mesa consultaPorMesaEstab(String identifica, int idEstab) {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
