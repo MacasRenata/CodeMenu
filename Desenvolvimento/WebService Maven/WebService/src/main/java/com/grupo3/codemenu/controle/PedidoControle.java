@@ -20,9 +20,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -66,14 +63,18 @@ public class PedidoControle {
     
     @PUT
     @Path("updatePedido")
-    @Consumes("application/json")
+    @Produces("application/json")
     public Response atualizaPedido(String json) throws Exception { 
         Gson gson = new Gson();
         Pedido pedido = new Pedido();
         pedido = gson.fromJson(json, Pedido.class);
-        pedido.setValor(somaItens(pedido));
-        pedidoDAO.atualizar(pedido);             
-        return Response.status(Response.Status.OK).build();
+        Pedido pedidoBanco = pedidoDAO.carregar(pedido.getId());
+        if(pedidoBanco != null){
+            pedido.setValor(somaItens(pedido));
+            pedidoDAO.atualizar(pedido);             
+            return Response.status(Response.Status.OK).build();
+        }
+        return Response.status(Response.Status.NO_CONTENT).build();
     }    
     
     public double somaItens(Pedido pedido){        

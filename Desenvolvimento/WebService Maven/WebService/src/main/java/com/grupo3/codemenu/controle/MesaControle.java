@@ -6,6 +6,7 @@
 package com.grupo3.codemenu.controle;
 
 import com.google.gson.Gson;
+import com.grupo3.codemenu.modelo.Estabelecimento;
 import com.grupo3.codemenu.modelo.Mesa;
 import com.grupo3.codemenu.persistencia.MesaDAO;
 import java.util.List;
@@ -53,13 +54,21 @@ public class MesaControle {
     
     @POST
     @Path("addMesa")
-    @Consumes("application/json")
+    @Produces("application/json")
     public Response adicionaMesa(String json) throws Exception{
         Gson gson = new Gson();
         Mesa mesa = new Mesa();
         mesa = gson.fromJson(json, Mesa.class);
-        mesaDAO.salvar(mesa);
-        return Response.status(Response.Status.OK).build();   
+        Mesa mesaBanco = mesaDAO.consultaPorMesaEstab(mesa.getIdentificacao(),
+                                 mesa.getEstabelecimento().getId());
+        if(mesaBanco != null){
+                return Response.status(Response.Status.NO_CONTENT).build();
+               
+       }else{
+            mesaDAO.salvar(mesa);
+           return Response.status(Response.Status.OK).build();  
+           
+       }          
     }      
    
     @DELETE
@@ -74,12 +83,17 @@ public class MesaControle {
    
     @PUT
     @Path("updateMesa")
-    @Consumes("application/json")
+    @Produces("application/json")
     public Response atualizaMesa(String json) throws Exception {
         Gson gson = new Gson();
         Mesa mesa = new Mesa();
         mesa = gson.fromJson(json, Mesa.class);
-        mesaDAO.atualizar(mesa);
-        return Response.status(Response.Status.OK).build();   
+        Mesa mesaBanco = mesaDAO.carregar(mesa.getId());         
+        if(mesaBanco != null){
+            mesaDAO.atualizar(mesa);
+            return Response.status(Response.Status.OK).build();   
+        }else{
+            return Response.status(Response.Status.NO_CONTENT).build();
+        }                        
     }
 }

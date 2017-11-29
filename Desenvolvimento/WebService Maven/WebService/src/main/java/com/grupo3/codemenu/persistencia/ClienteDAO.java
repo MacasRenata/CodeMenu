@@ -43,7 +43,7 @@ public class ClienteDAO{
         Query consulta= sessao.createQuery("FROM Cliente WHERE telefone = :consulta"); 
         consulta.setString("consulta", telefone);        
         return (Cliente) consulta.uniqueResult();
-    }
+    }                 
 }
 
 

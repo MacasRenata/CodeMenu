@@ -75,13 +75,18 @@ public class ItemControle {
     
     @PUT
     @Path("updateItem")
-    @Consumes("application/json")
-    public ResponseEntity atualizaItem(String json) throws Exception {
+    @Produces("application/json")
+    public Response atualizaItem(String json) throws Exception {
         Gson gson = new Gson();
         Item item = new Item();
         item = gson.fromJson(json, Item.class);
-        itemDAO.atualizar(item);             
-        return new ResponseEntity(item, HttpStatus.OK);
+        Item itemBanco = itemDAO.carregar(item.getId());
+        if(itemBanco != null){
+            itemDAO.atualizar(item);             
+            return Response.status(Response.Status.OK).build();
+        }else{
+            return Response.status(Response.Status.NO_CONTENT).build();
+        }        
     }    
   
 }

@@ -64,7 +64,7 @@ public class ComandaControle {
     
     @PUT
     @Path("updateComanda")
-    @Produces("application/json")    
+    @Produces("application/json")
     public Response atualizaComanda(String json) throws Exception {
         Gson gson = new Gson();
         Comanda comanda= new Comanda(); 

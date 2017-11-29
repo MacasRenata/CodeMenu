@@ -68,7 +68,13 @@ public class ClienteControle {
         Gson gson = new Gson(); 
         Cliente cliente= new Cliente(); 
         cliente = gson.fromJson(json, Cliente.class);
-        clienteDAO.atualizar(cliente);
-        return Response.status(Response.Status.OK).build();   
+        Cliente clienteBanco = clienteDAO.carregar(cliente.getId());
+        Cliente clienteBanco2 = clienteDAO.consultaPorTelefone(cliente.getTelefone());
+        if(clienteBanco != null && clienteBanco2 == null){
+            clienteDAO.atualizar(cliente);
+            return Response.status(Response.Status.OK).build();  
+        }else{
+            return Response.status(Response.Status.NO_CONTENT).build();
+        }            
     }      
 }

@@ -73,12 +73,17 @@ public class EstabelecimentoControle {
     
     @PUT
     @Path("updateEstab")
-    @Consumes("application/json")
+    @Produces("application/json")
     public Response atualizaEstabelecimento(String json) throws Exception {
         Gson gson = new Gson(); 
         Estabelecimento estabelecimento = new Estabelecimento();
         estabelecimento = gson.fromJson(json, Estabelecimento.class);
-        estabelecimentoDAO.atualizar(estabelecimento);
-        return Response.status(Response.Status.OK).build();   
+        Estabelecimento estabBanco = estabelecimentoDAO.carregar(estabelecimento.getId());
+        if(estabBanco !=null){
+            estabelecimentoDAO.atualizar(estabelecimento);
+            return Response.status(Response.Status.OK).build();   
+        }else{
+            return Response.status(Response.Status.NO_CONTENT).build();
+        }        
     }
 }

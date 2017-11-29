@@ -8,6 +8,7 @@ package com.grupo3.codemenu.persistencia;
 
 import com.grupo3.codemenu.modelo.Mesa;
 import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 
@@ -39,6 +40,21 @@ public class MesaDAO{
     public List<Mesa> listar() {
         Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
         return sessao.createCriteria(Mesa.class).list();
+    }
+    
+    public Mesa consultaPorIdentificacao(String identifica){
+        Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+        Query consulta= sessao.createQuery("FROM Mesa WHERE identificacao = :consulta"); 
+        consulta.setString("consulta", identifica);        
+        return (Mesa) consulta.uniqueResult();
+    }       
+    
+    public Mesa consultaPorMesaEstab(String identifica, int idEstab) {
+        Session sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+        Query consulta= sessao.createQuery("FROM Mesa WHERE identificacao = :identifica AND id_estabelecimento = :idEstab");
+        consulta.setString("identifica", identifica);
+        consulta.setInteger("idEstab", idEstab);
+        return (Mesa) consulta.uniqueResult();        
     }
     
 }
