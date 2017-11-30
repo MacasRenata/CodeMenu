@@ -22,10 +22,10 @@ public class cardapioActivity extends AppCompatActivity {
             ListView preco = (ListView) findViewById(R.id.listItem);
             ListView urlImagem = (ListView) findViewById(R.id.listItem);
 
-            nome.setOnClickListener(cardapio.getNome());
-            tipo.setAdapter(cardapios.getTipo());
-            preco.setAdapter(cardapios.getPreco());
-            urlImagem.setAdapter(cardapios.getUrlImagem());
+            nome.setFilterText(cardapio.class.getName());
+            tipo.setFilterText(cardapio.class.getName());
+            preco.setFilterText(cardapio.class.getName());
+            urlImagem.setFilterText(cardapio.class.getName());
 
         }
 
