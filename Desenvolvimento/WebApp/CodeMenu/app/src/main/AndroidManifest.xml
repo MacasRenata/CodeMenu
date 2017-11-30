@@ -11,19 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".MainActivityMenu">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <activity android:name=".MainActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-
-        <activity android:name=".PageCardapio" />
-        <activity android:name=".PagePedido" />
-        <activity android:name=".PagePagamento" />
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".cardapioPage" />
+        <activity android:name=".pedidoPage" />
+        <activity android:name=".pagamentoPage" />
+        <activity android:name=".cardapioActivity"></activity>
     </application>
 
 </manifest>

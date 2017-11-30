@@ -3,7 +3,7 @@ package com.example.macas.codemenu;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class PagePagamento extends AppCompatActivity {
+public class pagamentoPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

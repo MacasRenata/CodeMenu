@@ -1,6 +1,6 @@
 package com.example.macas.codemenu;
 
-import com.example.macas.codemenu.webservice2;
+
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivityMenu extends AppCompatActivity {
 
     Button btCardapio, btPedido, btPagamento;
 
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
             void chamaCardapio() {
                 Intent intent = new Intent();
-                intent.setClass(MainActivity.this, PageCardapio.class);
+                intent.setClass(MainActivityMenu.this, cardapioPage.class);
                 startActivity(intent);
                 finish();
 
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
             void chamaPedido() {
                 Intent intent = new Intent();
-                intent.setClass(MainActivity.this, PagePedido.class);
+                intent.setClass(MainActivityMenu.this, pedidoPage.class);
                 startActivity(intent);
                 finish();
 
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
             void chamaPagamento() {
                 Intent intent = new Intent();
-                intent.setClass(MainActivity.this, PagePagamento.class);
+                intent.setClass(MainActivityMenu.this, pagamentoPage.class);
                 startActivity(intent);
                 finish();
 

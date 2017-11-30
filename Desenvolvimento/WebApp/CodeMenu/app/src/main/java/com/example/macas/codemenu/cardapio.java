@@ -1,22 +1,5 @@
 package com.example.macas.codemenu;
 
-import android.os.AsyncTask;
-
-import android.content.Intent;
-import android.os.AsyncTask;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.content.Intent;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 
@@ -28,7 +11,7 @@ public class cardapio  /* extends AsyncTask<Void, Void, String>  */ {
     private double preco;
     private String urlImagem;
 
-    MainActivity context;
+    MainActivityMenu context;
     private String retorno;
     ArrayList<cardapio> item;
 
@@ -75,7 +58,7 @@ public class cardapio  /* extends AsyncTask<Void, Void, String>  */ {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-           ArrayAdapter<cardapio> ad = new PageCardapio(context, R.layout.page_cardapio, item);
+           ArrayAdapter<cardapio> ad = new cardapioPage(context, R.layout.page_cardapio, item);
             context.lv.setAdapter(ad);
           context.lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                @Override

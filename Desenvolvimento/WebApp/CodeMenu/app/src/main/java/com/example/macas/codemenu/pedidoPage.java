@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class PagePedido extends AppCompatActivity {
+public class pedidoPage extends AppCompatActivity {
 
     Button btSolicitar, btSair;
 
@@ -26,7 +26,7 @@ public class PagePedido extends AppCompatActivity {
 
             void chamaCardapio() {
                 Intent intent = new Intent();
-                intent.setClass(PagePedido.this, PageCardapio.class);
+                intent.setClass(pedidoPage.this, cardapioPage.class);
                 startActivity(intent);
                 finish();
 
@@ -43,7 +43,7 @@ public class PagePedido extends AppCompatActivity {
 
             void chamaCardapio() {
                 Intent intent = new Intent();
-                intent.setClass(PagePedido.this, MainActivity.class);
+                intent.setClass(pedidoPage.this, MainActivityMenu.class);
                 startActivity(intent);
                 finish();
 

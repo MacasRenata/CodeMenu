@@ -1,21 +1,15 @@
 package com.example.macas.codemenu;
 
 
-import com.example.macas.codemenu.cardapio;
-
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.app.Activity;
 
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.ListView;
-import android.widget.Toast;
 
-public class PageCardapio extends AppCompatActivity {
+public class cardapioPage extends AppCompatActivity {
 
     ListView lv;
     String id;
@@ -68,7 +62,7 @@ public class PageCardapio extends AppCompatActivity {
 
             void chamaCardapio() {
                 Intent intent = new Intent();
-                intent.setClass(PageCardapio.this, PagePedido.class);
+                intent.setClass(cardapioPage.this, pedidoPage.class);
                 startActivity(intent);
                 finish();
 
@@ -85,7 +79,7 @@ public class PageCardapio extends AppCompatActivity {
 
             void chamaCardapio() {
                 Intent intent = new Intent();
-                intent.setClass(PageCardapio.this, MainActivity.class);
+                intent.setClass(cardapioPage.this, MainActivityMenu.class);
                 startActivity(intent);
                 finish();
 

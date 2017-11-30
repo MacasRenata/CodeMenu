@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.macas.codemenu.PagePagamento">
+    tools:context="com.example.macas.codemenu.pagamentoPage">
 
     <TextView
         android:id="@+id/txtComanda"
