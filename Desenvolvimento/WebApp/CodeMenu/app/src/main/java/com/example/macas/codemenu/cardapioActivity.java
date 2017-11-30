@@ -21,7 +21,7 @@ public class cardapioActivity extends AppCompatActivity {
             ListView preco = (ListView) findViewById(R.id.listItem);
             ListView urlImagem = (ListView) findViewById(R.id.listItem);
 
-            nome.setOnClickListener(cardapio.getNome());
+            nome.setAdapter(cardapio.getNome());
             tipo.setText(cardapio.getTipo());
             preco.setText(cardapio.getPreco());
             urlImagem.setText(cardapio.getUrlImagem());
