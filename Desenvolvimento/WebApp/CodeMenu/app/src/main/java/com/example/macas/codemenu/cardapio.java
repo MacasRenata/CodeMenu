@@ -3,7 +3,7 @@ package com.example.macas.codemenu;
 import java.util.ArrayList;
 
 
-public class cardapio  /* extends AsyncTask<Void, Void, String>  */ {
+public class cardapio {
 
     private Long id;
     private String nome;
@@ -12,8 +12,8 @@ public class cardapio  /* extends AsyncTask<Void, Void, String>  */ {
     private String urlImagem;
 
     MainActivityMenu context;
-    private String retorno;
-    ArrayList<cardapio> item;
+    private String newCardapio;
+    ArrayList<cardapio> ListaCardapio;
 
 
     public cardapio(){
@@ -29,51 +29,6 @@ public class cardapio  /* extends AsyncTask<Void, Void, String>  */ {
 
     }
 
-    /*
-
-    @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
-    }
-
-    protected String doInBackground(Void... params) {
-       webservice2 client = new webservice2("http://8080.COdeMenu.java/cardapio/item/"+context.id);
-        retorno = client.JsonRequest();
-        return retorno;
-    }
-
-    protected void onPostExecute(String results) {
-        if (results != null) {
-            String id;
-            String nome;
-            item = new ArrayList<cardapio>();
-            try { //Aqui funciona
-                JSONObject obj = new JSONObject(results);
-                for (int i = 0; i < obj.length(); i++) {
-                    cardapio.execute(item); = obj.getJSONArray("" + i);
-                   JSONObject obj2 = new JSONObject(item);
-                    nome= obj2.getString("nome");
-                    JSONObject.add(new cardapio(obj2.getString("nome"), obj2.getString("id")));
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-           ArrayAdapter<cardapio> ad = new cardapioPage(context, R.layout.page_cardapio, item);
-            context.lv.setAdapter(ad);
-          context.lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-               @Override
-               public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                   Intent intencao = new Intent(context, ListView.class);
-                   intencao.putExtra("id", item.get(position).cod);
-                   intencao.putExtra("img", context.id);
-                   context.btCardapio.getAccessibilityClassName(cardapio).toString();
-               }
-          });
-
-        }
-
-    }
-*/
 
     public long getId() {
         return id;

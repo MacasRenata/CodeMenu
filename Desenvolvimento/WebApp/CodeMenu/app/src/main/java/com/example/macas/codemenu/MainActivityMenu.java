@@ -21,26 +21,28 @@ import android.widget.ListView;
 
 public class MainActivityMenu extends AppCompatActivity {
 
+    Button btCardapio, btPedido, btPagamento;
+
     private static final int REQUEST_CREATE = 1;
 
-    private class NoteLoaderTask extends AsyncTask<Void, Void, List<Note>> {
+    private class NoteLoaderTask extends AsyncTask<Void, Void, List<cardapio>> {
 
         @Override
-        public List<Note> doInBackground(Void... params) {
-            NoteDao dao = new NoteDao();
-            List<Note> notes = null;
+        public List<cardapio> doInBackground(Void... params) {
+            cardapioDAO dao = new cardapioDAO();
+            List<cardapio> notes = null;
 
             notes = dao.readAllNotes();
             return notes;
         }
 
         @Override
-        public void onPostExecute(List<Note> notes) {
+        public void onPostExecute(List<cardapio> notes) {
             notesAdapter.addAll(notes);
         }
     }
 
-    private ArrayAdapter<Note> notesAdapter;
+    private ArrayAdapter<cardapio> notesAdapter;
     private ListView notesList;
     private Button createButton;
 
@@ -55,112 +57,45 @@ public class MainActivityMenu extends AppCompatActivity {
         this.notesList.setOnItemClickListener(new ListView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                noteItemClicked(position);
+                setBtCardapio(position);
             }
         });
 
-        this.createButton = (Button) findViewById(R.id.createButton);
+        this.createButton = (Button) findViewById(R.id.btCardapio);
         this.createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createNewNote();
+                createNewCardapio();
             }
         });
 
         new NoteLoaderTask().execute();
     }
 
-    private void noteItemClicked(int position) {
-        Note note = notesAdapter.getItem(position);
-        Intent intent = new Intent(this, ViewNoteActivity.class);
+    private void setBtCardapio(int position) {
+        cardapio note = notesAdapter.getItem(position);
+        Intent intent = new Intent(this, cardapioPage.class);
 
-        intent.putExtra("note", note);
+        intent.putExtra("cardapio", cardapio);
         startActivity(intent);
     }
 
-    private void createNewNote() {
-        Intent intent = new Intent(this, CreateNoteActivity.class);
+    private void createNewCardapio() {
+        Intent intent = new Intent(this, cardapioActivity.class);
 
         startActivityForResult(intent, REQUEST_CREATE);
     }
 
     @Override
-    public void onActivityResult (int requestCode, int resultCode,
-                                  Intent data) {
+    public void onActivityResult(int requestCode, int resultCode,
+                                 Intent data) {
         if ((requestCode == REQUEST_CREATE)
-                && (resultCode == Activity.RESULT_OK)) {
-            Note newNote = (Note) data.getSerializableExtra("note");
+                && (resultCode == MainActivityMenu.RESULT_OK)) {
+            cardapio newNote = (cardapio) data.getSerializableExtra("cardapio");
 
             this.notesAdapter.add(newNote);
         }
     }
+    
 
-    /*
-
-    Button btCardapio, btPedido, btPagamento;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        /*
-        String url = "http://8080/";
-        getWebservice2(url);
-
-
-
-
-        btCardapio = (Button) findViewById(R.id.btCardapio);
-
-        btCardapio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                chamaCardapio();
-            }
-
-            void chamaCardapio() {
-                Intent intent = new Intent();
-                intent.setClass(MainActivityMenu.this, cardapioPage.class);
-                startActivity(intent);
-                finish();
-
-            }
-        });
-
-
-        btPedido = (Button) findViewById(R.id.btPedido);
-
-        btPedido.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                chamaPedido();
-            }
-
-            void chamaPedido() {
-                Intent intent = new Intent();
-                intent.setClass(MainActivityMenu.this, pedidoPage.class);
-                startActivity(intent);
-                finish();
-
-            }
-        });
-
-        btPagamento = (Button) findViewById(R.id.btPagamento);
-
-        btPagamento.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                chamaPagamento();
-            }
-
-            void chamaPagamento() {
-                Intent intent = new Intent();
-                intent.setClass(MainActivityMenu.this, pagamentoPage.class);
-                startActivity(intent);
-                finish();
-
-            }
-        });
-    }*/
 }
