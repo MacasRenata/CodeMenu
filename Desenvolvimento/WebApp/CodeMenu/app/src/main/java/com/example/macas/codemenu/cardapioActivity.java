@@ -2,6 +2,7 @@ package com.example.macas.codemenu;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -15,16 +16,16 @@ public class cardapioActivity extends AppCompatActivity {
         setContentView(R.layout.page_cardapio);
 
 
-            cardapio cardapio = (cardapio) super.getIntent().getSerializableExtra("cardapio");
+            cardapio cardapios = (cardapio) super.getIntent().getSerializableExtra("cardapio");
             ListView nome = (ListView) findViewById(R.id.listItem);
             ListView tipo = (ListView) findViewById(R.id.listItem);
             ListView preco = (ListView) findViewById(R.id.listItem);
             ListView urlImagem = (ListView) findViewById(R.id.listItem);
 
-            nome.setAdapter(cardapio.getNome());
-            tipo.setText(cardapio.getTipo());
-            preco.setText(cardapio.getPreco());
-            urlImagem.setText(cardapio.getUrlImagem());
+            nome.setOnClickListener(cardapio.getNome());
+            tipo.setAdapter(cardapios.getTipo());
+            preco.setAdapter(cardapios.getPreco());
+            urlImagem.setAdapter(cardapios.getUrlImagem());
 
         }
 
