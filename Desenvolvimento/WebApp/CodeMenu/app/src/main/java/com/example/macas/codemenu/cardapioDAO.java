@@ -35,8 +35,8 @@ public class cardapioDAO {
         this.service = retrofit.create(cardapioService.class);
     }
 
-    public List<ContactsContract.CommonDataKinds.Note> readAllNotes() {
-        Call<List<cardapio>> call = this.service.listaCardapio();
+    public List<cardapio> readAllNotes() {   // mudança do '<ContactsContract.CommonDataKinds.Note>'
+        Call<List<cardapio>> call = this.service.listCardapio();
         List<cardapio> notes = null;
 
         try {
@@ -57,11 +57,11 @@ public class cardapioDAO {
         } catch (IOException exc){
             Log.e(TAG, "IO error during REST operation.", exc);
         }
-        return cardapio;
+        return notes;
     }
 
     public cardapio createNote(cardapio note) {
-        Call<cardapio> call = this.service.cardapioActivity(cardapio);
+        Call<cardapio> call = this.service.createCardapio(note);  //alterado o tipo
         cardapio newNote = null;
 
         try {
@@ -82,6 +82,6 @@ public class cardapioDAO {
         } catch (IOException exc) {
             Log.e(TAG, "IO error during REST operation.", exc);
         }
-        return newCardapio;
+        return newNote;
     }
 }

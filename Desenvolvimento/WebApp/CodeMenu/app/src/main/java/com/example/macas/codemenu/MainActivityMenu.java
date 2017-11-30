@@ -18,6 +18,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import java.util.List;
+
 
 public class MainActivityMenu extends AppCompatActivity {
 
@@ -30,10 +32,10 @@ public class MainActivityMenu extends AppCompatActivity {
         @Override
         public List<cardapio> doInBackground(Void... params) {
             cardapioDAO dao = new cardapioDAO();
-            List<cardapio> notes = null;
+            List<cardapio> cardapios = null;
 
-            notes = dao.readAllNotes();
-            return notes;
+            cardapios = dao.readAllNotes();
+            return cardapios;
         }
 
         @Override
@@ -52,7 +54,7 @@ public class MainActivityMenu extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         this.notesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
-        this.notesList = (ListView) findViewById(R.id.notesList);
+        this.notesList = (ListView) findViewById(R.id.listItem);
         this.notesList.setAdapter(notesAdapter);
         this.notesList.setOnItemClickListener(new ListView.OnItemClickListener() {
             @Override
@@ -76,7 +78,7 @@ public class MainActivityMenu extends AppCompatActivity {
         cardapio note = notesAdapter.getItem(position);
         Intent intent = new Intent(this, cardapioPage.class);
 
-        intent.putExtra("cardapio", cardapio);
+        intent.putExtra("cardapio", cardapio.class);
         startActivity(intent);
     }
 
