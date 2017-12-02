@@ -35,9 +35,7 @@
 4. Sistema Android em um smartphone ou emulador em um outro sistema operacional
 </code></pre>
 <h1>Instalando Dependências Necessárias (GNU/Linux)</h1>
-<pre><code>1. Instale o JDK/SDK no seu Sistema Operacional:
-</code></pre>
-  <pre><code>
+<pre><code><h2>1. Instale o JDK/SDK no seu Sistema Operacional:</h2>
   - Copiar o arquivo de instalação para o diretório de sua preferência com o comando abaixo
   </code></pre>
    <blockquote>
@@ -55,21 +53,19 @@
    <blockquote>
     $ tar -zvxf jdk-<versão>.tar.gz
       </blockquote>
-    <pre><code>
-Outra maneira de instalar o JDK no Linux é usando o programa apt-get presente nas distribuições Linux. O apt-get é um programa que permite a instalação e a atualização de pacotes (programas e bibliotecas) de maneira simples e fácil. A Listagem 2 mostra como instalar o JDK usando o apt-get.
-</code></pre>
+  <p>Outra maneira de instalar o JDK no Linux é usando o programa apt-get presente nas distribuições Linux. O apt-get é um programa que permite a instalação e a atualização de pacotes (programas e bibliotecas) de maneira simples e fácil. A Listagem 2 mostra como instalar o JDK usando o apt-get.
+</p>
  <pre><code>
-Listagem 2. Instalação do JDK no Linux usando apt-get
+<p> Instalação do JDK no Linux usando apt-get </p>
 </code></pre>
    <blockquote>
     $ sudo add-apt-repository ppa:webupd8team/java
     $ sudo apt-get update
     $ sudo apt-get install oracle-java8-installer
       </blockquote>
-    <pre><code>
-O comando add-apt-repository adiciona o local ppa:webupd8team/java no repositório do apt-get. Em seguida o repositório é atualizado com o comando apt-get update. O comando apt-get install irá instalar o pacote JDK 8 da Oracle.
-</code></pre>
-<pre><code>2. Instale o Android Studio no seu Sistema Operacional:
+    <p>O comando add-apt-repository adiciona o local ppa:webupd8team/java no repositório do apt-get. Em seguida o repositório é atualizado com o comando apt-get update. O comando apt-get install irá instalar o pacote JDK 8 da Oracle.
+</p>
+       <pre><code><h2>2. Instale o Android Studio no seu Sistema Operacional:</h2>
 </code></pre>
 <pre><code>
 Passo 1. Abra um terminal usando o Dash ou pressionando as teclas Ctrl+Alt+T;
@@ -98,6 +94,8 @@ sudo apt-get install android-studio-preview
 </blockquote>
 <pre><code>
 Para instalar o Android Studio no Ubuntu e derivados, faça o seguinte:
+</code></pre>
+<pre><code>
 Passo 1. Abra um terminal usando o Dash ou pressionando as teclas Ctrl+Alt+T;
 Passo 2. Se ainda não tiver, adicione o repositório do programa com este comando ou use esse tutorial;
 </code></pre>
@@ -116,14 +114,14 @@ Passo 4. Agora instale o programa com o comando:
 sudo apt-get install android-studio
   </blockquote> 
 <h1>Instalando Dependências Necessárias (Windows)</h1>
-<pre><code>1. Instale o JDK/SDK no seu Sistema Operacional:
+    <pre><code><h2>1. Instale o JDK/SDK no seu Sistema Operacional:</h2>
 </code></pre>
 <pre><code>
 1.Após o download do arquivo de instalação ter sido concluído, a instalação do JDK é feita executando-se o programa de instalação. 
 2.O nome do arquivo de instalação para o Windows tem o formato jdk-<versão>-windows-<arquitetura>.exe, onde <versão> é a versão do JDK e arquitetura pode ser 32 ou 64 bits, por exemplo, jdk-8u66-windows-x64.exe. 
 3.Para instalar o JDK no Windows, executar o programa de instalação e clicar no botão Next em todas as telas apresentadas. O processo é simples e rápido.
 </code></pre>
-<pre><code>2. Instale o Android Studio no seu Sistema Operacional:
+<pre><code><h2>2. Instale o Android Studio no seu Sistema Operacional:<h2>
 </code></pre>
 <pre><code>
 1.Execute o arquivo .exe que você baixou .
