@@ -11,7 +11,7 @@ import retrofit2.http.POST;
  * Created by macas on 30/11/17.
  */
 
-public class cardapioService {
+public interface cardapioService {
 
     @GET("cardapio")
     @Headers("x-apikey: a99c54bd6bfa3fb07ef171c1a43f51f29785e")
