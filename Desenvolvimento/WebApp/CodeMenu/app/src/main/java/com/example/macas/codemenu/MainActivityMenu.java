@@ -96,6 +96,6 @@ public class MainActivityMenu extends AppCompatActivity {
             this.notesAdapter.add(newNote);
         }
     }
-    
+
 
 }
