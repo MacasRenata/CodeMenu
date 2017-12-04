@@ -7,7 +7,7 @@ public class cardapio {
 
     private Long id;
     private String nome;
-    private int tipo;
+    private String tipo;
     private double preco;
     private String urlImagem;
 
@@ -20,7 +20,7 @@ public class cardapio {
         super();
     }
 
-    public cardapio(Long id, String nome, int tipo, double preco, String urlImagem) {
+    public cardapio(Long id, String nome, String tipo, double preco, String urlImagem) {
         this.id = id;
         this.nome = nome;
         this.tipo = tipo;
@@ -46,11 +46,11 @@ public class cardapio {
         this.nome = nome;
     }
 
-    public int getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(int tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
