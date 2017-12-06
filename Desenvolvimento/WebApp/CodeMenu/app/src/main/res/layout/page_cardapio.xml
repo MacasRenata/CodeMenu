@@ -8,24 +8,24 @@
 
     <Button
         android:id="@+id/btConfirma"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="148dp"
+        android:layout_height="46dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:text="Confirma"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.167"
+        app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.946" />
+        app:layout_constraintVertical_bias="0.959" />
 
     <Button
         android:id="@+id/btSair"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="153dp"
+        android:layout_height="47dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -35,10 +35,12 @@
         app:layout_constraintLeft_toRightOf="@+id/btConfirma"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.946" />
+        app:layout_constraintVertical_bias="0.955"
+        app:layout_constraintHorizontal_bias="0.52"
+        tools:layout_editor_absoluteY="436dp" />
 
     <TextView
-        android:id="@+id/txtCardapio"
+        android:id="@+id/tvTitulo"
         android:layout_width="349dp"
         android:layout_height="25dp"
         android:layout_marginBottom="8dp"
@@ -54,7 +56,7 @@
         app:layout_constraintVertical_bias="0.016" />
 
     <ListView
-        android:id="@+id/listItem"
+        android:id="@+id/listaItem"
         android:layout_width="367dp"
         android:layout_height="363dp"
         android:layout_marginBottom="8dp"
