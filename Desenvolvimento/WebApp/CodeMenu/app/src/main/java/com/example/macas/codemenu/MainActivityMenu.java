@@ -39,32 +39,32 @@ public class MainActivityMenu extends AppCompatActivity {
         }
 
         @Override
-        public void onPostExecute(List<cardapio> notes) {
-            notesAdapter.addAll(notes);
+        public void onPostExecute(List<cardapio> cardapios) {
+            cardapioAdapter.addAll(cardapios);
         }
     }
 
-    private ArrayAdapter<cardapio> notesAdapter;
-    private ListView notesList;
-    private Button createButton;
+    private ArrayAdapter<cardapio> cardapioAdapter;
+    private ListView cardapiosList;
+    //private Button createButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.notesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
-        this.notesList = (ListView) findViewById(R.id.listItem);
-        this.notesList.setAdapter(notesAdapter);
-        this.notesList.setOnItemClickListener(new ListView.OnItemClickListener() {
+        this.cardapioAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
+        this.cardapiosList = (ListView) findViewById(R.id.listaItem);
+        this.cardapiosList.setAdapter(cardapioAdapter);
+        this.cardapiosList.setOnItemClickListener(new ListView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 setBtCardapio(position);
             }
         });
 
-        this.createButton = (Button) findViewById(R.id.btCardapio);
-        this.createButton.setOnClickListener(new View.OnClickListener() {
+        this.btCardapio = (Button) findViewById(R.id.btCardapio);
+        this.btCardapio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 createNewCardapio();
@@ -75,7 +75,7 @@ public class MainActivityMenu extends AppCompatActivity {
     }
 
     private void setBtCardapio(int position) {
-        cardapio note = notesAdapter.getItem(position);
+        cardapio note = cardapioAdapter.getItem(position);
         Intent intent = new Intent(this, cardapioPage.class);
 
         intent.putExtra("cardapio", cardapio.class);
@@ -95,7 +95,7 @@ public class MainActivityMenu extends AppCompatActivity {
                 && (resultCode == MainActivityMenu.RESULT_OK)) {
             cardapio newNote = (cardapio) data.getSerializableExtra("cardapio");
 
-            this.notesAdapter.add(newNote);
+            this.cardapioAdapter.add(newNote);
         }
     }
 

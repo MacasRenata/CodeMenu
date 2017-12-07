@@ -17,10 +17,10 @@ public class cardapioActivity extends AppCompatActivity {
 
 
             cardapio cardapios = (cardapio) super.getIntent().getSerializableExtra("cardapio");
-            ListView nome = (ListView) findViewById(R.id.listItem);
-            ListView tipo = (ListView) findViewById(R.id.listItem);
-            ListView preco = (ListView) findViewById(R.id.listItem);
-            ListView urlImagem = (ListView) findViewById(R.id.listItem);
+            ListView nome = (ListView) findViewById(R.id.listaItem);
+            ListView tipo = (ListView) findViewById(R.id.listaItem);
+            ListView preco = (ListView) findViewById(R.id.listaItem);
+            ListView urlImagem = (ListView) findViewById(R.id.listaItem);
 
             nome.setFilterText(cardapio.class.getName());
             tipo.setFilterText(cardapio.class.getName());
