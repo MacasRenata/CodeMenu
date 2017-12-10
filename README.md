@@ -12,7 +12,7 @@
 2. Gabriel Liesenfield
 3. Cristian Weber
 4. Marcio Zimmermann
-5. Anderson 
+5. Anderson de Melo Machado
 </code></pre>
 <p>Instituição(ões) Responsável(eis):</p>
 <pre><code>1. Instituto Federal de Educação Ciência e Tecnologia do Rio Grande do Sul, Campus Restinga
