@@ -3,7 +3,7 @@ package com.example.macas.codemenu;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-
+// MODELO DA ARQUITETURA REST COM OS OBJETOS DA LISTA EM SERIALIZABLE PARA CONVERTER EM STRING PARA O GSON
 public class cardapio implements Serializable {
 
     private static final long serialVersionUID = 1L;

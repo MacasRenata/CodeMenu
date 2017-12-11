@@ -38,10 +38,10 @@ public class pedidoPage extends AppCompatActivity {
         btSair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chamaCardapio();
+                chamaMenuPrincipal();
             }
 
-            void chamaCardapio() {
+            void chamaMenuPrincipal() {
                 Intent intent = new Intent();
                 intent.setClass(pedidoPage.this, MainActivityMenu.class);
                 startActivity(intent);

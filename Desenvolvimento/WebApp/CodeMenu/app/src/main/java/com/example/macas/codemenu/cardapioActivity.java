@@ -15,6 +15,8 @@ public class cardapioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.page_cardapio);
 
+        // VIEW PARA SETAR OS OBJETOS DA LISTA COM A CLASSE XML CARDAPIOPAGE
+
 
             cardapio cardapios = (cardapio) super.getIntent().getSerializableExtra("cardapio");
             ListView nome = (ListView) findViewById(R.id.listaItem);

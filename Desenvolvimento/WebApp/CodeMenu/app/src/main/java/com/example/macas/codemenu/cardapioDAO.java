@@ -19,9 +19,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class cardapioDAO {
 
+    //METODO PARA CONEXAO COM WEBSERVICE USANDO RETROFIT
+
     private static final String TAG = cardapioDAO.class.getSimpleName();
 
-    private static final String BASE_URL = "https://localhost:8080/WebService/webresources/item";
+    private static final String BASE_URL = "http://localhost:8084/CodeMenuWeb/";
+            //"http://localhost:8080/WebService/webresources/item";
 
     private cardapioService service;
 
@@ -35,7 +38,9 @@ public class cardapioDAO {
         this.service = retrofit.create(cardapioService.class);
     }
 
-    public List<cardapio> listarCardapio() {   // mudança do '<ContactsContract.CommonDataKinds.Note>'
+    //METODO PARA @POST CHAMAR A LISTA DE ITENS DO WEBSERVICE COM A CLASSE CARDAPIOSERVICE
+
+    public List<cardapio> listarCardapio() {
         Call<List<cardapio>> call = this.service.getListaCardapio("method");
         List<cardapio> cardapios = null;
 
@@ -60,8 +65,11 @@ public class cardapioDAO {
         return cardapios;
     }
 
+
+    //METODO PARA @GET PARA ENVIAR LISTA DE PEDIDOS NA LISTA DE ITENS COM A CLASSE CARDAPIOSERVICE
+
     public cardapio enviarPedido(cardapio enviarPed) {
-        Call<cardapio> call = this.service.getListaItem("ctrlCar");  //alterado o tipo
+        Call<cardapio> call = this.service.getListaItem("ctrlCar");
         cardapio newCardapio = null;
 
         try {

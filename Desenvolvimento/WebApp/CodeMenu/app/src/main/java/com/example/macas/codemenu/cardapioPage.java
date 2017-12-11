@@ -4,29 +4,21 @@ package com.example.macas.codemenu;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.view.menu.ListMenuItemView;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-
 import java.util.List;
-import java.util.ListIterator;
-
-import retrofit2.Call;
-
-import static android.R.id.list;
 import android.widget.ArrayAdapter;
 
 
 public class cardapioPage extends AppCompatActivity {
     private static final int REQUEST_CREATE = 1;
 
-    private class NoteLoaderTask extends AsyncTask<Void, Void, List<cardapio>> {
+    //METODO DE CONEXAO COM O CARDAPIOSERVICE PARA LISTAR OS ITENS @POST
+    private class cardapioTask extends AsyncTask<Void, Void, List<cardapio>> {
 
         @Override
         public List<cardapio> doInBackground(Void... params) {
@@ -47,10 +39,34 @@ public class cardapioPage extends AppCompatActivity {
     private ListView listaItem;
     private Button btConfirma;
 
+    Button btSair;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.page_cardapio);
+
+
+        btSair = (Button)findViewById(R.id.btSair);
+
+        btSair.setOnClickListener(new View.OnClickListener()
+
+        {
+            @Override
+            public void onClick (View v){
+                chamaMenuPrincipal();
+            }
+
+            void chamaMenuPrincipal() {
+                Intent intent = new Intent();
+                intent.setClass(cardapioPage.this, MainActivityMenu.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
+        //METODO PARA ENVIAR PELO BOTÃO CONFIRMAR OS ITENS NA LISTA DE PEDIDOS PARA O WEBSERVICE E CARDAPIOSERVICE
 
         this.cardapioArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
         this.listaItem = (ListView) findViewById(R.id.listaItem);
@@ -58,7 +74,7 @@ public class cardapioPage extends AppCompatActivity {
         this.listaItem.setOnItemClickListener(new ListView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                noteItemClicked(position);
+                ItemSelecionado(position);
             }
         });
 
@@ -66,14 +82,14 @@ public class cardapioPage extends AppCompatActivity {
         this.btConfirma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createNewNote();
+                selecionarPedido();
             }
         });
 
-        new NoteLoaderTask().execute();
+        new cardapioTask().execute();
     }
 
-    private void noteItemClicked(int position) {
+    private void ItemSelecionado(int position) {
         cardapio itens = cardapioArrayAdapter.getItem(position);
         Intent intent = new Intent(this, cardapioActivity.class);
 
@@ -81,15 +97,15 @@ public class cardapioPage extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void createNewNote() {
+    private void selecionarPedido() {
         Intent intent = new Intent(this, cardapioPage.class);
 
         startActivityForResult(intent, REQUEST_CREATE);
     }
 
     @Override
-    public void onActivityResult (int requestCode, int resultCode,
-                                  Intent data) {
+    public void onActivityResult(int requestCode, int resultCode,
+                                 Intent data) {
         if ((requestCode == REQUEST_CREATE)
                 && (resultCode == Activity.RESULT_OK)) {
             cardapio newCardapio = (cardapio) data.getSerializableExtra("cardapio");
@@ -97,6 +113,8 @@ public class cardapioPage extends AppCompatActivity {
             this.cardapioArrayAdapter.add(newCardapio);
         }
     }
+
+
 }
 
 
