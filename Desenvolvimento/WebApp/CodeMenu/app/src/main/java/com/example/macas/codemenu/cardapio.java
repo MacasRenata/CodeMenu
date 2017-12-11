@@ -1,26 +1,29 @@
 package com.example.macas.codemenu;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class cardapio {
+public class cardapio implements Serializable {
 
-    private Long id;
+    private static final long serialVersionUID = 1L;
+
+    private int id;
     private String nome;
     private String tipo;
     private double preco;
     private String urlImagem;
 
-    MainActivityMenu context;
-    private String newCardapio;
+
     ArrayList<cardapio> ListaCardapio;
 
 
-    public cardapio(){
+    public cardapio() {
+
         super();
     }
 
-    public cardapio(Long id, String nome, String tipo, double preco, String urlImagem) {
+    public cardapio(int id, String nome, String tipo, double preco, String urlImagem) {
         this.id = id;
         this.nome = nome;
         this.tipo = tipo;
@@ -34,7 +37,7 @@ public class cardapio {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

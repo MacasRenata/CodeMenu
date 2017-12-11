@@ -16,6 +16,8 @@ import android.widget.ListView;
 import java.util.List;
 import java.util.ListIterator;
 
+import static android.R.id.list;
+
 
 public class cardapioPage extends AppCompatActivity {
 
@@ -41,13 +43,7 @@ public class cardapioPage extends AppCompatActivity {
         }
     }
 
-
-    private cardapioDAO cd;
-    private Button getBtConfirma;
-    Button btConfirma, btSair;
-    ListView listaItem;
-
-    //private ContactsContract.CommonDataKinds.Note getOnItemSelectedListener;
+    private cardapio card;
 
 
 
@@ -56,9 +52,9 @@ public class cardapioPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.page_cardapio);
 
-        this.cd = new cardapioDAO();
-        this.listaItem = (ListView) findViewById(R.id.listaItem);
-      //  this.listaItem.setOnClickListener(listaItem.getAdapter().getItem());
+        this.card = new cardapio();
+        this.card = (ListView) findViewById(R.id.card.id);
+        this.listaItem.setOnClickListener(listaItem.getAdapter().getItem(id, list));
 
 
         this.btConfirma = (Button) findViewById(R.id.btConfirma);
@@ -71,10 +67,10 @@ public class cardapioPage extends AppCompatActivity {
     }
 
         private void pedidoSalvo() {
-      //  this.listaItem.setOnClickListener(this.listaItem.getOnItemClickListener(listaItem));
-        //this.note.setText(this.textEdit.getText().toString());
+        this.listaItem.setOnClickListener(this.listaItem.getOnItemClickListener(listaItem));
+        this.listaItem.getAdapter(this.listaItem.getAdapter().toString()); //.getText().toString());
 
-     //   new cardapioPageTask().execute(this.listaItem);
+       new cardapioPageTask().execute(this.listaItem);
 
     }
 

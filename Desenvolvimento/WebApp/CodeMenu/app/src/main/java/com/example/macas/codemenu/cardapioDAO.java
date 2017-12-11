@@ -21,7 +21,7 @@ public class cardapioDAO {
 
     private static final String TAG = cardapioDAO.class.getSimpleName();
 
-    private static final String BASE_URL = "https://";
+    private static final String BASE_URL = "https://localhost:8080/WebService/webresources/item";
 
     private cardapioService service;
 

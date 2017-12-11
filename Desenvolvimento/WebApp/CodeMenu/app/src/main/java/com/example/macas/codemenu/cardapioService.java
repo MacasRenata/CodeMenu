@@ -13,8 +13,8 @@ import retrofit2.http.POST;
 
 public interface cardapioService {
 
-    @GET("cardapio")
-    @Headers("x-apikey: a99c54bd6bfa3fb07ef171c1a43f51f29785e")
+    @GET(" /listaItem ")
+    //@Headers("x-apikey: a99c54bd6bfa3fb07ef171c1a43f51f29785e")
     Call<List<cardapio>> listCardapio();
 
     @POST("cardapio")
