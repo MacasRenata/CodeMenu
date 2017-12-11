@@ -3,9 +3,12 @@ package com.example.macas.codemenu;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 /**
  * Created by macas on 30/11/17.
@@ -14,10 +17,13 @@ import retrofit2.http.POST;
 public interface cardapioService {
 
     @GET(" /listaItem ")
-    //@Headers("x-apikey: a99c54bd6bfa3fb07ef171c1a43f51f29785e")
-    Call<List<cardapio>> listCardapio();
+    Call<cardapio> getListaItem( @Path("ctrlCar") String ctrl);
 
-    @POST("cardapio")
-    @Headers("x-apikey: a99c54bd6bfa3fb07ef171c1a43f51f29785e")
-    Call<cardapio> createCardapio(@Body cardapio cardapio);
+
+    @FormUrlEncoded
+    @POST(" /listaItem.java")
+    Call<List<cardapio>> getListaCardapio( @Field("method") String method);
+
+
+
 }

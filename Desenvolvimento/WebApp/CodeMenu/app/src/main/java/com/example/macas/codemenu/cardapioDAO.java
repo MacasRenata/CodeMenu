@@ -35,15 +35,15 @@ public class cardapioDAO {
         this.service = retrofit.create(cardapioService.class);
     }
 
-    public List<cardapio> readAllNotes() {   // mudança do '<ContactsContract.CommonDataKinds.Note>'
-        Call<List<cardapio>> call = this.service.listCardapio();
-        List<cardapio> notes = null;
+    public List<cardapio> listarCardapio(cardapio param) {   // mudança do '<ContactsContract.CommonDataKinds.Note>'
+        Call<List<cardapio>> call = this.service.getListaCardapio("method");
+        List<cardapio> cardapios = null;
 
         try {
             Response<List<cardapio>> res = call.execute();
 
             if (res.isSuccessful()) {
-                notes = res.body();
+                cardapios = res.body();
             } else {
                 String errorBody = res.errorBody().string();
                 int errorCode = res.code();
@@ -57,18 +57,18 @@ public class cardapioDAO {
         } catch (IOException exc){
             Log.e(TAG, "IO error during REST operation.", exc);
         }
-        return notes;
+        return cardapios;
     }
 
-    public cardapio createNote(cardapio note) {
-        Call<cardapio> call = this.service.createCardapio(note);  //alterado o tipo
-        cardapio newNote = null;
+    public cardapio enviarPedido(cardapio enviarPed) {
+        Call<cardapio> call = this.service.getListaItem("ctrlCar");  //alterado o tipo
+        cardapio newCardapio = null;
 
         try {
             Response<cardapio> res = call.execute();
 
             if (res.isSuccessful()) {
-                newNote = res.body();
+                newCardapio = res.body();
             } else {
                 String errorBody = res.errorBody().string();
                 int errorCode = res.code();
@@ -82,6 +82,6 @@ public class cardapioDAO {
         } catch (IOException exc) {
             Log.e(TAG, "IO error during REST operation.", exc);
         }
-        return newNote;
+        return newCardapio;
     }
 }

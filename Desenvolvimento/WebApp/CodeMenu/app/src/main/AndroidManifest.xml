@@ -18,10 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".cardapioPage" />
-        <activity android:name=".pedidoPage" />
-        <activity android:name=".pagamentoPage" />
-        <activity android:name=".cardapioActivity"></activity>
+
     </application>
 
 </manifest>

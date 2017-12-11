@@ -8,6 +8,7 @@ import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.menu.ListMenuItemView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,8 @@ import android.widget.ListView;
 
 import java.util.List;
 import java.util.ListIterator;
+
+import retrofit2.Call;
 
 import static android.R.id.list;
 
@@ -29,7 +32,7 @@ public class cardapioPage extends AppCompatActivity {
         public Void doInBackground(cardapio... params) {
             cardapioDAO dao = new cardapioDAO();
 
-            dao.createNote(params[0]);
+            dao.listarCardapio(params[0]);
             return null;
         }
 
@@ -44,8 +47,11 @@ public class cardapioPage extends AppCompatActivity {
     }
 
     private cardapio card;
-
-
+    private cardapioDAO cardList;
+    private cardapioService cardServ;
+    private ListView listaItem;
+    private Button btConfirma;
+    private Button btSair;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,22 +59,22 @@ public class cardapioPage extends AppCompatActivity {
         setContentView(R.layout.page_cardapio);
 
         this.card = new cardapio();
-        this.card = (ListView) findViewById(R.id.card.id);
-        this.listaItem.setOnClickListener(listaItem.getAdapter().getItem(id, list));
+        this.listaItem = (ListView) findViewById(R.id.listaItem);
+        this.listaItem.setOnClickListener(cardList.enviarPedido());
 
 
         this.btConfirma = (Button) findViewById(R.id.btConfirma);
         this.btConfirma.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pedidoSalvo();
+           @Override
+           public void onClick(View view) {
+               enviarPedido();
             }
-        });
+       });
     }
 
         private void pedidoSalvo() {
         this.listaItem.setOnClickListener(this.listaItem.getOnItemClickListener(listaItem));
-        this.listaItem.getAdapter(this.listaItem.getAdapter().toString()); //.getText().toString());
+        this.listaItem.getAdapter(this.listaItem.getOnItemClickListener()); //.getText().toString());
 
        new cardapioPageTask().execute(this.listaItem);
 
