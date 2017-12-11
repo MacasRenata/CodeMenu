@@ -35,7 +35,7 @@ public class cardapioDAO {
         this.service = retrofit.create(cardapioService.class);
     }
 
-    public List<cardapio> listarCardapio(cardapio param) {   // mudança do '<ContactsContract.CommonDataKinds.Note>'
+    public List<cardapio> listarCardapio() {   // mudança do '<ContactsContract.CommonDataKinds.Note>'
         Call<List<cardapio>> call = this.service.getListaCardapio("method");
         List<cardapio> cardapios = null;
 
