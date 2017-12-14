@@ -25,7 +25,7 @@ public class pagamentoPage extends AppCompatActivity {
 
             void chamaCardapio() {
                 Intent intent = new Intent();
-                intent.setClass(pagamentoPage.this, MainActivityMenu.class);
+                intent.setClass(pagamentoPage.this, MainActivity.class);
                 startActivity(intent);
                 finish();
 

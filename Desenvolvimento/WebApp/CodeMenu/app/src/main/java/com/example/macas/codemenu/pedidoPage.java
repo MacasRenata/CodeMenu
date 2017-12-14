@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
 public class pedidoPage extends AppCompatActivity {
 
@@ -26,7 +27,7 @@ public class pedidoPage extends AppCompatActivity {
 
             void chamaCardapio() {
                 Intent intent = new Intent();
-                intent.setClass(pedidoPage.this, cardapioPage.class);
+                intent.setClass(pedidoPage.this, MainActivity.class);
                 startActivity(intent);
                 finish();
 
@@ -43,11 +44,25 @@ public class pedidoPage extends AppCompatActivity {
 
             void chamaMenuPrincipal() {
                 Intent intent = new Intent();
-                intent.setClass(pedidoPage.this, MainActivityMenu.class);
+                intent.setClass(pedidoPage.this, MainActivity.class);
                 startActivity(intent);
                 finish();
 
             }
         });
+
+        cardapio cardapios = (cardapio) super.getIntent().getSerializableExtra("cardapio");
+        ListView nome = (ListView) findViewById(R.id.listaItem);
+        ListView tipo = (ListView) findViewById(R.id.listaItem);
+        ListView preco = (ListView) findViewById(R.id.listaItem);
+        ListView urlImagem = (ListView) findViewById(R.id.listaItem);
+
+        nome.setFilterText(cardapio.class.getName());
+        tipo.setFilterText(cardapio.class.getName());
+        preco.setFilterText(cardapio.class.getName());
+        urlImagem.setFilterText(cardapio.class.getName());
+
     }
+
 }
+

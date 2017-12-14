@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.macas.codemenu.cardapioPage">
+    tools:context="com.example.macas.codemenu.CardapioActivity">
 
     <Button
         android:id="@+id/btConfirma"
@@ -69,6 +69,5 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.31" />
-
 
 </android.support.constraint.ConstraintLayout>

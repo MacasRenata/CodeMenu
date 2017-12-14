@@ -23,7 +23,8 @@ public class cardapioDAO {
 
     private static final String TAG = cardapioDAO.class.getSimpleName();
 
-    private static final String BASE_URL = "http://localhost:8084/CodeMenuWeb/";
+    private static final String BASE_URL = "https://notes-5aa5.restdb.io/rest/";
+            //"http://localhost:8084/CodeMenuWeb/";
             //"http://localhost:8080/WebService/webresources/item";
 
     private cardapioService service;
@@ -41,7 +42,7 @@ public class cardapioDAO {
     //METODO PARA @POST CHAMAR A LISTA DE ITENS DO WEBSERVICE COM A CLASSE CARDAPIOSERVICE
 
     public List<cardapio> listarCardapio() {
-        Call<List<cardapio>> call = this.service.getListaCardapio("method");
+        Call<List<cardapio>> call = this.service.listaCardapio();
         List<cardapio> cardapios = null;
 
         try {
@@ -67,9 +68,9 @@ public class cardapioDAO {
 
 
     //METODO PARA @GET PARA ENVIAR LISTA DE PEDIDOS NA LISTA DE ITENS COM A CLASSE CARDAPIOSERVICE
-
+/*
     public cardapio enviarPedido(cardapio enviarPed) {
-        Call<cardapio> call = this.service.getListaItem("ctrlCar");
+        Call<cardapio> call = this.service.listaPedido(cardapio);
         cardapio newCardapio = null;
 
         try {
@@ -91,5 +92,5 @@ public class cardapioDAO {
             Log.e(TAG, "IO error during REST operation.", exc);
         }
         return newCardapio;
-    }
+    }*/
 }

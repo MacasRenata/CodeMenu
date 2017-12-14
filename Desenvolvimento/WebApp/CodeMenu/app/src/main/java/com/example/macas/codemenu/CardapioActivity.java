@@ -1,11 +1,10 @@
 package com.example.macas.codemenu;
 
-
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -13,11 +12,10 @@ import android.widget.ListView;
 import java.util.List;
 import android.widget.ArrayAdapter;
 
+public class CardapioActivity extends AppCompatActivity {
 
-public class cardapioPage extends AppCompatActivity {
     private static final int REQUEST_CREATE = 1;
 
-    //METODO DE CONEXAO COM O CARDAPIOSERVICE PARA LISTAR OS ITENS @POST
     private class cardapioTask extends AsyncTask<Void, Void, List<cardapio>> {
 
         @Override
@@ -36,16 +34,16 @@ public class cardapioPage extends AppCompatActivity {
     }
 
     private ArrayAdapter<cardapio> cardapioArrayAdapter;
-    private ListView listaItem;
-    private Button btConfirma;
+    ListView listaItem;
 
-    Button btSair;
+
+    Button btSair, btConfirma;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.page_cardapio);
-
+        setContentView(R.layout.activity_cardapio);
 
         btSair = (Button)findViewById(R.id.btSair);
 
@@ -59,14 +57,33 @@ public class cardapioPage extends AppCompatActivity {
 
             void chamaMenuPrincipal() {
                 Intent intent = new Intent();
-                intent.setClass(cardapioPage.this, MainActivityMenu.class);
+                intent.setClass(CardapioActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
 
             }
         });
 
-        //METODO PARA ENVIAR PELO BOTÃO CONFIRMAR OS ITENS NA LISTA DE PEDIDOS PARA O WEBSERVICE E CARDAPIOSERVICE
+        btConfirma = (Button)findViewById(R.id.btConfirma);
+
+        btConfirma.setOnClickListener(new View.OnClickListener()
+
+        {
+            @Override
+            public void onClick (View v){
+                chamaPedido();
+            }
+
+            void chamaPedido() {
+                Intent intent = new Intent();
+                intent.setClass(CardapioActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
+        //METODO PARA carregar a LISTA WEBSERVICE
 
         this.cardapioArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
         this.listaItem = (ListView) findViewById(R.id.listaItem);
@@ -78,30 +95,23 @@ public class cardapioPage extends AppCompatActivity {
             }
         });
 
-        this.btConfirma = (Button) findViewById(R.id.btConfirma);
-        this.btConfirma.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selecionarPedido();
-            }
-        });
 
         new cardapioTask().execute();
     }
 
     private void ItemSelecionado(int position) {
         cardapio itens = cardapioArrayAdapter.getItem(position);
-        Intent intent = new Intent(this, cardapioActivity.class);
+        Intent intent = new Intent(this, pedidoPage.class);
 
         intent.putExtra("cardapio", itens);
         startActivity(intent);
     }
 
-    private void selecionarPedido() {
+   /* private void selecionarPedido() {
         Intent intent = new Intent(this, cardapioPage.class);
 
         startActivityForResult(intent, REQUEST_CREATE);
-    }
+    }*/
 
     @Override
     public void onActivityResult(int requestCode, int resultCode,
@@ -112,42 +122,6 @@ public class cardapioPage extends AppCompatActivity {
 
             this.cardapioArrayAdapter.add(newCardapio);
         }
+
     }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

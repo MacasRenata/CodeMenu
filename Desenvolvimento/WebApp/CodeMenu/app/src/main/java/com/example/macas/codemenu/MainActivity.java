@@ -10,7 +10,7 @@ import android.widget.Button;
 
 
 
-public class MainActivityMenu extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     Button btCardapio, btPedido, btPagamento;
 
@@ -30,7 +30,7 @@ public class MainActivityMenu extends AppCompatActivity {
 
           void chamaCardapio() {
         Intent intent = new Intent();
-        intent.setClass(MainActivityMenu.this, cardapioPage.class);
+        intent.setClass(MainActivity.this, CardapioActivity.class);
         startActivity(intent);
         finish();
     }
@@ -46,7 +46,7 @@ public class MainActivityMenu extends AppCompatActivity {
 
           void chamaPedido() {
         Intent intent = new Intent();
-        intent.setClass(MainActivityMenu.this, pedidoPage.class);
+        intent.setClass(MainActivity.this, pedidoPage.class);
         startActivity(intent);
         finish();
        }
@@ -63,7 +63,7 @@ public class MainActivityMenu extends AppCompatActivity {
 
         void chamaPagamento() {
         Intent intent = new Intent();
-        intent.setClass(MainActivityMenu.this, pagamentoPage.class);
+        intent.setClass(MainActivity.this, pagamentoPage.class);
         startActivity(intent);
         finish();
           }
