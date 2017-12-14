@@ -101,17 +101,13 @@ public class CardapioActivity extends AppCompatActivity {
 
     private void ItemSelecionado(int position) {
         cardapio itens = cardapioArrayAdapter.getItem(position);
-        Intent intent = new Intent(this, pedidoPage.class);
+        Intent intent = new Intent(this, PedidoActivity.class);
 
         intent.putExtra("cardapio", itens);
         startActivity(intent);
     }
 
-   /* private void selecionarPedido() {
-        Intent intent = new Intent(this, cardapioPage.class);
 
-        startActivityForResult(intent, REQUEST_CREATE);
-    }*/
 
     @Override
     public void onActivityResult(int requestCode, int resultCode,

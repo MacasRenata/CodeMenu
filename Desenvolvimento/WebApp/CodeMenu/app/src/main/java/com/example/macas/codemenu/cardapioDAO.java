@@ -24,6 +24,8 @@ public class cardapioDAO {
     private static final String TAG = cardapioDAO.class.getSimpleName();
 
     private static final String BASE_URL = "https://notes-5aa5.restdb.io/rest/";
+            //"http://localhost:8080/WebService/webresources";
+            //"https://notes-5aa5.restdb.io/rest/";
             //"http://localhost:8084/CodeMenuWeb/";
             //"http://localhost:8080/WebService/webresources/item";
 

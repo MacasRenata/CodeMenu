@@ -6,14 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class pagamentoPage extends AppCompatActivity {
+public class PagamentoActivity extends AppCompatActivity {
 
     Button btSair;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.page_pagamento);
+        setContentView(R.layout.activity_pagamento);
+
 
         btSair = (Button) findViewById(R.id.btSair);
 
@@ -25,7 +26,7 @@ public class pagamentoPage extends AppCompatActivity {
 
             void chamaCardapio() {
                 Intent intent = new Intent();
-                intent.setClass(pagamentoPage.this, MainActivity.class);
+                intent.setClass(PagamentoActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
 

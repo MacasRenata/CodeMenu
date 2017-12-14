@@ -14,11 +14,6 @@ import retrofit2.http.POST;
 
 public interface pagamentoService {
 
-    @GET("cardapio")
-    @Headers("x-apikey: a99c54bd6bfa3fb07ef171c1a43f51f29785e")
-    Call<List<cardapio>> listCardapio();
-
-    @POST("cardapio")
-    @Headers("x-apikey: a99c54bd6bfa3fb07ef171c1a43f51f29785e")
-    Call<cardapio> createCardapio(@Body cardapio cardapio);
+    @GET(" /listaPagamento ")
+    Call<List<pagamento>> listaPagamento();
 }

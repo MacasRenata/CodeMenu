@@ -1,7 +1,6 @@
 package com.example.macas.codemenu;
 
-
-
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,54 +22,54 @@ public class MainActivity extends AppCompatActivity {
         btCardapio = (Button) findViewById(R.id.btCardapio);
 
         btCardapio.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            chamaCardapio();
-        }
+            @Override
+            public void onClick(View v) {
+                chamaCardapio();
+            }
 
-          void chamaCardapio() {
-        Intent intent = new Intent();
-        intent.setClass(MainActivity.this, CardapioActivity.class);
-        startActivity(intent);
-        finish();
-    }
-   });
+            void chamaCardapio() {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, CardapioActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
         btPedido = (Button) findViewById(R.id.btPedido);
 
         btPedido.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            chamaPedido();
-        }
+            @Override
+            public void onClick(View v) {
+                chamaPedido();
+            }
 
-          void chamaPedido() {
-        Intent intent = new Intent();
-        intent.setClass(MainActivity.this, pedidoPage.class);
-        startActivity(intent);
-        finish();
-       }
-      });
+            void chamaPedido() {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, PedidoActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
         btPagamento = (Button) findViewById(R.id.btPagamento);
 
         btPagamento.setOnClickListener(new View.OnClickListener() {
-          @Override
-           public void onClick(View v) {
-             chamaPagamento();
-        }
+            @Override
+            public void onClick(View v) {
+                chamaPagamento();
+            }
 
-        void chamaPagamento() {
-        Intent intent = new Intent();
-        intent.setClass(MainActivity.this, pagamentoPage.class);
-        startActivity(intent);
-        finish();
-          }
+            void chamaPagamento() {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, PagamentoActivity.class);
+                startActivity(intent);
+                finish();
+            }
         });
 
+
     }
-
-
 
 }

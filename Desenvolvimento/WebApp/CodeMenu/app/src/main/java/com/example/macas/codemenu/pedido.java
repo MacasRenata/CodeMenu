@@ -1,18 +1,24 @@
 package com.example.macas.codemenu;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * Created by macas on 19/11/17.
  */
 
-public class pedido {
+public class pedido implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private Long id;
     private Date data;
     private int status;
     private double valor;
     private int quantidade;
+
+    ArrayList<pedido> ListaPedido;
 
 
     public pedido(){
